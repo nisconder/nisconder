@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="210" viewBox="0 0 480 210" role="img" aria-labelledby="title description">
       <title id="title">Pack Receipt</title>
-      <desc id="description">Pack Receipt，npm 归档比较；A.tgz 与 B.tgz 之间的文件变化用两种笔迹表示。 动画关闭后，所有内容仍可读。</desc>
+      <desc id="description">Pack Receipt，标记两个 npm 归档的文件差异。 动画关闭后，所有内容仍可读。</desc>
       <style>
       :root{--canvas:#0d1421;--surface:#121d2e;--line:#283b54;--ink:#ecf2fa;--muted:#a6b7ca;--ice:#88bfff;--copper:#d9ba85}
-      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
       .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
       .wire{fill:none;stroke:var(--line);stroke-width:1.8}
       .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
@@ -22,7 +22,7 @@
       @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
     </style>
       <rect x=".5" y=".5" width="479" height="209" rx="18" fill="var(--surface)" stroke="var(--line)"/>
-      <text x="24" y="42" font-size="28" font-weight="650" fill="var(--ink)">Pack Receipt</text><text x="24" y="77" font-size="18" font-weight="400" fill="var(--ink)">拆开两份归档，看清发布的变化。</text><text x="24" y="104" font-size="18" font-weight="400" fill="var(--muted)" class="mono">JavaScript · Tarball / File diff</text><rect x="20" y="120" width="440" height="74" rx="10" fill="var(--canvas)"/><g transform="translate(25 120)"><rect x="14" y="8" width="137" height="57" rx="5" fill="var(--surface)" stroke="var(--line)"/>
+      <text x="24" y="42" font-size="26" font-weight="650" fill="var(--ink)">Pack Receipt</text><text x="24" y="77" font-size="20" font-weight="400" fill="var(--ink)">npm 归档文件与版本差异对比</text><text x="24" y="104" font-size="18" font-weight="400" fill="var(--muted)">JavaScript · Tarball / File diff</text><rect x="20" y="120" width="440" height="74" rx="10" fill="var(--canvas)"/><g transform="translate(25 120)"><rect x="14" y="8" width="137" height="57" rx="5" fill="var(--surface)" stroke="var(--line)"/>
           <rect x="260" y="8" width="137" height="57" rx="5" fill="var(--surface)" stroke="var(--line)"/>
           <path class="flow" d="M166 36h78"/>
           <path class="diff-before" d="M94 27h38M94 42h22M94 54h33" stroke="var(--copper)" stroke-width="2" stroke-linecap="round"/>

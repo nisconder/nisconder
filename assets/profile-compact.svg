@@ -30,7 +30,7 @@
       <path d="M16 1h448" stroke="#94b4ae" stroke-opacity=".25"/>
       <text class="mono" x="30" y="47" fill="#b6d2ce" font-size="11" letter-spacing="1.6">LOCAL-FIRST DEVELOPER TOOLS</text>
           <text x="28" y="112" fill="#f1f5ee" font-size="57" font-weight="700" letter-spacing="-2">Nisconder<tspan fill="#e6b47c">.</tspan></text>
-          <text x="30" y="151" fill="#c2d8d2" font-size="18">把细节看清，让工具留在本地。</text>
+          <text x="30" y="151" fill="#c2d8d2" font-size="18">本地开发工具与项目</text>
           <path d="M30 181h420" stroke="#45676a"/>
           <text class="mono" x="30" y="210" fill="#90b8b2" font-size="11" letter-spacing="1.5">INSPECT / CONNECT / REVEAL</text>
           <path class="route" d="M379 267v246M379 267h-69M379 390h-69M379 513h-69"/>
@@ -63,5 +63,5 @@
           <path d="M0 5v-5h40v5M0 34v6h40v-6M7 10h26M7 18h10m9 0h7M7 26h26"/>
           <path class="reveal" d="M21 9v19" stroke="#e6b47c" stroke-width="3"/>
         </g>
-    </g><text class="mono" x="30" y="628" fill="#b6d2ce" font-size="12">TOOLS FOR THINGS WORTH LOOKING AT.</text>
+    </g><text class="mono" x="30" y="628" fill="#b6d2ce" font-size="12">NISCONDER / DEVELOPER TOOLS</text>
     </svg>

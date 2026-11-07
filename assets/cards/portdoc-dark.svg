@@ -3,7 +3,7 @@
       <desc id="description">portdoc，本地连接诊断；localhost 分路到 IPv4 和 IPv6，细光沿线路流动。 动画关闭后，所有内容仍可读。</desc>
       <style>
       :root{--canvas:#0d1421;--surface:#121d2e;--line:#283b54;--ink:#ecf2fa;--muted:#a6b7ca;--ice:#88bfff;--copper:#d9ba85}
-      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
       .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
       .wire{fill:none;stroke:var(--line);stroke-width:1.8}
       .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
@@ -22,7 +22,7 @@
       @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
     </style>
       <rect x=".5" y=".5" width="1099" height="163" rx="18" fill="var(--surface)" stroke="var(--line)"/>
-      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="34" font-weight="650" fill="var(--ink)">portdoc</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">沿着 localhost，找到连接的断点。</text><text x="34" y="133" font-size="22" font-weight="400" fill="var(--muted)" class="mono">JavaScript · Windows / WSL / Docker</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><path class="wire" d="M130 61h23l28-36h35m-63 36 28 37h35"/>
+      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="32" font-weight="650" fill="var(--ink)">portdoc</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">Windows / WSL / Docker 端口诊断</text><text x="34" y="133" font-size="18" font-weight="400" fill="var(--muted)">JavaScript · Networking</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><path class="wire" d="M130 61h23l28-36h35m-63 36 28 37h35"/>
       <path class="flow" d="M130 61h23l28-36h35m-63 36 28 37h35"/>
       <circle cx="153" cy="61" r="4" fill="var(--ice)"/>
       <circle class="evidence-dot delayed" cx="218" cy="25" r="4" fill="var(--copper)"/>

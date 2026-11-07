@@ -1,21 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="254" viewBox="0 0 1100 254" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="210" viewBox="0 0 1100 210" role="img" aria-labelledby="title desc">
 <title id="title">Nisconder</title><desc id="desc">Nisconder 的个人主页。代码、工具与记录；底部有缓慢经过轮廓曲线的信号，静态时全部文字仍可读。</desc>
 <style>
-text{font-family:'Segoe UI','Microsoft YaHei',sans-serif} .mono{font-family:Consolas,'Cascadia Code',monospace}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif} .mono{font-family:Consolas,'Cascadia Code',monospace}
 
 @media(prefers-reduced-motion:reduce){.motion,.motion *{animation:none!important} .moving-mark{display:none}}
 </style><defs>
 <radialGradient id="mist"><stop stop-color="#88bfff" stop-opacity=".12"/><stop offset="1" stop-color="#0d1421" stop-opacity="0"/></radialGradient>
 <linearGradient id="edge"><stop stop-color="#88bfff" stop-opacity="0"/><stop offset=".5" stop-color="#d9ba85" stop-opacity=".65"/><stop offset="1" stop-color="#88bfff" stop-opacity="0"/></linearGradient>
-<clipPath id="crop"><rect width="1100" height="254" rx="15"/></clipPath></defs>
-<g clip-path="url(#crop)"><rect width="1100" height="254" fill="#0d1421"/>
-<ellipse cx="550.0" cy="354" rx="770.0" ry="230" fill="url(#mist)"/>
-<path d="M-30 226 C220 154 363 259 550.0 211 S902 176 1130 221" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.070"/><path d="M-30 233 C220 159 363 266 550.0 218 S902 181 1130 228" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.079"/><path d="M-30 240 C220 164 363 273 550.0 225 S902 186 1130 235" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.088"/><path d="M-30 247 C220 169 363 280 550.0 232 S902 191 1130 242" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.097"/><path d="M-30 254 C220 174 363 287 550.0 239 S902 196 1130 249" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.106"/><path d="M-30 261 C220 179 363 294 550.0 246 S902 201 1130 256" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.115"/><path d="M-30 268 C220 184 363 301 550.0 253 S902 206 1130 263" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.124"/><path d="M-30 275 C220 189 363 308 550.0 260 S902 211 1130 270" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.133"/><path d="M-30 282 C220 194 363 315 550.0 267 S902 216 1130 277" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.142"/>
-<path d="M0 234 C275 178 440 264 550.0 219 S880 189 1100 234" fill="none" stroke="#d9ba85" stroke-width="1" opacity=".12"/>
-<circle class="moving-mark" r="2.1" fill="#d9ba85" opacity=".8"><animateMotion dur="18s" repeatCount="indefinite" path="M0 234 C275 178 440 264 550.0 219 S880 189 1100 234"/></circle>
-<text x="550.0" y="38" font-size="11" fill="#a6b7ca" text-anchor="middle" letter-spacing="3" class="mono">CODE / TOOLS / NOTES</text>
-<text x="550.0" y="116" font-size="88" fill="#ecf2fa" text-anchor="middle" font-weight="650" letter-spacing="-3">Nisconder</text>
-<text x="550.0" y="160" font-size="22" fill="#a6b7ca" text-anchor="middle">写代码，做工具，也把思考留下来。</text>
-<path d="M528.0 181h44" stroke="#d9ba85" stroke-width="1.5"/>
-<text x="550.0" y="210" font-size="11" fill="#a6b7ca" text-anchor="middle" letter-spacing="1.6" class="mono">LOCAL FIRST · BUILT TO UNDERSTAND</text>
-<path d="M20 253h1060" stroke="url(#edge)"/></g></svg>
+<clipPath id="crop"><rect width="1100" height="210" rx="15"/></clipPath></defs>
+<g clip-path="url(#crop)"><rect width="1100" height="210" fill="#0d1421"/>
+<ellipse cx="550.0" cy="310" rx="770.0" ry="230" fill="url(#mist)"/>
+<path d="M-30 182 C220 110 363 215 550.0 167 S902 132 1130 177" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.070"/><path d="M-30 189 C220 115 363 222 550.0 174 S902 137 1130 184" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.079"/><path d="M-30 196 C220 120 363 229 550.0 181 S902 142 1130 191" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.088"/><path d="M-30 203 C220 125 363 236 550.0 188 S902 147 1130 198" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.097"/><path d="M-30 210 C220 130 363 243 550.0 195 S902 152 1130 205" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.106"/><path d="M-30 217 C220 135 363 250 550.0 202 S902 157 1130 212" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.115"/><path d="M-30 224 C220 140 363 257 550.0 209 S902 162 1130 219" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.124"/><path d="M-30 231 C220 145 363 264 550.0 216 S902 167 1130 226" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.133"/><path d="M-30 238 C220 150 363 271 550.0 223 S902 172 1130 233" fill="none" stroke="#88bfff" stroke-width=".8" opacity="0.142"/>
+<path d="M0 190 C275 134 440 220 550.0 175 S880 145 1100 190" fill="none" stroke="#d9ba85" stroke-width="1" opacity=".12"/>
+<circle class="moving-mark" r="2.1" fill="#d9ba85" opacity=".8"><animateMotion dur="18s" repeatCount="indefinite" path="M0 190 C275 134 440 220 550.0 175 S880 145 1100 190"/></circle>
+<text x="550.0" y="106" font-size="72" fill="#ecf2fa" text-anchor="middle" font-weight="650" letter-spacing="-2">Nisconder</text>
+<text x="550.0" y="150" font-size="24" fill="#a6b7ca" text-anchor="middle">开发工具与技术笔记</text>
+<path d="M20 209h1060" stroke="url(#edge)"/></g></svg>

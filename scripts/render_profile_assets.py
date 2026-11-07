@@ -65,7 +65,7 @@ def banner(compact=False):
         width, height = 480, 668
         body = '''<text class="mono" x="30" y="47" fill="#b6d2ce" font-size="11" letter-spacing="1.6">LOCAL-FIRST DEVELOPER TOOLS</text>
           <text x="28" y="112" fill="#f1f5ee" font-size="57" font-weight="700" letter-spacing="-2">Nisconder<tspan fill="#e6b47c">.</tspan></text>
-          <text x="30" y="151" fill="#c2d8d2" font-size="18">把细节看清，让工具留在本地。</text>
+          <text x="30" y="151" fill="#c2d8d2" font-size="18">本地开发工具与项目</text>
           <path d="M30 181h420" stroke="#45676a"/>
           <text class="mono" x="30" y="210" fill="#90b8b2" font-size="11" letter-spacing="1.5">INSPECT / CONNECT / REVEAL</text>
           <path class="route" d="M379 267v246M379 267h-69M379 390h-69M379 513h-69"/>
@@ -74,12 +74,12 @@ def banner(compact=False):
         body += tile(30, 232, "npm-safe", "package → evidence", "package")
         body += tile(30, 355, "portdoc", "localhost → diagnosis", "port")
         body += tile(30, 478, "Paste X-Ray", "text → hidden marks", "text")
-        body += '''<text class="mono" x="30" y="628" fill="#b6d2ce" font-size="12">TOOLS FOR THINGS WORTH LOOKING AT.</text>'''
+        body += '''<text class="mono" x="30" y="628" fill="#b6d2ce" font-size="12">NISCONDER / DEVELOPER TOOLS</text>'''
     else:
         width, height = 1200, 424
         body = '''<text class="mono" x="52" y="54" fill="#b6d2ce" font-size="13" letter-spacing="2.7">LOCAL-FIRST DEVELOPER TOOLS</text>
           <text x="48" y="150" fill="#f1f5ee" font-size="92" font-weight="700" letter-spacing="-3">Nisconder<tspan fill="#e6b47c">.</tspan></text>
-          <text x="52" y="197" fill="#c2d8d2" font-size="25">把细节看清，让工具留在本地。</text>
+          <text x="52" y="197" fill="#c2d8d2" font-size="25">本地开发工具与项目</text>
           <g transform="translate(1015 46)" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <rect x="0" y="0" width="130" height="130" rx="27" stroke="#577b7b"/>
             <path d="M34 94V37l62 57V37" stroke="#a9d4c8" stroke-width="8"/>

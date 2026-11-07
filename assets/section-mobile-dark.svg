@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="55" viewBox="0 0 480 55" role="img" aria-labelledby="title desc">
-<title id="title">工具与实验</title><desc id="desc">以下项目卡片可点击进入各自仓库。</desc>
+<title id="title">项目</title><desc id="desc">以下项目卡片可点击进入各自仓库。</desc>
 <style>
-text{font-family:'Segoe UI','Microsoft YaHei',sans-serif} .mono{font-family:Consolas,'Cascadia Code',monospace}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif} .mono{font-family:Consolas,'Cascadia Code',monospace}
 
 @media(prefers-reduced-motion:reduce){.motion,.motion *{animation:none!important} .moving-mark{display:none}}
-</style><text x="0" y="36" font-size="23" fill="#ecf2fa" font-weight="600">工具与实验</text><text x="480" y="35" font-size="10" fill="#a6b7ca" text-anchor="end" letter-spacing="2" class="mono">SELECTED WORK</text></svg>
+</style><text x="0" y="36" font-size="24" fill="#ecf2fa" font-weight="600">项目</text></svg>

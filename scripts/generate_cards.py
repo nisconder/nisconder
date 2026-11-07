@@ -13,15 +13,15 @@ PALETTES = {
 }
 
 PROJECTS = [
-    dict(key="npm-safe", name="npm-safe", description="安装前，检查依赖包里的风险信号。", tags="TypeScript · CLI / CI / Desktop", kind="package", height=190,
+    dict(key="npm-safe", name="npm-safe", description="检查 npm 依赖的供应链风险", tags="TypeScript · CLI / CI / Desktop", kind="package", height=164,
          alt="npm-safe，本地供应链风险检查；示意一个包被扫描，生成脚本、文件和证据条目。"),
-    dict(key="portdoc", name="portdoc", description="沿着 localhost，找到连接的断点。", tags="JavaScript · Windows / WSL / Docker", kind="port", height=164,
+    dict(key="portdoc", name="portdoc", description="Windows / WSL / Docker 端口诊断", tags="JavaScript · Networking", kind="port", height=164,
          alt="portdoc，本地连接诊断；localhost 分路到 IPv4 和 IPv6，细光沿线路流动。"),
-    dict(key="paste-xray", name="Paste X-Ray", description="让隐藏字符，在原文里留下轮廓。", tags="JavaScript · Unicode / Clipboard", kind="unicode", height=164,
+    dict(key="paste-xray", name="Paste X-Ray", description="零宽字符、双向控制符与隐藏内容检测", tags="JavaScript · Unicode / Clipboard", kind="unicode", height=164,
          alt="Paste X-Ray，文本隐形字符检查；name 中的零宽空格被显影为 ZWSP 和 U+200B。"),
-    dict(key="pack-receipt", name="Pack Receipt", description="拆开两份归档，看清发布的变化。", tags="JavaScript · Tarball / File diff", kind="diff", height=164,
-         alt="Pack Receipt，npm 归档比较；A.tgz 与 B.tgz 之间的文件变化用两种笔迹表示。"),
-    dict(key="8086-lab", name="8086 Step Lab", description="从一条指令，看见十六位的变化。", tags="JavaScript · Registers / Flags", kind="bits", height=164,
+    dict(key="pack-receipt", name="Pack Receipt", description="npm 归档文件与版本差异对比", tags="JavaScript · Tarball / File diff", kind="diff", height=164,
+         alt="Pack Receipt，标记两个 npm 归档的文件差异。"),
+    dict(key="8086-lab", name="8086 Step Lab", description="8086 指令单步执行与状态观察", tags="JavaScript · Registers / Flags", kind="bits", height=164,
          alt="8086 Step Lab，汇编教学实验；AX 为 8000h 的十六位表示，OF 为 1、CF 为 0。"),
 ]
 
@@ -123,7 +123,7 @@ def render(project, theme, mobile):
     variables = ";".join(f"--{key}:{value}" for key, value in p.items())
     style = f"""
       :root{{{variables}}}
-      text{{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}}
+      text{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}}
       .mono{{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}}
       .wire{{fill:none;stroke:var(--line);stroke-width:1.8}}
       .flow{{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}}
@@ -142,18 +142,18 @@ def render(project, theme, mobile):
       @media(prefers-reduced-motion:reduce){{*{{animation:none!important;transition:none!important}}.flow{{stroke-dasharray:none}}.bit-glow,.evidence-dot,.diff-before,.diff-after{{opacity:1}}}}
     """
     if mobile:
-        body = text(24, 42, project["name"], 28, weight=650)
-        body += text(24, 77, project["description"], 18, "ink")
-        body += text(24, 104, project["tags"], 18, "muted", mono=True)
+        body = text(24, 42, project["name"], 26, weight=650)
+        body += text(24, 77, project["description"], 20, "ink")
+        body += text(24, 104, project["tags"], 18, "muted")
         body += '<rect x="20" y="120" width="440" height="74" rx="10" fill="var(--canvas)"/>'
         body += f'<g transform="translate(25 120)">{ART[project["kind"]](True)}</g>'
         body += '<path d="M435 25h14v14m-14 0 14-14" fill="none" stroke="var(--muted)" stroke-width="1.6"/>'
     else:
         offset = (height - 164) / 2
         body = '<g transform="translate(0 ' + str(offset) + ')">'
-        body += text(34, 52, project["name"], 34, weight=650)
+        body += text(34, 52, project["name"], 32, weight=650)
         body += text(34, 92, project["description"], 22, "ink")
-        body += text(34, 133, project["tags"], 22, "muted", mono=True)
+        body += text(34, 133, project["tags"], 18, "muted")
         body += '<path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/>'
         body += f'<g transform="translate(736 20)">{ART[project["kind"]](False)}</g></g>'
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">
@@ -183,7 +183,7 @@ def validate(source):
             y = float(node.attrib.get("y", 0)) + ty
             assert 0 <= x <= width and 0 <= y <= height, (x, y, width, height)
             size = float(node.attrib["font-size"])
-            assert size >= (18 if width == 480 else 22)
+            assert size >= 18
             # Conservative text extent check, followed by the owner's browser QA.
             value = "".join(node.itertext())
             extent = sum(size * (1.05 if ord(char) > 0x2FFF else .65) for char in value)

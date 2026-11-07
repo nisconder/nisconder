@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="190" viewBox="0 0 1100 190" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="164" viewBox="0 0 1100 164" role="img" aria-labelledby="title description">
       <title id="title">npm-safe</title>
       <desc id="description">npm-safe，本地供应链风险检查；示意一个包被扫描，生成脚本、文件和证据条目。 动画关闭后，所有内容仍可读。</desc>
       <style>
       :root{--canvas:#f7f9fc;--surface:#ffffff;--line:#d6e0eb;--ink:#1b2d46;--muted:#526985;--ice:#2674bc;--copper:#a26f25}
-      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
       .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
       .wire{fill:none;stroke:var(--line);stroke-width:1.8}
       .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
@@ -21,8 +21,8 @@
       @keyframes after{0%,100%{opacity:.6}40%,70%{opacity:1}}
       @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
     </style>
-      <rect x=".5" y=".5" width="1099" height="189" rx="18" fill="var(--surface)" stroke="var(--line)"/>
-      <g transform="translate(0 13.0)"><text x="34" y="52" font-size="34" font-weight="650" fill="var(--ink)">npm-safe</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">安装前，检查依赖包里的风险信号。</text><text x="34" y="133" font-size="22" font-weight="400" fill="var(--muted)" class="mono">TypeScript · CLI / CI / Desktop</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><g transform="translate(12 29)" fill="none" stroke="var(--ice)" stroke-width="1.7">
+      <rect x=".5" y=".5" width="1099" height="163" rx="18" fill="var(--surface)" stroke="var(--line)"/>
+      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="32" font-weight="650" fill="var(--ink)">npm-safe</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">检查 npm 依赖的供应链风险</text><text x="34" y="133" font-size="18" font-weight="400" fill="var(--muted)">TypeScript · CLI / CI / Desktop</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><g transform="translate(12 29)" fill="none" stroke="var(--ice)" stroke-width="1.7">
       <path d="m0 12 29-12 29 12v44L29 69 0 56Z"/><path d="m0 12 29 13 29-13M29 25v44M14 6l30 13v17"/>
       <path class="scanner" d="M-5 35h68" stroke="var(--copper)" stroke-width="2"/>
     </g><path class="flow" d="M87 64h38"/>

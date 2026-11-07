@@ -3,7 +3,7 @@
       <desc id="description">Paste X-Ray，文本隐形字符检查；name 中的零宽空格被显影为 ZWSP 和 U+200B。 动画关闭后，所有内容仍可读。</desc>
       <style>
       :root{--canvas:#0d1421;--surface:#121d2e;--line:#283b54;--ink:#ecf2fa;--muted:#a6b7ca;--ice:#88bfff;--copper:#d9ba85}
-      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
       .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
       .wire{fill:none;stroke:var(--line);stroke-width:1.8}
       .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
@@ -22,7 +22,7 @@
       @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
     </style>
       <rect x=".5" y=".5" width="1099" height="163" rx="18" fill="var(--surface)" stroke="var(--line)"/>
-      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="34" font-weight="650" fill="var(--ink)">Paste X-Ray</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">让隐藏字符，在原文里留下轮廓。</text><text x="34" y="133" font-size="22" font-weight="400" fill="var(--muted)" class="mono">JavaScript · Unicode / Clipboard</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><rect x="46" y="19" width="129" height="42" rx="6" fill="var(--canvas)" stroke="var(--ice)" stroke-width="1.3"/>
+      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="32" font-weight="650" fill="var(--ink)">Paste X-Ray</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">零宽字符、双向控制符与隐藏内容检测</text><text x="34" y="133" font-size="18" font-weight="400" fill="var(--muted)">JavaScript · Unicode / Clipboard</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><rect x="46" y="19" width="129" height="42" rx="6" fill="var(--canvas)" stroke="var(--ice)" stroke-width="1.3"/>
       <path class="text-scanner" d="M55 16v48" stroke="var(--copper)" stroke-width="2"/>
       <path d="M109 70v13h48" fill="none" stroke="var(--line)" stroke-width="1.5"/>
       <circle cx="109" cy="70" r="3" fill="var(--copper)"/><text x="5" y="47" font-size="26" font-weight="400" fill="var(--ink)" class="mono">na</text><text x="60" y="47" font-size="24" font-weight="400" fill="var(--ice)" class="mono">[ZWSP]</text><text x="188" y="47" font-size="26" font-weight="400" fill="var(--ink)" class="mono">me</text><text x="172" y="92" font-size="22" font-weight="400" fill="var(--copper)" class="mono">U+200B</text></g></g>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="164" viewBox="0 0 1100 164" role="img" aria-labelledby="title description">
       <title id="title">Pack Receipt</title>
-      <desc id="description">Pack Receipt，npm 归档比较；A.tgz 与 B.tgz 之间的文件变化用两种笔迹表示。 动画关闭后，所有内容仍可读。</desc>
+      <desc id="description">Pack Receipt，标记两个 npm 归档的文件差异。 动画关闭后，所有内容仍可读。</desc>
       <style>
       :root{--canvas:#f7f9fc;--surface:#ffffff;--line:#d6e0eb;--ink:#1b2d46;--muted:#526985;--ice:#2674bc;--copper:#a26f25}
-      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
       .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
       .wire{fill:none;stroke:var(--line);stroke-width:1.8}
       .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
@@ -22,7 +22,7 @@
       @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
     </style>
       <rect x=".5" y=".5" width="1099" height="163" rx="18" fill="var(--surface)" stroke="var(--line)"/>
-      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="34" font-weight="650" fill="var(--ink)">Pack Receipt</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">拆开两份归档，看清发布的变化。</text><text x="34" y="133" font-size="22" font-weight="400" fill="var(--muted)" class="mono">JavaScript · Tarball / File diff</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><rect x="3" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
+      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="32" font-weight="650" fill="var(--ink)">Pack Receipt</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">npm 归档文件与版本差异对比</text><text x="34" y="133" font-size="18" font-weight="400" fill="var(--muted)">JavaScript · Tarball / File diff</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><rect x="3" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
       <rect x="200" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
       <path class="flow" d="M135 64h52"/>
       <path d="m180 59 7 5-7 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>

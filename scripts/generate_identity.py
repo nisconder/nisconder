@@ -39,14 +39,14 @@ def wrap(width, height, name, description, content, css=""):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
 <title id="title">{esc(name)}</title><desc id="desc">{esc(description)}</desc>
 <style>
-text{{font-family:'Segoe UI','Microsoft YaHei',sans-serif}} .mono{{font-family:Consolas,'Cascadia Code',monospace}}
+text{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}} .mono{{font-family:Consolas,'Cascadia Code',monospace}}
 {css}
 @media(prefers-reduced-motion:reduce){{.motion,.motion *{{animation:none!important}} .moving-mark{{display:none}}}}
 </style>{content}</svg>'''
 
 
 def hero(p, mobile=False):
-    w, h = (480, 252) if mobile else (1100, 254)
+    w, h = (480, 196) if mobile else (1100, 210)
     cx = w / 2
     # The contours are original curves; they illustrate a visual field, not data.
     contours = []
@@ -64,27 +64,10 @@ def hero(p, mobile=False):
 {''.join(contours)}
 <path d="{signal}" fill="none" stroke="{p['gold']}" stroke-width="1" opacity=".12"/>
 <circle class="moving-mark" r="2.1" fill="{p['gold']}" opacity=".8"><animateMotion dur="18s" repeatCount="indefinite" path="{signal}"/></circle>
-{text(cx,38,'CODE / TOOLS / NOTES',10 if mobile else 11,p=p,anchor='middle',spacing=3,fill='muted',cls='mono')}
-{text(cx,108 if mobile else 116,'Nisconder',61 if mobile else 88,p=p,anchor='middle',weight=650,spacing=-3)}
-{text(cx,148 if mobile else 160,'写代码，做工具，也把思考留下来。',18 if mobile else 22,p=p,anchor='middle',fill='muted')}
-<path d="M{cx-22} 181h44" stroke="{p['gold']}" stroke-width="1.5"/>
-{text(cx,210,'LOCAL FIRST · BUILT TO UNDERSTAND',9 if mobile else 11,p=p,anchor='middle',spacing=1.6,fill='muted',cls='mono')}
+{text(cx,94 if mobile else 106,'Nisconder',48 if mobile else 72,p=p,anchor='middle',weight=650,spacing=-2)}
+{text(cx,134 if mobile else 150,'开发工具与技术笔记',20 if mobile else 24,p=p,anchor='middle',fill='muted')}
 <path d="M20 {h-1}h{w-40}" stroke="url(#edge)"/></g>'''
     return wrap(w, h, "Nisconder", "Nisconder 的个人主页。代码、工具与记录；底部有缓慢经过轮廓曲线的信号，静态时全部文字仍可读。", content)
-
-
-def skills(p, mobile=False):
-    labels = [("TS", "TypeScript"), ("JS", "JavaScript"), ("PY", "Python"), ("JV", "Java"), (">_", "Node.js"), ("<>" ,"HTML / CSS"), ("/", "Git")]
-    w, h = (480, 110) if mobile else (1100, 78)
-    content = [f'<rect width="{w}" height="{h}" rx="10" fill="{p["bg"]}"/>']
-    positions = []
-    if mobile:
-        positions = [(24+i*116, 9, 108) for i in range(4)] + [(64+i*121, 61, 113) for i in range(3)]
-    else:
-        positions = [(11+i*155, 15, 144) for i in range(7)]
-    for (symbol, label), (x, y, width) in zip(labels, positions):
-        content += [f'<rect x="{x}" y="{y}" width="{width}" height="37" rx="6" fill="{p["surface"]}" stroke="{p["line"]}"/>', text(x+10,y+24,symbol,12,p=p,cls='mono',fill='ice',weight=600), text(x+38,y+24,label,12 if mobile else 14,p=p,fill='muted')]
-    return wrap(w,h,"使用的技术","项目中实际使用的 TypeScript、JavaScript、Python、Java、Node.js、HTML、CSS 和 Git。",''.join(content))
 
 
 def activity(p, data, mobile=False):
@@ -94,8 +77,8 @@ def activity(p, data, mobile=False):
     x0 = (w - ((len(weeks)-1)*pitch+size))/2
     y0 = 62 if mobile else 71
     count = sum(d['contributionCount'] for week in weeks for d in week['contributionDays'])
-    title = '近半年，慢慢积累。' if mobile else '过去一年，慢慢积累。'
-    content = [f'<defs><clipPath id="activity-crop"><rect x="{x0}" y="{y0}" width="{w-2*x0}" height="108"/></clipPath><linearGradient id="sweep"><stop stop-color="{p["ice"]}" stop-opacity="0"/><stop offset=".5" stop-color="{p["ice"]}" stop-opacity=".15"/><stop offset="1" stop-color="{p["ice"]}" stop-opacity="0"/></linearGradient></defs>', f'<rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="12" fill="{p["bg"]}" stroke="{p["line"]}"/>', text(24 if mobile else 40,32 if mobile else 35,title,17 if mobile else 22,p=p,weight=500), text(w-(24 if mobile else 40),32 if mobile else 35,f'{count} contributions',11 if mobile else 14,p=p,anchor='end',cls='mono',fill='muted')]
+    title = '近半年贡献' if mobile else 'GitHub 贡献'
+    content = [f'<defs><clipPath id="activity-crop"><rect x="{x0}" y="{y0}" width="{w-2*x0}" height="108"/></clipPath><linearGradient id="sweep"><stop stop-color="{p["ice"]}" stop-opacity="0"/><stop offset=".5" stop-color="{p["ice"]}" stop-opacity=".15"/><stop offset="1" stop-color="{p["ice"]}" stop-opacity="0"/></linearGradient></defs>', f'<rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="12" fill="{p["bg"]}" stroke="{p["line"]}"/>', text(24 if mobile else 40,32 if mobile else 35,title,20 if mobile else 22,p=p,weight=500), text(w-(24 if mobile else 40),32 if mobile else 35,f'{count} 次贡献',16 if mobile else 18,p=p,anchor='end',fill='muted')]
     level_keys = ['NONE','FIRST_QUARTILE','SECOND_QUARTILE','THIRD_QUARTILE','FOURTH_QUARTILE']
     for col, week in enumerate(weeks):
         for day in week['contributionDays']:
@@ -104,24 +87,23 @@ def activity(p, data, mobile=False):
             level = level_keys.index(day['contributionLevel'])
             content.append(f'<rect x="{x0+col*pitch:.1f}" y="{y0+weekday*14}" width="{size}" height="{size}" rx="2" fill="{p["levels"][level]}"><title>{day["date"]}: {day["contributionCount"]} contributions</title></rect>')
     # A slow wash passes above the real grid. It never changes the underlying values.
-    content += [f'<g clip-path="url(#activity-crop)"><rect class="moving-mark" x="{x0}" y="{y0}" width="100" height="100" fill="url(#sweep)"><animateTransform attributeName="transform" type="translate" from="-110 0" to="{w} 0" dur="16s" repeatCount="indefinite"/></rect></g>', text(24 if mobile else 40,h-15,f'数据快照 {data["snapshotDate"]} · GitHub',9 if mobile else 11,p=p,cls='mono',fill='muted'), text(w-(24 if mobile else 40),h-15,'每一格，都来自真实贡献记录。',9 if mobile else 12,p=p,anchor='end',fill='muted')]
+    content += [f'<g clip-path="url(#activity-crop)"><rect class="moving-mark" x="{x0}" y="{y0}" width="100" height="100" fill="url(#sweep)"><animateTransform attributeName="transform" type="translate" from="-110 0" to="{w} 0" dur="16s" repeatCount="indefinite"/></rect></g>', text(24 if mobile else 40,h-15,f'数据快照 {data["snapshotDate"]}',14 if mobile else 16,p=p,fill='muted')]
     return wrap(w,h,'Nisconder 的贡献日历',f'截至 {data["snapshotDate"]} 的真实 GitHub 贡献数据快照，图中显示 {count} 次贡献。不是实时统计。', ''.join(content))
 
 
 def section(p, mobile=False):
     w,h=(480,55) if mobile else (1100,64)
-    return wrap(w,h,'工具与实验','以下项目卡片可点击进入各自仓库。', text(0,36,'工具与实验',23 if mobile else 28,p=p,weight=600)+text(w,35,'SELECTED WORK',10 if mobile else 12,p=p,anchor='end',fill='muted',spacing=2,cls='mono'))
+    return wrap(w,h,'项目','以下项目卡片可点击进入各自仓库。', text(0,36,'项目',24 if mobile else 28,p=p,weight=600))
 
 
 def notes(p, mobile=False):
-    w,h=(480,154) if mobile else (1100,132)
+    w,h=(480,136) if mobile else (1100,120)
     content=f'<rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="12" fill="{p["bg"]}" stroke="{p["line"]}"/>'
-    content+=text(25 if mobile else 38,35,'NOTES & LEARNING',10 if mobile else 12,p=p,cls='mono',spacing=2,fill='ice')
-    content+=text(25 if mobile else 38,76,'技术之外，也写字。',27 if mobile else 33,p=p,weight=500)
-    content+=text(25 if mobile else 38,111,'计算机系统、工具实践，以及阅读和生活观察。',16 if mobile else 20,p=p,fill='muted')
-    if mobile: content+=text(455,139,'阅读笔记 ↗',11,p=p,anchor='end',fill='ice')
-    else: content+=text(1062,77,'READ THE NOTES ↗',13,p=p,anchor='end',fill='ice',cls='mono',spacing=1)
-    return wrap(w,h,'技术笔记与个人记录','点击阅读 Nisconder 的计算机系统、工具实践、阅读与生活记录。',content)
+    content+=text(25 if mobile else 38,44 if mobile else 49,'技术笔记',26 if mobile else 28,p=p,weight=600)
+    content+=text(25 if mobile else 38,79 if mobile else 87,'计算机系统、工具开发与使用记录',18 if mobile else 22,p=p,fill='muted')
+    if mobile: content+=text(455,116,'文章列表 ↗',18,p=p,anchor='end',fill='ice')
+    else: content+=text(1062,65,'文章列表 ↗',18,p=p,anchor='end',fill='ice')
+    return wrap(w,h,'技术笔记','计算机系统、工具开发与使用记录。',content)
 
 
 def main():
@@ -131,14 +113,14 @@ def main():
     for mode,p in PALETTES.items():
         for mobile in [False,True]:
             suffix=('mobile-' if mobile else '')+mode
-            for name, renderer in [('hero',hero),('skills',skills),('section',section),('notes',notes)]:
+            for name, renderer in [('hero',hero),('section',section),('notes',notes)]:
                 svg=renderer(p,mobile)
                 ET.fromstring(svg)
                 (ASSETS/f'{name}-{suffix}.svg').write_text(svg,encoding='utf-8')
             svg=activity(p,data,mobile)
             ET.fromstring(svg)
             (ASSETS/f'activity-{suffix}.svg').write_text(svg,encoding='utf-8')
-    print('Generated 20 identity SVGs; contribution counts reconcile with the saved GitHub snapshot.')
+    print('Generated 16 identity SVGs; contribution counts reconcile with the saved GitHub snapshot.')
 
 
 if __name__=='__main__':
