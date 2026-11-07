@@ -1,0 +1,112 @@
+"""Generate the profile's original SVGs using only Python's standard library."""
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "assets"
+OUT.mkdir(exist_ok=True)
+
+STYLE = """
+    :root { --surround:#d9e3e1; --frame:#8fa8a6; }
+    @media(prefers-color-scheme:dark) { :root { --surround:#16383c; --frame:#3a5e61; } }
+    text { font-family:'Trebuchet MS','Segoe UI','Microsoft YaHei',sans-serif; }
+    .mono { font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace; }
+    .route { fill:none;stroke:#9acfc1;stroke-width:2;stroke-dasharray:5 8;opacity:.55;animation:travel 4s linear infinite; }
+    .spark { fill:#e6b47c;animation:breathe 4s ease-in-out infinite; }
+    .second { animation-delay:1.35s; }
+    .third { animation-delay:2.7s; }
+    .scan { animation:scan 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center; }
+    .node { animation:node 4s ease-in-out infinite; }
+    .node.second { animation-delay:1.35s; }
+    .node.third { animation-delay:2.7s; }
+    .reveal { animation:reveal 4s ease-in-out infinite; }
+    @keyframes travel { to { stroke-dashoffset:-52; } }
+    @keyframes breathe { 0%,100%{opacity:.3} 45%,65%{opacity:1} }
+    @keyframes scan { 0%,100%{transform:translateY(-6px);opacity:.5} 50%{transform:translateY(6px);opacity:1} }
+    @keyframes node { 0%,100%{opacity:.4} 35%,60%{opacity:1} }
+    @keyframes reveal { 0%,100%{opacity:.45} 40%,75%{opacity:1} }
+    @media(prefers-reduced-motion:reduce) {
+      *, .second, .third { animation:none!important; }
+      .route { stroke-dasharray:none;opacity:.65; }
+      .spark,.node,.scan,.reveal { opacity:1;transform:none; }
+    }
+"""
+
+
+def tile(x, y, name, label, kind, width=280):
+    """One real project and a small visualization of what it inspects."""
+    if kind == "package":
+        art = '''<g transform="translate(212 25)" fill="none" stroke="#a9d4c8" stroke-width="1.5">
+          <path d="M0 7 17 0 34 7v25l-17 8L0 32Z"/><path d="m0 7 17 8 17-8M17 15v25M8 4l17 8v10"/>
+          <path class="scan" d="M-5 20h44" stroke="#e6b47c" stroke-width="2"/>
+        </g>'''
+    elif kind == "port":
+        art = '''<g transform="translate(205 29)" fill="none" stroke="#789f9e" stroke-width="1.5">
+          <path d="M5 18h40M25 2v33"/><circle class="node" cx="5" cy="18" r="4" fill="#a9d4c8"/>
+          <circle class="node second" cx="25" cy="2" r="4" fill="#a9d4c8"/><circle class="node third" cx="45" cy="18" r="4" fill="#e6b47c"/>
+          <circle cx="25" cy="35" r="4" fill="#244b4e" stroke="#a9d4c8"/>
+        </g>'''
+    else:
+        art = '''<g transform="translate(213 24)" fill="none" stroke="#a9d4c8" stroke-width="1.5">
+          <path d="M0 5v-5h40v5M0 34v6h40v-6M7 10h26M7 18h10m9 0h7M7 26h26"/>
+          <path class="reveal" d="M21 9v19" stroke="#e6b47c" stroke-width="3"/>
+        </g>'''
+    return f'''<g transform="translate({x} {y})">
+      <rect width="{width}" height="106" rx="12" fill="#21474b" stroke="#476b6c"/>
+      <circle class="spark {'second' if kind=='port' else 'third' if kind=='text' else ''}" cx="20" cy="24" r="3"/>
+      <text x="34" y="30" fill="#edf5f0" font-size="22" font-weight="700">{name}</text>
+      <text class="mono" x="20" y="82" fill="#b6d2ce" font-size="14">{label}</text>
+      {art}
+    </g>'''
+
+
+def banner(compact=False):
+    if compact:
+        width, height = 480, 668
+        body = '''<text class="mono" x="30" y="47" fill="#b6d2ce" font-size="11" letter-spacing="1.6">LOCAL-FIRST DEVELOPER TOOLS</text>
+          <text x="28" y="112" fill="#f1f5ee" font-size="57" font-weight="700" letter-spacing="-2">Nisconder<tspan fill="#e6b47c">.</tspan></text>
+          <text x="30" y="151" fill="#c2d8d2" font-size="18">把细节看清，让工具留在本地。</text>
+          <path d="M30 181h420" stroke="#45676a"/>
+          <text class="mono" x="30" y="210" fill="#90b8b2" font-size="11" letter-spacing="1.5">INSPECT / CONNECT / REVEAL</text>
+          <path class="route" d="M379 267v246M379 267h-69M379 390h-69M379 513h-69"/>
+          <circle cx="379" cy="267" r="4" fill="#a9d4c8"/><circle cx="379" cy="390" r="4" fill="#a9d4c8"/><circle cx="379" cy="513" r="4" fill="#e6b47c"/>
+        '''
+        body += tile(30, 232, "npm-safe", "package → evidence", "package")
+        body += tile(30, 355, "portdoc", "localhost → diagnosis", "port")
+        body += tile(30, 478, "Paste X-Ray", "text → hidden marks", "text")
+        body += '''<text class="mono" x="30" y="628" fill="#b6d2ce" font-size="12">TOOLS FOR THINGS WORTH LOOKING AT.</text>'''
+    else:
+        width, height = 1200, 424
+        body = '''<text class="mono" x="52" y="54" fill="#b6d2ce" font-size="13" letter-spacing="2.7">LOCAL-FIRST DEVELOPER TOOLS</text>
+          <text x="48" y="150" fill="#f1f5ee" font-size="92" font-weight="700" letter-spacing="-3">Nisconder<tspan fill="#e6b47c">.</tspan></text>
+          <text x="52" y="197" fill="#c2d8d2" font-size="25">把细节看清，让工具留在本地。</text>
+          <g transform="translate(1015 46)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="0" y="0" width="130" height="130" rx="27" stroke="#577b7b"/>
+            <path d="M34 94V37l62 57V37" stroke="#a9d4c8" stroke-width="8"/>
+            <path d="M-22 39h22M-22 65h22M-22 91h22M130 39h22M130 65h22M130 91h22" stroke="#5f8582" stroke-width="2"/>
+            <circle class="spark" cx="152" cy="65" r="4" fill="#e6b47c"/>
+          </g>
+          <path d="M52 229h1096" stroke="#45676a"/>
+          <path class="route" d="M332 309H460M740 309H868"/>
+          <path d="m438 304 7 5-7 5m408-10 7 5-7 5" fill="none" stroke="#a9d4c8" stroke-width="1.5"/>
+        '''
+        body += tile(52, 256, "npm-safe", "package → evidence", "package")
+        body += tile(460, 256, "portdoc", "localhost → diagnosis", "port")
+        body += tile(868, 256, "Paste X-Ray", "text → hidden marks", "text")
+        body += '''<text class="mono" x="52" y="399" fill="#90b8b2" font-size="11" letter-spacing="1.8">INSPECT / CONNECT / REVEAL</text>
+          <text class="mono" x="1148" y="399" text-anchor="end" fill="#90b8b2" font-size="11" letter-spacing="1.1">SOFTWARE BY NISCONDER</text>'''
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">
+      <title id="title">Nisconder — local-first developer tools</title>
+      <desc id="description">构建本地优先的开发者工具。npm-safe 检查包安全，portdoc 诊断本地连接，Paste X-Ray 显示隐藏字符。虚线信号在三个工具之间流动，包扫描线、网络节点与文本标记依次亮起；减少动态效果设置下全部静止。</desc>
+      <style>{STYLE}</style>
+      <rect x=".5" y=".5" width="{width-1}" height="{height-1}" rx="20" fill="#163c40" stroke="var(--frame)"/>
+      <path d="M16 1h{width-32}" stroke="#94b4ae" stroke-opacity=".25"/>
+      {body}
+    </svg>'''
+
+
+for name, compact in (("profile-wide.svg", False), ("profile-compact.svg", True)):
+    source = banner(compact)
+    ET.fromstring(source)
+    (OUT / name).write_text(source, encoding="utf-8")
+    print(f"wrote assets/{name}")
