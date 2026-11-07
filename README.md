@@ -12,7 +12,9 @@
 | localhost 在 Windows 能访问，WSL 或容器里却不行 | [portdoc](https://github.com/nisconder/portdoc) — 对比 IPv4 / IPv6 / localhost，定位监听项目与 Docker 映射 |
 | 看不出两次 npm 发布究竟改了哪些文件 | [Pack Receipt](https://github.com/nisconder/pack-receipt) — 在浏览器本地打开并比较 npm 归档 |
 | 复制的文本看起来一样，匹配和代码却总出错 | [Paste X-Ray](https://github.com/nisconder/paste-xray) — 检查零宽字符、双向控制符、同形字符与隐藏 HTML |
-| 想跟着指令理解标志位、内存和调用栈 | [8086 Step Lab](https://github.com/nisconder/8086-step-lab) — 可单步、回退的 16 位教学模型 |
+| 想跟着指令理解标志位、内存和调用栈 | [8086 Step Lab](https://github.com/nisconder/8086-step-lab) — 可单步、回退的 16 位教学模型 · [在线实验](https://nisconder.github.io/8086-step-lab/) |
+
+[![8086 实验室：单步观察寄存器、标志位与内存](https://raw.githubusercontent.com/nisconder/8086-step-lab/main/preview.jpg)](https://nisconder.github.io/8086-step-lab/)
 
 ## 当前关注
 
