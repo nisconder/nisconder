@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="190" viewBox="0 0 1100 190" role="img" aria-labelledby="title description">
+      <title id="title">npm-safe</title>
+      <desc id="description">npm-safe，本地供应链风险检查；示意一个包被扫描，生成脚本、文件和证据条目。 动画关闭后，所有内容仍可读。</desc>
+      <style>
+      :root{--canvas:#0d1421;--surface:#121d2e;--line:#283b54;--ink:#ecf2fa;--muted:#a6b7ca;--ice:#88bfff;--copper:#d9ba85}
+      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
+      .wire{fill:none;stroke:var(--line);stroke-width:1.8}
+      .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
+      .scanner{animation:package-scan 4.8s ease-in-out infinite}
+      .text-scanner{animation:text-scan 4.8s ease-in-out infinite}
+      .evidence-dot{animation:glow 4.8s ease-in-out infinite}
+      .delayed{animation-delay:1.2s}.late{animation-delay:2.4s}
+      .diff-before{animation:before 4.8s ease-in-out infinite}.diff-after{animation:after 4.8s ease-in-out infinite}
+      .bit-glow{animation:glow 4.8s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-48}}
+      @keyframes package-scan{0%,100%{transform:translateY(-12px)}50%{transform:translateY(12px)}}
+      @keyframes text-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(100px)}}
+      @keyframes glow{0%,100%{opacity:.65}45%,65%{opacity:1}}
+      @keyframes before{0%,100%{opacity:1}40%,70%{opacity:.5}}
+      @keyframes after{0%,100%{opacity:.6}40%,70%{opacity:1}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
+    </style>
+      <rect x=".5" y=".5" width="1099" height="189" rx="18" fill="var(--surface)" stroke="var(--line)"/>
+      <g transform="translate(0 13.0)"><text x="34" y="52" font-size="34" font-weight="650" fill="var(--ink)">npm-safe</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">安装前，检查依赖包里的风险信号。</text><text x="34" y="133" font-size="22" font-weight="400" fill="var(--muted)" class="mono">TypeScript · CLI / CI / Desktop</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><g transform="translate(12 29)" fill="none" stroke="var(--ice)" stroke-width="1.7">
+      <path d="m0 12 29-12 29 12v44L29 69 0 56Z"/><path d="m0 12 29 13 29-13M29 25v44M14 6l30 13v17"/>
+      <path class="scanner" d="M-5 35h68" stroke="var(--copper)" stroke-width="2"/>
+    </g><path class="flow" d="M87 64h38"/>
+    <path d="m117 59 7 5-7 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
+    <g fill="none" stroke="var(--line)" stroke-width="1.5"><path d="M141 17h169M141 58h169M141 99h169"/></g>
+    <g fill="var(--ice)"><circle class="evidence-dot" cx="145" cy="33" r="3"/><circle class="evidence-dot delayed" cx="145" cy="74" r="3"/><circle class="evidence-dot late" cx="145" cy="115" r="3"/></g><text x="158" y="40" font-size="22" font-weight="400" fill="var(--ice)" class="mono">scripts</text><text x="158" y="81" font-size="22" font-weight="400" fill="var(--muted)" class="mono">files</text><text x="158" y="122" font-size="22" font-weight="400" fill="var(--muted)" class="mono">evidence</text></g></g>
+    </svg>

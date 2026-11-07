@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="210" viewBox="0 0 480 210" role="img" aria-labelledby="title description">
+      <title id="title">portdoc</title>
+      <desc id="description">portdoc，本地连接诊断；localhost 分路到 IPv4 和 IPv6，细光沿线路流动。 动画关闭后，所有内容仍可读。</desc>
+      <style>
+      :root{--canvas:#f7f9fc;--surface:#ffffff;--line:#d6e0eb;--ink:#1b2d46;--muted:#526985;--ice:#2674bc;--copper:#a26f25}
+      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
+      .wire{fill:none;stroke:var(--line);stroke-width:1.8}
+      .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
+      .scanner{animation:package-scan 4.8s ease-in-out infinite}
+      .text-scanner{animation:text-scan 4.8s ease-in-out infinite}
+      .evidence-dot{animation:glow 4.8s ease-in-out infinite}
+      .delayed{animation-delay:1.2s}.late{animation-delay:2.4s}
+      .diff-before{animation:before 4.8s ease-in-out infinite}.diff-after{animation:after 4.8s ease-in-out infinite}
+      .bit-glow{animation:glow 4.8s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-48}}
+      @keyframes package-scan{0%,100%{transform:translateY(-12px)}50%{transform:translateY(12px)}}
+      @keyframes text-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(100px)}}
+      @keyframes glow{0%,100%{opacity:.65}45%,65%{opacity:1}}
+      @keyframes before{0%,100%{opacity:1}40%,70%{opacity:.5}}
+      @keyframes after{0%,100%{opacity:.6}40%,70%{opacity:1}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
+    </style>
+      <rect x=".5" y=".5" width="479" height="209" rx="18" fill="var(--surface)" stroke="var(--line)"/>
+      <text x="24" y="42" font-size="28" font-weight="650" fill="var(--ink)">portdoc</text><text x="24" y="77" font-size="18" font-weight="400" fill="var(--ink)">沿着 localhost，找到连接的断点。</text><text x="24" y="104" font-size="18" font-weight="400" fill="var(--muted)" class="mono">JavaScript · Windows / WSL / Docker</text><rect x="20" y="120" width="440" height="74" rx="10" fill="var(--canvas)"/><g transform="translate(25 120)"><path class="wire" d="M122 36h42l31-21h61m-92 21 31 22h61"/>
+          <path class="flow" d="M122 36h42l31-21h61m-92 21 31 22h61"/>
+          <circle cx="164" cy="36" r="4" fill="var(--ice)"/>
+          <circle class="evidence-dot delayed" cx="263" cy="15" r="4" fill="var(--copper)"/><circle class="evidence-dot late" cx="263" cy="58" r="4" fill="var(--ice)"/><text x="14" y="42" font-size="18" font-weight="400" fill="var(--ink)" class="mono">localhost</text><text x="279" y="21" font-size="18" font-weight="400" fill="var(--ice)" class="mono">IPv6</text><text x="279" y="64" font-size="18" font-weight="400" fill="var(--muted)" class="mono">IPv4</text></g><path d="M435 25h14v14m-14 0 14-14" fill="none" stroke="var(--muted)" stroke-width="1.6"/>
+    </svg>

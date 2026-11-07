@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="164" viewBox="0 0 1100 164" role="img" aria-labelledby="title description">
+      <title id="title">Pack Receipt</title>
+      <desc id="description">Pack Receipt，npm 归档比较；A.tgz 与 B.tgz 之间的文件变化用两种笔迹表示。 动画关闭后，所有内容仍可读。</desc>
+      <style>
+      :root{--canvas:#0d1421;--surface:#121d2e;--line:#283b54;--ink:#ecf2fa;--muted:#a6b7ca;--ice:#88bfff;--copper:#d9ba85}
+      text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif}
+      .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
+      .wire{fill:none;stroke:var(--line);stroke-width:1.8}
+      .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
+      .scanner{animation:package-scan 4.8s ease-in-out infinite}
+      .text-scanner{animation:text-scan 4.8s ease-in-out infinite}
+      .evidence-dot{animation:glow 4.8s ease-in-out infinite}
+      .delayed{animation-delay:1.2s}.late{animation-delay:2.4s}
+      .diff-before{animation:before 4.8s ease-in-out infinite}.diff-after{animation:after 4.8s ease-in-out infinite}
+      .bit-glow{animation:glow 4.8s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-48}}
+      @keyframes package-scan{0%,100%{transform:translateY(-12px)}50%{transform:translateY(12px)}}
+      @keyframes text-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(100px)}}
+      @keyframes glow{0%,100%{opacity:.65}45%,65%{opacity:1}}
+      @keyframes before{0%,100%{opacity:1}40%,70%{opacity:.5}}
+      @keyframes after{0%,100%{opacity:.6}40%,70%{opacity:1}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
+    </style>
+      <rect x=".5" y=".5" width="1099" height="163" rx="18" fill="var(--surface)" stroke="var(--line)"/>
+      <g transform="translate(0 0.0)"><text x="34" y="52" font-size="34" font-weight="650" fill="var(--ink)">Pack Receipt</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">拆开两份归档，看清发布的变化。</text><text x="34" y="133" font-size="22" font-weight="400" fill="var(--muted)" class="mono">JavaScript · Tarball / File diff</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 20)"><rect x="3" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
+      <rect x="200" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
+      <path class="flow" d="M135 64h52"/>
+      <path d="m180 59 7 5-7 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
+      <path class="diff-before" d="M19 67h70M19 82h49M19 97h64" stroke="var(--copper)" stroke-width="2" stroke-linecap="round"/>
+      <path class="diff-after" d="M216 67h70M216 82h70M216 97h40" stroke="var(--ice)" stroke-width="2" stroke-linecap="round"/><text x="19" y="44" font-size="22" font-weight="400" fill="var(--muted)" class="mono">A.tgz</text><text x="216" y="44" font-size="22" font-weight="400" fill="var(--ice)" class="mono">B.tgz</text></g></g>
+    </svg>
