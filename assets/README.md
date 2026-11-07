@@ -1,16 +1,31 @@
-# Profile artwork
+# Original profile artwork
 
-The two SVGs are original, self-contained artwork for this GitHub profile. The
-wide and compact layouts share the same palette and three real tool subjects.
+The profile is a complete SVG composition: an identity hero, technology strip,
+a real contribution calendar, five linked project cards, and a notes entry.
+All images share graphite / silver, ice blue and pale gold palettes.
 
-- No JavaScript, `foreignObject`, external font, image or resource is used.
-- CSS animates scan lines, signal dashes and inspection nodes. All visible text
-  is present in the static SVG; animation never reveals essential information.
-- `prefers-reduced-motion: reduce` disables all animation and exposes a stable
-  readable state. The perimeter adapts to the reader's light/dark preference;
-  the instrument surface keeps its own background and contrast in either theme.
-- The README uses a `<picture>` source for a compact layout below 640px.
-- Regenerate with `python scripts/render_profile_assets.py` (standard library).
+- Each current module has wide and mobile layouts, in light and dark themes.
+  The README uses four picture sources per image; the mobile breakpoint is 640px.
+- Forty current SVGs are self-contained: no JavaScript, foreignObject, remote
+  fonts, remote images, or third-party rendering services.
+- Essential words and values are present in the static image. CSS and SMIL add
+  contour motion, scans, connection pulses, Unicode reveal and a calendar wash.
+  Reduced-motion styling stops CSS animations and hides moving SMIL marks.
+- Project illustrations describe capabilities and examples, not usage counts,
+  safety guarantees, service availability, or live execution results.
+- Contribution values are derived from the saved GitHub data, with a visible
+  snapshot date. Desktop shows the full saved year; mobile shows the last 26
+  calendar weeks and calculates its own total. The effect never changes values.
 
-The artwork communicates project subjects, not package safety guarantees,
-uptime, usage statistics or released functionality from open pull requests.
+Regenerate using Python's standard library:
+
+```sh
+python scripts/generate_identity.py
+python scripts/generate_cards.py
+```
+
+The identity generator reads data/contributions.json and verifies that the sum
+of daily counts equals totalContributions. Generating SVGs does not fetch data.
+
+The earlier profile-wide.svg and profile-compact.svg remain as legacy assets
+for existing links; the current README uses the theme-specific modules.

@@ -1,28 +1,98 @@
 <picture>
-  <source media="(max-width: 640px)" srcset="assets/profile-compact.svg">
-  <img src="assets/profile-wide.svg" width="100%" alt="Nisconder — 本地优先的开发者工具。npm-safe 检查包，portdoc 诊断连接，Paste X-Ray 显示隐藏字符。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/hero-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/hero-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+  <img src="assets/hero-dark.svg" width="100%" alt="Nisconder · 写代码，做工具，也把思考留下来。">
 </picture>
 
-构建本地优先的开发者工具，关注 npm 供应链安全、开发环境诊断与浏览器工具。
+<p align="center">
+  <a href="https://nisconder.pages.dev/"><strong>个人网站 ↗</strong></a>　·　
+  <a href="https://nisconder.pages.dev/articles/">技术文章</a>　·　
+  <a href="https://nisconder.pages.dev/software/">全部项目</a>
+</p>
 
-**[个人网站 ↗](https://nisconder.pages.dev/)**　[技术文章](https://nisconder.pages.dev/articles/)　[全部项目](https://nisconder.pages.dev/software/)
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/skills-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/skills-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/skills-light.svg">
+  <img src="assets/skills-dark.svg" width="100%" alt="主要使用 TypeScript、JavaScript、Python、Java、Node.js、HTML、CSS 和 Git。">
+</picture>
 
-### 我在做的工具
+<a href="https://github.com/nisconder?tab=overview">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg">
+  <img src="assets/activity-dark.svg" width="100%" alt="GitHub 贡献日历。桌面显示过去一年，手机显示近半年；真实数据快照：2026-11-07。">
+</picture>
+</a>
 
-| 项目 | 用来解决什么 |
-| :--- | :--- |
-| **[npm-safe](https://github.com/nisconder/npm-safe)**<br>TypeScript · 供应链安全 | 安装一个 npm 包前，先查看静态风险、归档内容与检测证据。覆盖 CLI、CI、桌面与 Agent 接口。 |
-| **[portdoc](https://github.com/nisconder/portdoc)**<br>JavaScript · 网络诊断 | 对比 localhost、IPv4 和 IPv6，定位 Windows、WSL 与 Docker 中的监听项目和映射。 |
-| **[Pack Receipt](https://github.com/nisconder/pack-receipt)**<br>JavaScript · 发布检查 | 在浏览器本地打开两个 npm 归档，看清文件、入口和内容的变化。 |
-| **[Paste X-Ray](https://github.com/nisconder/paste-xray)**<br>JavaScript · 文本取证 | 把零宽字符、双向控制符、同形字符与隐藏 HTML 显示出来，清理前先核对原因。 |
-| **[8086 Step Lab](https://github.com/nisconder/8086-step-lab)**<br>JavaScript · 交互学习 | 单步执行、回退，观察寄存器、标志位与内存。**[打开实验室 ↗](https://nisconder.github.io/8086-step-lab/)** |
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/section-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/section-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/section-light.svg">
+  <img src="assets/section-dark.svg" width="100%" alt="工具与实验 · Selected work">
+</picture>
 
-### 代码之外，保留推理过程
+<a href="https://github.com/nisconder/npm-safe">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg">
+  <img src="assets/cards/npm-safe-dark.svg" width="100%" alt="npm-safe：本地优先的 npm 供应链安全检查，覆盖 CLI、CI、桌面和 Agent 接口。">
+</picture>
+</a>
 
-我在 [个人网站](https://nisconder.pages.dev/) 记录工具实现、环境排查和系统学习笔记。最近把 [ICS / 8086 复习系列](https://nisconder.pages.dev/series/ics-8086/) 做成可动手观察的实验：从一个数的表示，追到一条指令带来的变化。
+<a href="https://github.com/nisconder/portdoc">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg">
+  <img src="assets/cards/portdoc-dark.svg" width="100%" alt="portdoc：对比 localhost、IPv4 与 IPv6，定位 Windows、WSL、Docker 中的监听项目。">
+</picture>
+</a>
 
-主要使用 **TypeScript / JavaScript**，也用 **Python / Java** 处理工具和实验。希望每个项目都能说清使用场景、给出可追溯证据，并保留验证范围与已知限制。
+<a href="https://github.com/nisconder/paste-xray">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg">
+  <img src="assets/cards/paste-xray-dark.svg" width="100%" alt="Paste X-Ray：看见零宽字符、双向控制符、同形字符与隐藏 HTML。">
+</picture>
+</a>
 
----
+<a href="https://github.com/nisconder/pack-receipt">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg">
+  <img src="assets/cards/pack-receipt-dark.svg" width="100%" alt="Pack Receipt：在浏览器本地检查和比较 npm 归档。">
+</picture>
+</a>
 
-<sub>在本地检查，把问题看清。工具与文章持续更新于各自仓库。</sub>
+<a href="https://github.com/nisconder/8086-step-lab">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg">
+  <img src="assets/cards/8086-lab-dark.svg" width="100%" alt="8086 Step Lab：单步观察寄存器、标志和内存。">
+</picture>
+</a>
+
+<p align="right"><a href="https://nisconder.github.io/8086-step-lab/">打开 8086 在线实验室 ↗</a></p>
+
+<a href="https://nisconder.pages.dev/articles/">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/notes-mobile-light.svg">
+  <source media="(max-width: 640px)" srcset="assets/notes-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/notes-light.svg">
+  <img src="assets/notes-dark.svg" width="100%" alt="技术之外，也写字。计算机系统、工具实践，以及阅读和生活观察。">
+</picture>
+</a>
+
+<p align="center">
+  <a href="https://nisconder.pages.dev/series/ics-8086/">ICS / 8086 复习系列</a>　·　
+  <a href="https://nisconder.pages.dev/">代码与生活的记录</a>
+</p>
+
+<p align="center"><sub>把问题看清，把过程留下。 · Nisconder</sub></p>

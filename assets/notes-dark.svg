@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="132" viewBox="0 0 1100 132" role="img" aria-labelledby="title desc">
+<title id="title">技术笔记与个人记录</title><desc id="desc">点击阅读 Nisconder 的计算机系统、工具实践、阅读与生活记录。</desc>
+<style>
+text{font-family:'Segoe UI','Microsoft YaHei',sans-serif} .mono{font-family:Consolas,'Cascadia Code',monospace}
+
+@media(prefers-reduced-motion:reduce){.motion,.motion *{animation:none!important} .moving-mark{display:none}}
+</style><rect x=".5" y=".5" width="1099" height="131" rx="12" fill="#0d1421" stroke="#283b54"/><text x="38" y="35" font-size="12" fill="#88bfff" letter-spacing="2" class="mono">NOTES &amp; LEARNING</text><text x="38" y="76" font-size="33" fill="#ecf2fa" font-weight="500">技术之外，也写字。</text><text x="38" y="111" font-size="20" fill="#a6b7ca">计算机系统、工具实践，以及阅读和生活观察。</text><text x="1062" y="77" font-size="13" fill="#88bfff" text-anchor="end" letter-spacing="1" class="mono">READ THE NOTES ↗</text></svg>
