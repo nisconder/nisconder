@@ -16,6 +16,7 @@ ART_STYLE = """
 .pa-notes-cursor{animation:pa-notes-cursor 7.8s steps(1,end) infinite}
 .pa-bits-emphasis{animation:pa-bits-emphasis 5.6s ease-in-out infinite}
 .pa-unicode-cursor{animation:pa-unicode-cursor 6s ease-in-out infinite}
+.pa-guess-caret{animation:pa-guess-caret 1.8s steps(1,end) infinite}
 .pa-repo-cursor{animation:pa-repo-cursor 7s steps(1,end) infinite}
 @keyframes pa-package-scan{0%,100%{transform:translateY(-18px)}50%{transform:translateY(18px)}}
 @keyframes pa-harness-return{0%,8%{transform:translate(0,0);opacity:0}12%{opacity:1}35%{transform:translate(0,24px);opacity:1}76%{transform:translate(-81px,24px);opacity:1}94%{transform:translate(-81px,-15px);opacity:1}100%{transform:translate(-81px,-15px);opacity:0}}
@@ -24,6 +25,7 @@ ART_STYLE = """
 @keyframes pa-notes-cursor{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(26px)}66%,94%{transform:translateY(52px)}100%{transform:translateY(0)}}
 @keyframes pa-bits-emphasis{0%,100%{stroke-opacity:.35}40%,64%{stroke-opacity:1}}
 @keyframes pa-unicode-cursor{0%,100%{transform:translateX(0)}50%{transform:translateX(116px)}}
+@keyframes pa-guess-caret{0%,44%,100%{opacity:1}50%,94%{opacity:.2}}
 @keyframes pa-repo-cursor{0%,45%{transform:translateY(0)}50%,95%{transform:translateY(26px)}100%{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.project-art *{animation:none!important;transition:none!important}}
 """
@@ -160,6 +162,21 @@ def _unicode(p):
     return content
 
 
+def _guess(p):
+    # Text clues lead to a guess input. The heart labels a mechanic, not a count.
+    content = f'''<path d="M13 12h120a8 8 0 0 1 8 8v62a8 8 0 0 1-8 8h-28l-18 17 4-17H13a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8Z" fill="{p['canvas']}" stroke="{p['line']}" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M20 52h102m-102 14h82m-82 13h62" fill="none" stroke="{p['muted']}" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M148 55h15m-5-5 5 5-5 5" fill="none" stroke="{p['line']}" stroke-width="1.5"/>
+    <rect x="170" y="31" width="123" height="46" rx="6" fill="{p['canvas']}" stroke="{p['ice']}" stroke-width="1.3"/>
+    <path class="pa-guess-caret" d="M237 42v24" stroke="{p['copper']}" stroke-width="2"/>
+    <path d="M186 99c-4-8-16-6-16 3 0 7 16 17 16 17s16-10 16-17c0-9-12-11-16-3Z" fill="none" stroke="{p['muted']}" stroke-width="1.5" stroke-linejoin="round"/>
+    '''
+    content += _text(20, 36, "AI 线索", p['ink'], 18)
+    content += _text(182, 60, "猜词", p['ink'], 18)
+    content += _text(215, 115, "生命", p['muted'], 18)
+    return content
+
+
 def _repo(p):
     content = f'''<path d="M10 17h35l10 10h56v39H10Z" fill="{p['canvas']}" stroke="{p['line']}" stroke-width="1.5" stroke-linejoin="round"/>
     <path d="M56 66v49m0-28h34m-34 28h34" fill="none" stroke="{p['line']}" stroke-width="1.5"/>
@@ -175,7 +192,7 @@ def _repo(p):
 
 _RENDERERS = {
     "package": _package, "harness": _harness, "diff": _diff, "port": _port,
-    "notes": _notes, "bits": _bits, "unicode": _unicode, "repo": _repo,
+    "notes": _notes, "bits": _bits, "unicode": _unicode, "guess": _guess, "repo": _repo,
 }
 _LABELS = {
     "package": "npm 包静态扫描与脚本、文件、证据条目",
@@ -185,6 +202,7 @@ _LABELS = {
     "notes": "文章页面、目录和阅读位置",
     "bits": "16 位算例：7FFFh 加 1 得到 8000h，OF 为 1，CF 为 0；非实时执行状态",
     "unicode": "文本中的零宽空格显影为 ZWSP 和 U+200B",
+    "guess": "生存竞速：AI 文字线索、猜词输入与生命机制示意，不表示实际题目、生命值或分数",
     "repo": "仓库文件目录",
 }
 

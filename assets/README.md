@@ -30,8 +30,8 @@ The custom artwork shares graphite / silver, ice blue and pale gold palettes.
   behind stale curated text. Full source metadata remains in the accessible SVG
   description. Unknown projects use the current GitHub name and description.
 - Each known project has its own functional diagram: package evidence, Harness
-  installation hook, archive diff, IPv4/IPv6 probes, article outline and 8086
-  instruction example. `scripts/project_art.py` supplies a shared coordinate
+  installation hook, archive diff, IPv4/IPv6 probes, article outline, 8086
+  instruction example and AI word clues. `scripts/project_art.py` supplies a shared coordinate
   system and one primary motion per diagram. The effect illustrates a feature,
   not a live result, security verdict or connection status. Reduced motion keeps
   every essential label visible.

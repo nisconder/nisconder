@@ -4,6 +4,11 @@
     "summary": "单步观察 8086 寄存器、标志和内存。",
     "descriptionSha256": "9aa1cd70ad32f32779ccb8c9dc24a365fc7c3e0b6e6d3ff896c75af91047f61f"
   },
+  "ai-draw-guess": {
+    "title": "生存竞速",
+    "summary": "AI 文字线索猜词，含生命值与连击机制。",
+    "descriptionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
   "nisconder.github.io": {
     "title": "技术笔记",
     "summary": "计算机系统与 8086 章节笔记和配套实验。",

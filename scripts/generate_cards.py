@@ -25,6 +25,7 @@ PROJECT_ART = {
     "npm-safe": "package", "portdoc": "port", "paste-xray": "unicode",
     "pack-receipt": "diff", "8086-step-lab": "bits",
     "npm-safe-forDSH": "harness", "nisconder.github.io": "notes",
+    "ai-draw-guess": "guess",
 }
 
 

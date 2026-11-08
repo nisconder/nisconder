@@ -52,55 +52,55 @@
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=48f9bb1cc1">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=5669598e93">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=7c8707208c">
-  <img src="assets/cards/npm-safe-dark.svg?v=3fd17843ee" width="100%" alt="npm-safe：npm 供应链风险检查与证据追踪。 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=ce0db4790b">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=f3b13d395e">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=e4fa23197b">
+  <img src="assets/cards/npm-safe-dark.svg?v=d17ab7277e" width="100%" alt="npm-safe：npm 供应链风险检查与证据追踪。 · 9 Stars · 1 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/portdoc">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=0d89f99a66">
-  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=cb203f8634">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=4f5ddde16f">
-  <img src="assets/cards/portdoc-dark.svg?v=fb26891311" width="100%" alt="portdoc：对比 IPv4 / IPv6，定位本机监听项目。 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=8cd6713f4b">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=621e258b6a">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=a4e1f596d3">
+  <img src="assets/cards/portdoc-dark.svg?v=86095502b8" width="100%" alt="portdoc：对比 IPv4 / IPv6，定位本机监听项目。 · 4 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/nisconder.github.io">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-mobile-light.svg?v=05be2e9914">
-  <source media="(max-width: 640px)" srcset="assets/cards/nisconder.github.io-mobile-dark.svg?v=86bf2906f4">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-light.svg?v=6f7624ac6a">
-  <img src="assets/cards/nisconder.github.io-dark.svg?v=3120757d5e" width="100%" alt="技术笔记（nisconder.github.io）：计算机系统与 8086 章节笔记和配套实验。 · 3 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-mobile-light.svg?v=55148416a9">
+  <source media="(max-width: 640px)" srcset="assets/cards/nisconder.github.io-mobile-dark.svg?v=1777fd0fcb">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-light.svg?v=8214948955">
+  <img src="assets/cards/nisconder.github.io-dark.svg?v=f7f40e3070" width="100%" alt="技术笔记（nisconder.github.io）：计算机系统与 8086 章节笔记和配套实验。 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/8086-step-lab">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=7f4abc9858">
-  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=a66a43acd5">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=a607d22901">
-  <img src="assets/cards/8086-lab-dark.svg?v=208b96e102" width="100%" alt="8086 Step Lab（8086-step-lab）：单步观察 8086 寄存器、标志和内存。 · 2 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=0a98bc1569">
+  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=c48fef4899">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=e21cf151e8">
+  <img src="assets/cards/8086-lab-dark.svg?v=28a59fabfe" width="100%" alt="8086 Step Lab（8086-step-lab）：单步观察 8086 寄存器、标志和内存。 · 2 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/pack-receipt">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=6a8d815121">
-  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=790f9899a3">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=6ce2d879e4">
-  <img src="assets/cards/pack-receipt-dark.svg?v=43049b8a76" width="100%" alt="Pack Receipt（pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 3 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=e26e5cda08">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=f3403039bb">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=9c3aeaef3e">
+  <img src="assets/cards/pack-receipt-dark.svg?v=70df71ec0f" width="100%" alt="Pack Receipt（pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/ai-draw-guess">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-mobile-light.svg?v=ca29ff23d7">
-  <source media="(max-width: 640px)" srcset="assets/cards/ai-draw-guess-mobile-dark.svg?v=d3b5a856bc">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-light.svg?v=857f600d43">
-  <img src="assets/cards/ai-draw-guess-dark.svg?v=0f0584eafa" width="100%" alt="ai-draw-guess：仓库暂无描述 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-mobile-light.svg?v=50115bd057">
+  <source media="(max-width: 640px)" srcset="assets/cards/ai-draw-guess-mobile-dark.svg?v=6a8028c905">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-light.svg?v=dcfc53bdef">
+  <img src="assets/cards/ai-draw-guess-dark.svg?v=2bd0b0a33d" width="100%" alt="生存竞速（ai-draw-guess）：AI 文字线索猜词，含生命值与连击机制。 · 4 Stars · 0 Forks">
 </picture>
 </a>
 <!-- END:projects -->
