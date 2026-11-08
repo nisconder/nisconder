@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotDate": "2026-11-08",
+  "snapshotDate": "2026-11-09",
   "timezone": "Asia/Shanghai",
   "source": "GitHub REST and GraphQL APIs",
   "user": {
@@ -16,7 +16,7 @@
       "name": "8086-step-lab",
       "description": "Offline 16-bit assembly teaching lab: step, undo, registers, flags, memory and stack.",
       "url": "https://github.com/nisconder/8086-step-lab",
-      "stars": 2,
+      "stars": 1,
       "forks": 0,
       "language": "JavaScript",
       "isFork": false,
@@ -76,7 +76,7 @@
       "name": "nisconder",
       "description": "Local-first developer tools, security checks and systems learning.",
       "url": "https://github.com/nisconder/nisconder",
-      "stars": 1,
+      "stars": 0,
       "forks": 0,
       "language": "Python",
       "isFork": false,
@@ -93,7 +93,7 @@
       "language": "JavaScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-07T19:40:14Z",
+      "pushedAt": "2026-11-08T16:23:06Z",
       "isProfile": false
     },
     {
@@ -288,8 +288,8 @@
   "stats": {
     "publicRepositories": 15,
     "originalRepositories": 12,
-    "totalStars": 47,
-    "originalStars": 43,
+    "totalStars": 45,
+    "originalStars": 41,
     "totalForks": 1,
     "originalForks": 1
   },
