@@ -34,10 +34,10 @@
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=9b303001ed">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=d1515ce903">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=a65ca00e74">
-  <img src="assets/activity-dark.svg?v=5d014c020f" width="100%" alt="GitHub 贡献日历：近一年 698 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-08。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=15c477f0ba">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=f7d9cf306d">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=9951e3ba02">
+  <img src="assets/activity-dark.svg?v=0505b8cd39" width="100%" alt="GitHub 贡献日历：近一年 708 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-08。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -56,24 +56,6 @@
   <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=5669598e93">
   <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=7c8707208c">
   <img src="assets/cards/npm-safe-dark.svg?v=3fd17843ee" width="100%" alt="npm-safe：npm 供应链风险检查与证据追踪。 · 9 Stars · 1 Forks">
-</picture>
-</a>
-
-<a href="https://github.com/nisconder/npm-safe-forDSH">
-<picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-mobile-light.svg?v=5d00da16c9">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-forDSH-mobile-dark.svg?v=92fe2d58ae">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-light.svg?v=b0af1f3e76">
-  <img src="assets/cards/npm-safe-forDSH-dark.svg?v=0390d50273" width="100%" alt="npm-safe / Harness（npm-safe-forDSH）：npm 包安装前检查，接入 DeepSeek Harness。 · 5 Stars · 0 Forks">
-</picture>
-</a>
-
-<a href="https://github.com/nisconder/pack-receipt">
-<picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=6a8d815121">
-  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=790f9899a3">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=6ce2d879e4">
-  <img src="assets/cards/pack-receipt-dark.svg?v=43049b8a76" width="100%" alt="Pack Receipt（pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
@@ -101,6 +83,24 @@
   <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=a66a43acd5">
   <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=a607d22901">
   <img src="assets/cards/8086-lab-dark.svg?v=208b96e102" width="100%" alt="8086 Step Lab（8086-step-lab）：单步观察 8086 寄存器、标志和内存。 · 2 Stars · 0 Forks">
+</picture>
+</a>
+
+<a href="https://github.com/nisconder/pack-receipt">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=6a8d815121">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=790f9899a3">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=6ce2d879e4">
+  <img src="assets/cards/pack-receipt-dark.svg?v=43049b8a76" width="100%" alt="Pack Receipt（pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 3 Stars · 0 Forks">
+</picture>
+</a>
+
+<a href="https://github.com/nisconder/ai-draw-guess">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-mobile-light.svg?v=ca29ff23d7">
+  <source media="(max-width: 640px)" srcset="assets/cards/ai-draw-guess-mobile-dark.svg?v=d3b5a856bc">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-light.svg?v=857f600d43">
+  <img src="assets/cards/ai-draw-guess-dark.svg?v=0f0584eafa" width="100%" alt="ai-draw-guess：仓库暂无描述 · 4 Stars · 0 Forks">
 </picture>
 </a>
 <!-- END:projects -->
