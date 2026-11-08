@@ -1,8 +1,8 @@
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/hero-mobile-light.svg?v=a54c9ea1c7">
-  <source media="(max-width: 640px)" srcset="assets/hero-mobile-dark.svg?v=cb4b93ab30">
-  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=5bfef7156e">
-  <img src="assets/hero-dark.svg?v=5acf4c3aee" width="100%" alt="Nisconder · 开发工具与技术笔记">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/hero-mobile-light.svg?v=f5bb28a4b0">
+  <source media="(max-width: 640px)" srcset="assets/hero-mobile-dark.svg?v=bf296c092f">
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg?v=e2a36683dd">
+  <img src="assets/hero-dark.svg?v=92c8ccfa61" width="100%" alt="Nisconder · 开发工具与技术笔记">
 </picture>
 
 <p align="center">
@@ -22,75 +22,97 @@
   <a href="https://git-scm.com/"><img src="https://img.shields.io/badge/Git-F05032?style=flat-square&amp;logo=git&amp;logoColor=white" height="22" alt="Git"></a>
 </p>
 
+<!-- BEGIN:stats -->
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=c64c13e80b">
+  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=4c2a9b0cc9">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=e124a99eee">
+  <img src="assets/stats-dark.svg?v=604182dc94" width="100%" alt="GitHub 公开数据：15 个公开仓库；自有非 Fork 仓库共 43 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-08。">
+</picture>
+<!-- END:stats -->
+
+<!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=b63cadff2c">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=7bd92bb12f">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=69dd65cf3b">
-  <img src="assets/activity-dark.svg?v=63391dff27" width="100%" alt="GitHub 贡献日历。桌面显示过去一年，手机显示近半年；真实数据快照：2026-11-07。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=fe5e78f20f">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=1f35e53cd6">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=28646af448">
+  <img src="assets/activity-dark.svg?v=41a513e0fe" width="100%" alt="GitHub 贡献日历：近一年 697 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-08。">
 </picture>
 </a>
+<!-- END:activity -->
 
+<!-- BEGIN:projects -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/section-mobile-light.svg?v=3c9044cdd8">
-  <source media="(max-width: 640px)" srcset="assets/section-mobile-dark.svg?v=f81fb56647">
-  <source media="(prefers-color-scheme: light)" srcset="assets/section-light.svg?v=0846ce2fa8">
-  <img src="assets/section-dark.svg?v=9a4ba40a89" width="100%" alt="项目">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/section-mobile-light.svg?v=783f673276">
+  <source media="(max-width: 640px)" srcset="assets/section-mobile-dark.svg?v=5b76bd6c1b">
+  <source media="(prefers-color-scheme: light)" srcset="assets/section-light.svg?v=72bfdc5a74">
+  <img src="assets/section-dark.svg?v=89a9439c4f" width="100%" alt="项目：优先 GitHub 置顶，再按最近代码更新补足六个；不含 Fork、归档及主页仓库。">
 </picture>
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=a4ab4fba46">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=74f6dbb718">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=d286760ad2">
-  <img src="assets/cards/npm-safe-dark.svg?v=64adc0b4b9" width="100%" alt="npm-safe：本地优先的 npm 供应链安全检查，覆盖 CLI、CI、桌面和 Agent 接口。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=0d9de170d0">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=07132b5862">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=7c49f58036">
+  <img src="assets/cards/npm-safe-dark.svg?v=668af78133" width="100%" alt="npm-safe：Local-first npm supply-chain security scanner: static + optional LLM analysis, CLI/CI gates, desktop app, and AI-agent skills. · 9 Stars · 1 Forks">
 </picture>
 </a>
 
-<a href="https://github.com/nisconder/portdoc">
+<a href="https://github.com/nisconder/npm-safe-forDSH">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=f4ec4be975">
-  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=7ae0a7f90b">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=c72a85f7a8">
-  <img src="assets/cards/portdoc-dark.svg?v=f6480f2f3b" width="100%" alt="portdoc：对比 localhost、IPv4 与 IPv6，定位 Windows、WSL、Docker 中的监听项目。">
-</picture>
-</a>
-
-<a href="https://github.com/nisconder/paste-xray">
-<picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg?v=5176b0d824">
-  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg?v=ef9af06e67">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg?v=8c0b418b99">
-  <img src="assets/cards/paste-xray-dark.svg?v=5935b68363" width="100%" alt="Paste X-Ray：看见零宽字符、双向控制符、同形字符与隐藏 HTML。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-mobile-light.svg?v=2bf5ae503d">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-forDSH-mobile-dark.svg?v=09243f79a7">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-light.svg?v=f44e028d2d">
+  <img src="assets/cards/npm-safe-forDSH-dark.svg?v=1f54e95c1e" width="100%" alt="npm-safe-forDSH：DeepSeek Harness plugin that checks npm packages before install — 22 supply-chain rules, deep tarball scans, CI gates, local-first. · 5 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/pack-receipt">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=804b81beb5">
-  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=dc51988dbf">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=902888b4d1">
-  <img src="assets/cards/pack-receipt-dark.svg?v=8a47554148" width="100%" alt="Pack Receipt：在浏览器本地检查和比较 npm 归档。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=0991bddc1f">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=8691d32f59">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=aac06b45f8">
+  <img src="assets/cards/pack-receipt-dark.svg?v=6a3b2957f9" width="100%" alt="pack-receipt：Inspect and compare npm tarballs locally. A browser-only release receipt with file diffs and a thermal-printer UI. · 3 Stars · 0 Forks">
+</picture>
+</a>
+
+<a href="https://github.com/nisconder/portdoc">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=f7c6661059">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=58ca536d2d">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=cdbc125d64">
+  <img src="assets/cards/portdoc-dark.svg?v=8afe5d01da" width="100%" alt="portdoc：Compare localhost, IPv4 and IPv6 across Windows and WSL. Identify listening projects and Docker Compose services. · 4 Stars · 0 Forks">
+</picture>
+</a>
+
+<a href="https://github.com/nisconder/nisconder.github.io">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-mobile-light.svg?v=29b81fd5f5">
+  <source media="(max-width: 640px)" srcset="assets/cards/nisconder.github.io-mobile-dark.svg?v=387536b502">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-light.svg?v=4780f8c63b">
+  <img src="assets/cards/nisconder.github.io-dark.svg?v=5123e35265" width="100%" alt="nisconder.github.io：尚未设置仓库简介 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/8086-step-lab">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=a61b9c5824">
-  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=80c4f3fd04">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=d8adfa2bc1">
-  <img src="assets/cards/8086-lab-dark.svg?v=cbac78dc13" width="100%" alt="8086 Step Lab：单步观察寄存器、标志和内存。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=0c6914ecbc">
+  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=508a5445b5">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=0a390689b2">
+  <img src="assets/cards/8086-lab-dark.svg?v=44b87577cb" width="100%" alt="8086-step-lab：Offline 16-bit assembly teaching lab: step, undo, registers, flags, memory and stack. · 2 Stars · 0 Forks">
 </picture>
 </a>
+<!-- END:projects -->
 
 <p align="right"><a href="https://nisconder.github.io/8086-step-lab/">打开 8086 在线实验室 ↗</a></p>
 
 <a href="https://nisconder.pages.dev/articles/">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/notes-mobile-light.svg?v=2cb9e1e8a1">
-  <source media="(max-width: 640px)" srcset="assets/notes-mobile-dark.svg?v=1ed287b58a">
-  <source media="(prefers-color-scheme: light)" srcset="assets/notes-light.svg?v=fcfb985d25">
-  <img src="assets/notes-dark.svg?v=959ea6e4bf" width="100%" alt="技术笔记：计算机系统、工具开发与使用记录">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/notes-mobile-light.svg?v=246be7621e">
+  <source media="(max-width: 640px)" srcset="assets/notes-mobile-dark.svg?v=37091cc163">
+  <source media="(prefers-color-scheme: light)" srcset="assets/notes-light.svg?v=b2c93181f3">
+  <img src="assets/notes-dark.svg?v=1d314bf856" width="100%" alt="技术笔记：计算机系统、工具开发与使用记录">
 </picture>
 </a>
 

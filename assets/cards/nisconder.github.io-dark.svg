@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="224" viewBox="0 0 1100 224" role="img" aria-labelledby="title description">
+      <title id="title">nisconder.github.io</title>
+      <desc id="description">nisconder.github.io：仓库暂无描述。JavaScript · Star 3 · Fork 0。代码更新 2026-11-08。动画为功能示意，统计来自 GitHub 数据；动画关闭后内容仍可读。</desc>
+      <style>
+      :root{--canvas:#0d1421;--surface:#121d2e;--line:#283b54;--ink:#ecf2fa;--muted:#a6b7ca;--ice:#88bfff;--copper:#d9ba85}
+      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+      .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
+      .wire{fill:none;stroke:var(--line);stroke-width:1.8}
+      .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
+      .scanner{animation:package-scan 4.8s ease-in-out infinite}
+      .text-scanner{animation:text-scan 4.8s ease-in-out infinite}
+      .evidence-dot{animation:glow 4.8s ease-in-out infinite}
+      .delayed{animation-delay:1.2s}.late{animation-delay:2.4s}
+      .diff-before{animation:before 4.8s ease-in-out infinite}.diff-after{animation:after 4.8s ease-in-out infinite}
+      .bit-glow{animation:glow 4.8s ease-in-out infinite}
+      @keyframes flow{to{stroke-dashoffset:-48}}
+      @keyframes package-scan{0%,100%{transform:translateY(-12px)}50%{transform:translateY(12px)}}
+      @keyframes text-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(100px)}}
+      @keyframes glow{0%,100%{opacity:.65}45%,65%{opacity:1}}
+      @keyframes before{0%,100%{opacity:1}40%,70%{opacity:.5}}
+      @keyframes after{0%,100%{opacity:.6}40%,70%{opacity:1}}
+      @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
+    </style>
+      <rect x=".5" y=".5" width="1099" height="223" rx="18" fill="var(--surface)" stroke="var(--line)"/>
+      <text x="34" y="50" font-size="32" font-weight="650" fill="var(--ink)">nisconder.github.io</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">仓库暂无描述</text><text x="34" y="163" font-size="18" font-weight="400" fill="var(--muted)">JavaScript · Star 3 · Fork 0</text><text x="34" y="196" font-size="18" font-weight="400" fill="var(--muted)">代码更新 2026-11-08</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 48.0)"><rect x="3" y="13" width="100" height="99" rx="7" fill="var(--canvas)" stroke="var(--line)"/>
+      <path d="M20 68h64M20 82h45M20 96h55" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>
+      <path class="flow" d="M117 64h48"/>
+      <path d="m158 59 7 5-7 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
+      <path class="wire" d="M180 64h128m-72 0V25h43"/>
+      <circle class="evidence-dot" cx="181" cy="64" r="5" fill="var(--ice)"/>
+      <circle class="evidence-dot delayed" cx="237" cy="64" r="5" fill="var(--ice)"/>
+      <circle class="evidence-dot late" cx="307" cy="64" r="5" fill="var(--copper)"/>
+      <circle cx="279" cy="25" r="4" fill="var(--surface)" stroke="var(--ice)"/><text x="19" y="46" font-size="22" font-weight="400" fill="var(--ice)" class="mono">repo</text><text x="180" y="107" font-size="20" font-weight="400" fill="var(--muted)" class="mono">commit</text></g>
+    </svg>

@@ -1,4 +1,4 @@
-"""Original profile identity and an honestly dated contribution snapshot.
+"""Original identity, statistics, and contribution SVGs from saved GitHub data.
 
 Standard library only. The contribution data is a saved GitHub GraphQL response;
 running this generator does not make network calls or execute project code.
@@ -70,14 +70,34 @@ def hero(p, mobile=False):
     return wrap(w, h, "Nisconder", "Nisconder 的个人主页。代码、工具与记录；底部有缓慢经过轮廓曲线的信号，静态时全部文字仍可读。", content)
 
 
+def statistics(p, data, mobile=False):
+    w, h = (480, 264) if mobile else (1100, 176)
+    values = [
+        (data['stats']['publicRepositories'], '公开仓库'),
+        (data['stats']['originalStars'], 'Stars'),
+        (data['stats']['originalForks'], 'Forks'),
+        (data['user']['followers'], '关注者'),
+    ]
+    content = f'<rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="12" fill="{p["bg"]}" stroke="{p["line"]}"/>'
+    content += text(24 if mobile else 40, 34, 'GitHub 数据', 22, p=p, weight=500)
+    content += text(w-(24 if mobile else 40), 34, f'更新 {data["snapshotDate"]}', 16 if mobile else 18, p=p, anchor='end', fill='muted')
+    for index, (value, label) in enumerate(values):
+        x = 24 + (index % 2)*232 if mobile else 40 + index*267
+        y = 86 + (index // 2)*83 if mobile else 90
+        content += text(x, y, f'{value:,}', 34 if mobile else 38, p=p, weight=600, cls='mono')
+        content += text(x, y+29, label, 20, p=p, fill='muted')
+    content += text(24 if mobile else 40, h-18, 'Stars / Forks 统计自有非 Fork 公开仓库', 18, p=p, fill='muted')
+    return wrap(w, h, 'GitHub 公开数据', '每六小时自动更新的公开仓库、获星、Fork 和关注者统计。' + f'数据日期 {data["snapshotDate"]}。', content)
+
+
 def activity(p, data, mobile=False):
     weeks = data['weeks'][-26:] if mobile else data['weeks']
-    w, h = (480, 174) if mobile else (1100, 208)
+    w, h = (480, 184) if mobile else (1100, 218)
     pitch, size = (16,10) if mobile else (18.3,12)
     x0 = (w - ((len(weeks)-1)*pitch+size))/2
     y0 = 62 if mobile else 71
     count = sum(d['contributionCount'] for week in weeks for d in week['contributionDays'])
-    title = '近半年贡献' if mobile else 'GitHub 贡献'
+    title = '近半年贡献' if mobile else '近一年贡献'
     content = [f'<defs><clipPath id="activity-crop"><rect x="{x0}" y="{y0}" width="{w-2*x0}" height="108"/></clipPath><linearGradient id="sweep"><stop stop-color="{p["ice"]}" stop-opacity="0"/><stop offset=".5" stop-color="{p["ice"]}" stop-opacity=".15"/><stop offset="1" stop-color="{p["ice"]}" stop-opacity="0"/></linearGradient></defs>', f'<rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="12" fill="{p["bg"]}" stroke="{p["line"]}"/>', text(24 if mobile else 40,32 if mobile else 35,title,20 if mobile else 22,p=p,weight=500), text(w-(24 if mobile else 40),32 if mobile else 35,f'{count} 次贡献',16 if mobile else 18,p=p,anchor='end',fill='muted')]
     level_keys = ['NONE','FIRST_QUARTILE','SECOND_QUARTILE','THIRD_QUARTILE','FOURTH_QUARTILE']
     for col, week in enumerate(weeks):
@@ -87,8 +107,8 @@ def activity(p, data, mobile=False):
             level = level_keys.index(day['contributionLevel'])
             content.append(f'<rect x="{x0+col*pitch:.1f}" y="{y0+weekday*14}" width="{size}" height="{size}" rx="2" fill="{p["levels"][level]}"><title>{day["date"]}: {day["contributionCount"]} contributions</title></rect>')
     # A slow wash passes above the real grid. It never changes the underlying values.
-    content += [f'<g clip-path="url(#activity-crop)"><rect class="moving-mark" x="{x0}" y="{y0}" width="100" height="100" fill="url(#sweep)"><animateTransform attributeName="transform" type="translate" from="-110 0" to="{w} 0" dur="16s" repeatCount="indefinite"/></rect></g>', text(24 if mobile else 40,h-15,f'数据快照 {data["snapshotDate"]}',14 if mobile else 16,p=p,fill='muted')]
-    return wrap(w,h,'Nisconder 的贡献日历',f'截至 {data["snapshotDate"]} 的真实 GitHub 贡献数据快照，图中显示 {count} 次贡献。不是实时统计。', ''.join(content))
+    content += [f'<g clip-path="url(#activity-crop)"><rect class="moving-mark" x="{x0}" y="{y0}" width="100" height="100" fill="url(#sweep)"><animateTransform attributeName="transform" type="translate" from="-110 0" to="{w} 0" dur="16s" repeatCount="indefinite"/></rect></g>', text(24 if mobile else 40,h-16,f'自动更新 · {data["snapshotDate"]}',18,p=p,fill='muted')]
+    return wrap(w,h,'Nisconder 的贡献日历',f'每六小时自动更新。数据日期 {data["snapshotDate"]}，图中显示 {count} 次贡献。', ''.join(content))
 
 
 def section(p, mobile=False):
@@ -108,6 +128,7 @@ def notes(p, mobile=False):
 
 def main():
     data = json.loads((ROOT/'data/contributions.json').read_text(encoding='utf-8-sig'))
+    profile = json.loads((ROOT/'data/github-profile.json').read_text(encoding='utf-8-sig'))
     assert sum(d['contributionCount'] for w in data['weeks'] for d in w['contributionDays']) == data['totalContributions']
     ASSETS.mkdir(exist_ok=True)
     for mode,p in PALETTES.items():
@@ -116,11 +137,14 @@ def main():
             for name, renderer in [('hero',hero),('section',section),('notes',notes)]:
                 svg=renderer(p,mobile)
                 ET.fromstring(svg)
-                (ASSETS/f'{name}-{suffix}.svg').write_text(svg,encoding='utf-8')
+                (ASSETS/f'{name}-{suffix}.svg').write_text(svg,encoding='utf-8',newline='\n')
             svg=activity(p,data,mobile)
             ET.fromstring(svg)
-            (ASSETS/f'activity-{suffix}.svg').write_text(svg,encoding='utf-8')
-    print('Generated 16 identity SVGs; contribution counts reconcile with the saved GitHub snapshot.')
+            (ASSETS/f'activity-{suffix}.svg').write_text(svg,encoding='utf-8',newline='\n')
+            svg=statistics(p,profile,mobile)
+            ET.fromstring(svg)
+            (ASSETS/f'stats-{suffix}.svg').write_text(svg,encoding='utf-8',newline='\n')
+    print('Generated 20 identity and data SVGs; contribution counts reconcile with the saved GitHub snapshot.')
 
 
 if __name__=='__main__':

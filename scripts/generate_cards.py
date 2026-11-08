@@ -1,4 +1,11 @@
-"""Original SVG project cards. Pure Python; no remote assets or dependencies."""
+"""Render selected public GitHub projects as self-contained, animated SVG cards.
+
+The collector owns network access. This module only reads its normalized snapshot.
+"""
+import json
+import re
+import unicodedata
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import xml.etree.ElementTree as ET
 from html import escape
@@ -12,18 +19,83 @@ PALETTES = {
     "light": dict(canvas="#f7f9fc", surface="#ffffff", line="#d6e0eb", ink="#1b2d46", muted="#526985", ice="#2674bc", copper="#a26f25"),
 }
 
-PROJECTS = [
-    dict(key="npm-safe", name="npm-safe", description="检查 npm 依赖的供应链风险", tags="TypeScript · CLI / CI / Desktop", kind="package", height=164,
-         alt="npm-safe，本地供应链风险检查；示意一个包被扫描，生成脚本、文件和证据条目。"),
-    dict(key="portdoc", name="portdoc", description="Windows / WSL / Docker 端口诊断", tags="JavaScript · Networking", kind="port", height=164,
-         alt="portdoc，本地连接诊断；localhost 分路到 IPv4 和 IPv6，细光沿线路流动。"),
-    dict(key="paste-xray", name="Paste X-Ray", description="零宽字符、双向控制符与隐藏内容检测", tags="JavaScript · Unicode / Clipboard", kind="unicode", height=164,
-         alt="Paste X-Ray，文本隐形字符检查；name 中的零宽空格被显影为 ZWSP 和 U+200B。"),
-    dict(key="pack-receipt", name="Pack Receipt", description="npm 归档文件与版本差异对比", tags="JavaScript · Tarball / File diff", kind="diff", height=164,
-         alt="Pack Receipt，标记两个 npm 归档的文件差异。"),
-    dict(key="8086-lab", name="8086 Step Lab", description="8086 指令单步执行与状态观察", tags="JavaScript · Registers / Flags", kind="bits", height=164,
-         alt="8086 Step Lab，汇编教学实验；AX 为 8000h 的十六位表示，OF 为 1、CF 为 0。"),
-]
+PROJECT_ART = {
+    "npm-safe": "package", "portdoc": "port", "paste-xray": "unicode",
+    "pack-receipt": "diff", "8086-step-lab": "bits",
+}
+
+
+def clean_text(value):
+    """Collapse metadata whitespace and omit characters forbidden by XML 1.0."""
+    value = "" if value is None else str(value)
+    value = "".join(char for char in value if (ord(char) >= 32 and ord(char) not in (0xFFFE, 0xFFFF)
+                    and not 0xD800 <= ord(char) <= 0xDFFF) or char in "\t\r\n")
+    return " ".join(value.split())
+
+
+def text_width(value, size):
+    # Deliberately conservative: no font downloads or rasterizer are needed in CI.
+    return sum(0 if unicodedata.combining(char) else size * (1.05 if ord(char) > 0x2FFF else .65)
+               for char in value)
+
+
+def fit_text(value, size, max_width):
+    value = clean_text(value)
+    if text_width(value, size) <= max_width:
+        return value
+    while value and text_width(value.rstrip() + "…", size) > max_width:
+        value = value[:-1]
+    return value.rstrip() + "…"
+
+
+def wrap_text(value, size, max_width, max_lines=2):
+    remaining, lines = clean_text(value), []
+    while remaining and len(lines) < max_lines:
+        if text_width(remaining, size) <= max_width:
+            lines.append(remaining)
+            break
+        if len(lines) == max_lines - 1:
+            lines.append(fit_text(remaining, size, max_width))
+            break
+        length = 0
+        while length < len(remaining) and text_width(remaining[:length + 1], size) <= max_width:
+            length += 1
+        # Prefer whole English words, but still wrap long identifiers and CJK text.
+        space = remaining.rfind(" ", 0, length + 1)
+        if space >= max(1, length // 2):
+            length = space
+        lines.append(remaining[:length].rstrip())
+        remaining = remaining[length:].lstrip()
+    return lines
+
+
+def asset_key(project):
+    name = project["name"]
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+", name) or name in (".", ".."):
+        raise ValueError("A project asset requires a valid GitHub repository name")
+    return "8086-lab" if name == "8086-step-lab" else name
+
+
+def updated_date(project):
+    value = project.get("pushedAt")
+    if not value:
+        return "暂无代码更新"
+    timestamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if timestamp.tzinfo is None:
+        raise ValueError("pushedAt must contain a timezone")
+    return "代码更新 " + timestamp.astimezone(timezone(timedelta(hours=8))).date().isoformat()
+
+
+def project_copy(project):
+    name = clean_text(project["name"])
+    description = clean_text(project.get("description")) or "仓库暂无描述"
+    language = fit_text(clean_text(project.get("language")) or "未标注语言", 18, 180)
+    counts = [project.get("stars", 0), project.get("forks", 0)]
+    if any(not isinstance(value, int) or isinstance(value, bool) or value < 0 for value in counts):
+        raise ValueError("Project stars and forks must be non-negative integers")
+    stats = f"{language} · Star {counts[0]:,} · Fork {counts[1]:,}"
+    updated = updated_date(project)
+    return name, description, stats, updated
 
 
 def text(x, y, value, size=22, fill="ink", weight=400, mono=False, anchor=None):
@@ -114,12 +186,41 @@ def bits_art(mobile):
     return art
 
 
-ART = dict(package=package_art, port=port_art, unicode=unicode_art, diff=diff_art, bits=bits_art)
+def repo_art(mobile):
+    if mobile:
+        art = '''<rect x="14" y="9" width="117" height="54" rx="6" fill="var(--surface)" stroke="var(--line)"/>
+          <path class="flow" d="M146 36h80"/><path d="m218 31 8 5-8 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
+          <path class="wire" d="M254 36h126m-66 0V15h36"/>
+          <circle class="evidence-dot" cx="255" cy="36" r="5" fill="var(--ice)"/>
+          <circle class="evidence-dot delayed" cx="315" cy="36" r="5" fill="var(--ice)"/>
+          <circle class="evidence-dot late" cx="379" cy="36" r="5" fill="var(--copper)"/>
+          <circle cx="350" cy="15" r="4" fill="var(--surface)" stroke="var(--ice)"/>'''
+        return art + text(35, 43, "repo", 20, "ice", mono=True)
+    art = '''<rect x="3" y="13" width="100" height="99" rx="7" fill="var(--canvas)" stroke="var(--line)"/>
+      <path d="M20 68h64M20 82h45M20 96h55" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>
+      <path class="flow" d="M117 64h48"/>
+      <path d="m158 59 7 5-7 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
+      <path class="wire" d="M180 64h128m-72 0V25h43"/>
+      <circle class="evidence-dot" cx="181" cy="64" r="5" fill="var(--ice)"/>
+      <circle class="evidence-dot delayed" cx="237" cy="64" r="5" fill="var(--ice)"/>
+      <circle class="evidence-dot late" cx="307" cy="64" r="5" fill="var(--copper)"/>
+      <circle cx="279" cy="25" r="4" fill="var(--surface)" stroke="var(--ice)"/>'''
+    return art + text(19, 46, "repo", 22, "ice", mono=True) + text(180, 107, "commit", 20, "muted", mono=True)
+
+
+ART = dict(package=package_art, port=port_art, unicode=unicode_art, diff=diff_art, bits=bits_art, repo=repo_art)
 
 
 def render(project, theme, mobile):
     p = PALETTES[theme]
-    width, height = (480, 210) if mobile else (1100, project["height"])
+    name, description, stats, updated = project_copy(project)
+    kind = PROJECT_ART.get(project["name"], "repo")
+    width = 480 if mobile else 1100
+    description_size = 20 if mobile else 22
+    copy_width = 432 if mobile else 650
+    description_lines = wrap_text(description, description_size, copy_width)
+    stats_lines = wrap_text(stats, 18, copy_width, max_lines=2)
+    height = 288 + (len(stats_lines) - 1) * 28 if mobile else 224 + (len(stats_lines) - 1) * 28
     variables = ";".join(f"--{key}:{value}" for key, value in p.items())
     style = f"""
       :root{{{variables}}}
@@ -142,23 +243,28 @@ def render(project, theme, mobile):
       @media(prefers-reduced-motion:reduce){{*{{animation:none!important;transition:none!important}}.flow{{stroke-dasharray:none}}.bit-glow,.evidence-dot,.diff-before,.diff-after{{opacity:1}}}}
     """
     if mobile:
-        body = text(24, 42, project["name"], 26, weight=650)
-        body += text(24, 77, project["description"], 20, "ink")
-        body += text(24, 104, project["tags"], 18, "muted")
-        body += '<rect x="20" y="120" width="440" height="74" rx="10" fill="var(--canvas)"/>'
-        body += f'<g transform="translate(25 120)">{ART[project["kind"]](True)}</g>'
+        body = text(24, 42, fit_text(name, 26, 390), 26, weight=650)
+        for i, line in enumerate(description_lines):
+            body += text(24, 78 + i * 28, line, 20)
+        for i, line in enumerate(stats_lines):
+            body += text(24, 148 + i * 28, line, 18, "muted")
+        body += text(24, 178 + (len(stats_lines) - 1) * 28, updated, 18, "muted")
+        art_y = 198 + (len(stats_lines) - 1) * 28
+        body += f'<rect x="20" y="{art_y}" width="440" height="74" rx="10" fill="var(--canvas)"/>'
+        body += f'<g transform="translate(25 {art_y})">{ART[kind](True)}</g>'
         body += '<path d="M435 25h14v14m-14 0 14-14" fill="none" stroke="var(--muted)" stroke-width="1.6"/>'
     else:
-        offset = (height - 164) / 2
-        body = '<g transform="translate(0 ' + str(offset) + ')">'
-        body += text(34, 52, project["name"], 32, weight=650)
-        body += text(34, 92, project["description"], 22, "ink")
-        body += text(34, 133, project["tags"], 18, "muted")
+        body = text(34, 50, fit_text(name, 32, 650), 32, weight=650)
+        for i, line in enumerate(description_lines):
+            body += text(34, 92 + i * 32, line, 22)
+        for i, line in enumerate(stats_lines):
+            body += text(34, 163 + i * 28, line, 18, "muted")
+        body += text(34, 196 + (len(stats_lines) - 1) * 28, updated, 18, "muted")
         body += '<path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/>'
-        body += f'<g transform="translate(736 20)">{ART[project["kind"]](False)}</g></g>'
+        body += f'<g transform="translate(736 {(height - 128) / 2})">{ART[kind](False)}</g>'
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">
-      <title id="title">{escape(project['name'])}</title>
-      <desc id="description">{escape(project['alt'])} 动画关闭后，所有内容仍可读。</desc>
+      <title id="title">{escape(name)}</title>
+      <desc id="description">{escape(name + '：' + description + '。' + stats + '。' + updated)}。动画为功能示意，统计来自 GitHub 数据；动画关闭后内容仍可读。</desc>
       <style>{style}</style>
       <rect x=".5" y=".5" width="{width-1}" height="{height-1}" rx="18" fill="var(--surface)" stroke="var(--line)"/>
       {body}
@@ -168,17 +274,19 @@ def render(project, theme, mobile):
 def validate(source):
     root = ET.fromstring(source)
     width, height = map(float, root.attrib["viewBox"].split()[2:])
-    assert "<script" not in source and "foreignObject" not in source and "<image" not in source
-    assert "href=" not in source and "url(" not in source
     assert "prefers-reduced-motion:reduce" in source
     # Account for our translated illustration groups while checking every text anchor.
     def visit(node, tx=0, ty=0):
-        import re
+        tag = node.tag.rsplit("}", 1)[-1]
+        assert tag.lower() not in {"script", "foreignobject", "image"}
+        assert not any(key.rsplit("}", 1)[-1].lower() == "href" or key.lower().startswith("on") for key in node.attrib)
+        if tag == "style":
+            assert "url(" not in (node.text or "")
         transform = node.attrib.get("transform", "")
         match = re.fullmatch(r"translate\(([-\d.]+)[ ,]+([-\d.]+)\)", transform)
         if match:
             tx += float(match[1]); ty += float(match[2])
-        if node.tag.rsplit("}", 1)[-1] == "text":
+        if tag == "text":
             x = float(node.attrib.get("x", 0)) + tx
             y = float(node.attrib.get("y", 0)) + ty
             assert 0 <= x <= width and 0 <= y <= height, (x, y, width, height)
@@ -186,7 +294,7 @@ def validate(source):
             assert size >= 18
             # Conservative text extent check, followed by the owner's browser QA.
             value = "".join(node.itertext())
-            extent = sum(size * (1.05 if ord(char) > 0x2FFF else .65) for char in value)
+            extent = text_width(value, size)
             assert y - size >= 0 and y + size * .3 <= height, (value, y, height)
             assert x + extent <= width - 12, (value, x + extent, width)
         for child in node:
@@ -194,15 +302,27 @@ def validate(source):
     visit(root)
 
 
-if __name__ == "__main__":
+def main(profile=None):
+    if profile is None:
+        profile = json.loads((ROOT / "data" / "github-profile.json").read_text(encoding="utf-8-sig"))
+    projects = profile["projects"]
+    if not isinstance(projects, list):
+        raise ValueError("The profile snapshot must contain a projects list")
     count = 0
-    for project in PROJECTS:
+    paths = []
+    for project in projects:
         for mobile in (False, True):
             for theme in ("dark", "light"):
                 source = render(project, theme, mobile)
                 validate(source)
                 variant = f"mobile-{theme}" if mobile else theme
-                path = OUT / f"{project['key']}-{variant}.svg"
-                path.write_text(source, encoding="utf-8")
+                path = OUT / f"{asset_key(project)}-{variant}.svg"
+                path.write_text(source, encoding="utf-8", newline="\n")
+                paths.append(path)
                 count += 1
     print(f"Generated and validated {count} self-contained SVG cards.")
+    return paths
+
+
+if __name__ == "__main__":
+    main()
