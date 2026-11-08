@@ -17,6 +17,8 @@ ART_STYLE = """
 .pa-bits-emphasis{animation:pa-bits-emphasis 5.6s ease-in-out infinite}
 .pa-unicode-cursor{animation:pa-unicode-cursor 6s ease-in-out infinite}
 .pa-guess-caret{animation:pa-guess-caret 1.8s steps(1,end) infinite}
+.pa-latex-cursor{animation:pa-latex-cursor 7.2s steps(1,end) infinite}
+.pa-cognition-merge{animation:pa-cognition-merge 6.6s linear infinite}
 .pa-repo-cursor{animation:pa-repo-cursor 7s steps(1,end) infinite}
 @keyframes pa-package-scan{0%,100%{transform:translateY(-18px)}50%{transform:translateY(18px)}}
 @keyframes pa-harness-return{0%,8%{transform:translate(0,0);opacity:0}12%{opacity:1}35%{transform:translate(0,24px);opacity:1}76%{transform:translate(-81px,24px);opacity:1}94%{transform:translate(-81px,-15px);opacity:1}100%{transform:translate(-81px,-15px);opacity:0}}
@@ -26,6 +28,8 @@ ART_STYLE = """
 @keyframes pa-bits-emphasis{0%,100%{stroke-opacity:.35}40%,64%{stroke-opacity:1}}
 @keyframes pa-unicode-cursor{0%,100%{transform:translateX(0)}50%{transform:translateX(116px)}}
 @keyframes pa-guess-caret{0%,44%,100%{opacity:1}50%,94%{opacity:.2}}
+@keyframes pa-latex-cursor{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(23px)}66%,94%{transform:translateY(46px)}100%{transform:translateY(0)}}
+@keyframes pa-cognition-merge{0%,5%{transform:translate(0,0);opacity:0}10%{opacity:1}30%{transform:translate(15px,0);opacity:1}75%{transform:translate(38px,28px);opacity:1}90%{transform:translate(49px,28px);opacity:1}100%{transform:translate(49px,28px);opacity:0}}
 @keyframes pa-repo-cursor{0%,45%{transform:translateY(0)}50%,95%{transform:translateY(26px)}100%{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.project-art *{animation:none!important;transition:none!important}}
 """
@@ -177,6 +181,44 @@ def _guess(p):
     return content
 
 
+def _latex(p):
+    # Code and typeset pages are examples, without a compilation-result badge.
+    content = f'''<rect x="8" y="9" width="108" height="114" rx="6" fill="{p['canvas']}" stroke="{p['line']}" stroke-width="1.5"/>
+    <path d="M186 9h82l24 24v90H186Z" fill="{p['canvas']}" stroke="{p['line']}" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M268 9v24h24" fill="none" stroke="{p['line']}" stroke-width="1.5"/>
+    <path d="M125 66h49m-6-5 6 5-6 5" fill="none" stroke="{p['muted']}" stroke-width="1.5"/>
+    <path d="M23 49h76m-76 46h63m-63 12h49" fill="none" stroke="{p['muted']}" stroke-width="1.5" stroke-linecap="round"/>
+    <path class="pa-latex-cursor" d="M16 42v15" stroke="{p['copper']}" stroke-width="2"/>
+    <path d="M202 49h57" stroke="{p['ink']}" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M202 86h74m-74 12h74m-74 12h54" fill="none" stroke="{p['muted']}" stroke-width="1.4" stroke-linecap="round"/>
+    '''
+    content += _text(22, 34, "TeX", p['ice'], 18, mono=True)
+    content += _text(22, 80, "\\alpha", p['muted'], 18, mono=True)
+    content += _text(202, 34, "PDF", p['ink'], 18, mono=True)
+    content += _text(203, 73, "α + β", p['ink'], 18)
+    return content
+
+
+def _cognition(p):
+    # README flow: events -> WorkUnit -> evidence-backed Insight. No alert level.
+    content = f'''<path d="M29 45h15l23 28h7m-45 0h45m-45 28h15l23-28m2-5 5 5-5 5" fill="none" stroke="{p['line']}" stroke-width="1.5" stroke-linejoin="round"/>
+    <g fill="{p['surface']}" stroke="{p['muted']}" stroke-width="1.5">
+      <circle cx="23" cy="45" r="5"/><circle cx="23" cy="73" r="5"/><circle cx="23" cy="101" r="5"/>
+    </g>
+    <circle class="pa-cognition-merge" cx="29" cy="45" r="3" fill="{p['copper']}"/>
+    <rect x="80" y="35" width="96" height="77" rx="6" fill="{p['canvas']}" stroke="{p['line']}" stroke-width="1.5"/>
+    <path d="M95 81h65m-65 14h50" fill="none" stroke="{p['muted']}" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M182 73h18m-5-5 5 5-5 5" fill="none" stroke="{p['line']}" stroke-width="1.5"/>
+    <rect x="206" y="35" width="87" height="77" rx="6" fill="{p['canvas']}" stroke="{p['ice']}" stroke-width="1.3"/>
+    <path d="M217 67h65m-64 34h47" fill="none" stroke="{p['line']}" stroke-width="1.5" stroke-linecap="round"/>
+    '''
+    content += _text(6, 24, "事件", p['muted'], 18)
+    content += _text(92, 64, "工作单元", p['ink'], 18)
+    content += _text(231, 59, "洞察", p['ink'], 18)
+    content += _text(231, 91, "证据", p['muted'], 18)
+    return content
+
+
 def _repo(p):
     content = f'''<path d="M10 17h35l10 10h56v39H10Z" fill="{p['canvas']}" stroke="{p['line']}" stroke-width="1.5" stroke-linejoin="round"/>
     <path d="M56 66v49m0-28h34m-34 28h34" fill="none" stroke="{p['line']}" stroke-width="1.5"/>
@@ -193,6 +235,7 @@ def _repo(p):
 _RENDERERS = {
     "package": _package, "harness": _harness, "diff": _diff, "port": _port,
     "notes": _notes, "bits": _bits, "unicode": _unicode, "guess": _guess, "repo": _repo,
+    "latex": _latex, "cognition": _cognition,
 }
 _LABELS = {
     "package": "npm 包静态扫描与脚本、文件、证据条目",
@@ -203,6 +246,8 @@ _LABELS = {
     "bits": "16 位算例：7FFFh 加 1 得到 8000h，OF 为 1，CF 为 0；非实时执行状态",
     "unicode": "文本中的零宽空格显影为 ZWSP 和 U+200B",
     "guess": "生存竞速：AI 文字线索、猜词输入与生命机制示意，不表示实际题目、生命值或分数",
+    "latex": "VisualLaTeX：TeX 代码页与 PDF 排版页示意，不表示实际编译结果",
+    "cognition": "Coding Agent 事件归并为工作单元，再连接带证据条目的洞察示意；不表示告警级别或测试通过",
     "repo": "仓库文件目录",
 }
 

@@ -80,10 +80,11 @@ class ProjectCardTests(unittest.TestCase):
                     cards.validate(svg)
                     root = ET.fromstring(svg)
                     text = [node for node in root.iter() if node.tag.endswith("}text")]
-                    self.assertEqual(text[0].attrib["font-size"], "28" if mobile else "34")
-                    self.assertTrue(text[0].text.endswith("…"))
+                    title = next(node for node in text if node.attrib.get('class') == 'card-title')
+                    self.assertEqual(title.attrib["font-size"], "28" if mobile else "34")
+                    self.assertTrue(title.text.endswith("…"))
                     self.assertTrue(all(float(node.attrib["font-size"]) >= 18 for node in text))
-                    self.assertIn("…", " ".join(node.text or "" for node in text[1:4]))
+                    self.assertIn("…", " ".join(node.text or "" for node in text if node.attrib.get('class') == 'card-description'))
 
     def test_empty_metadata_and_empty_repository_have_honest_fallbacks(self):
         value = project(description=None, language=None, pushedAt=None, stars=0, forks=0)
@@ -130,6 +131,35 @@ class ProjectCardTests(unittest.TestCase):
                 svg = cards.render(changed, 'light', False)
                 cards.validate(svg)
                 self.assertIn('New capability', ' '.join(text_nodes(svg)))
+
+    def test_contributed_cards_identify_upstream_owner_and_verified_prs(self):
+        value = project(name='VisualLaTeX', fullName='Escap1ng/VisualLaTeX', owner='Escap1ng',
+                        relationship='contributor', contribution=dict(mergedPullRequests=2))
+        for mobile in (False, True):
+            for theme in cards.PALETTES:
+                svg = cards.render(value, theme, mobile)
+                cards.validate(svg)
+                words = ' '.join(text_nodes(svg))
+                self.assertIn('贡献者 · Escap1ng', words)
+                self.assertIn('已核验 2 个合并 PR', words)
+                self.assertNotIn('自有项目', words)
+                self.assertIn('data-art="latex"', svg)
+        self.assertEqual(cards.asset_key(value), 'upstream/Escap1ng/VisualLaTeX')
+        self.assertNotEqual(cards.asset_key(value), cards.asset_key(project(name='Escap1ng--VisualLaTeX')))
+        other = dict(value, fullName='OtherOwner/VisualLaTeX', owner='OtherOwner')
+        self.assertNotEqual(cards.asset_key(value), cards.asset_key(other))
+        with self.assertRaises(ValueError):
+            cards.asset_key(dict(value, fullName='../VisualLaTeX'))
+
+    def test_same_named_upstream_does_not_inherit_owned_project_copy_or_art(self):
+        snapshot = __import__('json').loads((cards.ROOT / 'data/github-profile.json').read_text(encoding='utf-8'))
+        owned = next(value for value in snapshot['repositories'] if value['name'] == 'npm-safe')
+        other = dict(owned, fullName='OtherOwner/npm-safe', owner='OtherOwner',
+                     relationship='contributor', contribution=dict(mergedPullRequests=1))
+        self.assertEqual(cards.display_copy(other)[1], owned['description'])
+        svg = cards.render(other, 'light', False)
+        self.assertIn('data-art="repo"', svg)
+        self.assertNotIn('data-art="package"', svg)
 
 
 if __name__ == "__main__":

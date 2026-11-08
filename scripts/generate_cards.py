@@ -26,6 +26,8 @@ PROJECT_ART = {
     "pack-receipt": "diff", "8086-step-lab": "bits",
     "npm-safe-forDSH": "harness", "nisconder.github.io": "notes",
     "ai-draw-guess": "guess",
+    "Escap1ng/VisualLaTeX": "latex",
+    "InfiniteScope/Keep-Vibe-Brot-Away": "cognition",
 }
 
 
@@ -77,6 +79,11 @@ def asset_key(project):
     name = project["name"]
     if not re.fullmatch(r"[A-Za-z0-9_.-]+", name) or name in (".", ".."):
         raise ValueError("A project asset requires a valid GitHub repository name")
+    if project.get('relationship') == 'contributor':
+        owner, separator, repo_name = project.get('fullName', '').partition('/')
+        if not separator or repo_name != name or not re.fullmatch(r'[A-Za-z0-9-]+', owner):
+            raise ValueError('Contributed assets require a canonical owner/repository identity')
+        return 'upstream/' + owner + '/' + name
     return "8086-lab" if name == "8086-step-lab" else name
 
 
@@ -91,7 +98,9 @@ def updated_date(project):
 
 
 def display_copy(project):
-    entry = PROJECT_DISPLAY.get(project["name"], {})
+    full_name = project.get('fullName', project['name'])
+    fallback = {} if project.get('relationship') == 'contributor' else PROJECT_DISPLAY.get(project['name'], {})
+    entry = PROJECT_DISPLAY.get(full_name, fallback)
     original = clean_text(project.get("description"))
     reviewed = entry.get("descriptionSha256") == hashlib.sha256(original.encode()).hexdigest()
     name = entry.get("title") or clean_text(project["name"])
@@ -110,10 +119,11 @@ def project_copy(project):
     return name, description, stats, updated
 
 
-def text(x, y, value, size=22, fill="ink", weight=400, mono=False, anchor=None):
+def text(x, y, value, size=22, fill="ink", weight=400, mono=False, anchor=None, cls=None):
     attrs = f'x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="var(--{fill})"'
-    if mono:
-        attrs += ' class="mono"'
+    classes = ([cls] if cls else []) + (['mono'] if mono else [])
+    if classes:
+        attrs += ' class="' + ' '.join(classes) + '"'
     if anchor:
         attrs += f' text-anchor="{anchor}"'
     return f'<text {attrs}>{escape(value)}</text>'
@@ -138,17 +148,26 @@ def metric(x, baseline, label, value):
 def render(project, theme, mobile):
     p = PALETTES[theme]
     name, description, stats, updated = project_copy(project)
-    kind = PROJECT_ART.get(project["name"], "repo")
+    full_name = project.get('fullName', project['name'])
+    contributed = project.get('relationship') == 'contributor'
+    fallback_kind = 'repo' if contributed else PROJECT_ART.get(project['name'], 'repo')
+    kind = PROJECT_ART.get(full_name, fallback_kind)
+    owner = full_name.split('/')[0] if '/' in full_name else project.get('owner', 'nisconder')
+    role = ('贡献者' if contributed else '自有项目') + ' · ' + owner
+    contribution = f'已核验 {project["contribution"]["mergedPullRequests"]} 个合并 PR' if contributed else ''
     width = 400 if mobile else 1100
     description_size = 22 if mobile else 24
     copy_width = 352 if mobile else 620
     lines = wrap_text(description, description_size, copy_width, max_lines=3)
     title_size = 28 if mobile else 34
-    body = text(24 if mobile else 32, 46 if mobile else 52,
-                fit_text(name, title_size, 308 if mobile else 620), title_size, weight=650)
-    first_line, line_height = (86, 31) if mobile else (102, 34)
+    body = text(24 if mobile else 32, 32, fit_text(role, 20, 300 if mobile else 620), 20, 'muted', cls='card-role')
+    body += text(24 if mobile else 32, 78 if mobile else 80,
+                 fit_text(name, title_size, 352 if mobile else 620), title_size, weight=650, cls='card-title')
+    if contributed and not mobile:
+        body += text(1020, 32, contribution, 20, 'muted', anchor='end', cls='card-contribution')
+    first_line, line_height = (120, 31) if mobile else (130, 34)
     for index, line in enumerate(lines):
-        body += text(24 if mobile else 32, first_line + index*line_height, line, description_size)
+        body += text(24 if mobile else 32, first_line + index*line_height, line, description_size, cls='card-description')
     last_line = first_line + (len(lines)-1)*line_height
     body += f'<path d="M{width-47} 27h15v15m-15 0 15-15" fill="none" stroke="var(--muted)" stroke-width="1.6"/>'
     if mobile:
@@ -165,9 +184,11 @@ def render(project, theme, mobile):
             body += metric(metric_x, metric_y, label, value)
             metric_x += metric_width+24
         body += text(24, metric_y+34, updated.replace("代码更新 ", "更新 "), 20, "muted")
-        height = metric_y+60
+        if contributed:
+            body += text(24, metric_y+66, contribution, 20, 'muted', cls='card-contribution')
+        height = metric_y+(92 if contributed else 60)
     else:
-        footer_y = max(184, last_line+36)
+        footer_y = max(212, last_line+36)
         body += f'<path d="M708 28v{footer_y-52}" stroke="var(--line)"/>'
         body += f'<g transform="translate(750 {(footer_y-ART_HEIGHT)/2})">{render_art(kind,p,False)}</g>'
         baseline = footer_y+37
@@ -186,7 +207,7 @@ text{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC'
 {ART_STYLE}"""
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">
 <title id="title">{escape(name)}</title>
-<desc id="description">{escape(project['name']+'：'+clean_text(project.get('description'))+'。'+stats+'。'+updated)}。图形为功能示意，不是实时执行结果。</desc>
+<desc id="description">{escape(full_name+'：'+clean_text(project.get('description'))+'。'+role+'。'+contribution+'。'+stats+'。'+updated)}。图形为功能示意，不是实时执行结果。</desc>
 <style>{style}</style>
 <rect x=".5" y=".5" width="{width-1}" height="{height-1}" rx="12" fill="var(--surface)" stroke="var(--line)"/>
 {body}</svg>"""
@@ -229,6 +250,7 @@ def main(profile=None):
                 validate(source)
                 suffix=("mobile-" if mobile else "")+theme
                 path=OUT/f"{asset_key(project)}-{suffix}.svg"
+                path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(source,encoding="utf-8",newline="\n")
                 paths.append(path)
     print(f"Generated and validated {len(paths)} project SVGs.")

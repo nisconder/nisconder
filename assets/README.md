@@ -1,7 +1,7 @@
 # Original profile artwork
 
 The profile combines standard technology badges with an identity hero,
-a real contribution calendar, public statistics, up to six linked project cards,
+a real contribution calendar, public statistics, up to six curated project cards,
 and a notes entry. GitHub Actions refreshes the data and SVGs every six hours.
 The custom artwork shares graphite / silver, ice blue and pale gold palettes.
 
@@ -17,6 +17,11 @@ The custom artwork shares graphite / silver, ice blue and pale gold palettes.
   canvas. Only code
   and numeric illustrations use monospace. Repeated English headings and
   invented slogans are omitted.
+- Cards identify the repository owner and distinguish owned work from upstream
+  contributions. Contributor cards display the verified merged-PR count, with
+  clickable evidence links immediately below the image. Shared repository names
+  use separate `cards/upstream/owner/repository` paths, avoiding collisions with
+  personal repositories and Forks even when repository names are identical.
 - Essential words and values are present in the static image. CSS and SMIL add
   contour motion, scans, connection pulses, Unicode reveal and a calendar wash.
   Reduced-motion styling stops CSS animations and hides moving SMIL marks.
@@ -31,7 +36,8 @@ The custom artwork shares graphite / silver, ice blue and pale gold palettes.
   description. Unknown projects use the current GitHub name and description.
 - Each known project has its own functional diagram: package evidence, Harness
   installation hook, archive diff, IPv4/IPv6 probes, article outline, 8086
-  instruction example and AI word clues. `scripts/project_art.py` supplies a shared coordinate
+  instruction example, AI word clues, TeX-to-PDF editing and evidence-backed work
+  units. `scripts/project_art.py` supplies a shared coordinate
   system and one primary motion per diagram. The effect illustrates a feature,
   not a live result, security verdict or connection status. Reduced motion keeps
   every essential label visible.

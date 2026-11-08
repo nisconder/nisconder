@@ -44,63 +44,67 @@
 
 <!-- BEGIN:projects -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/section-mobile-light.svg?v=783f673276">
-  <source media="(max-width: 640px)" srcset="assets/section-mobile-dark.svg?v=5b76bd6c1b">
-  <source media="(prefers-color-scheme: light)" srcset="assets/section-light.svg?v=72bfdc5a74">
-  <img src="assets/section-dark.svg?v=89a9439c4f" width="100%" alt="项目：优先 GitHub 置顶，再按最近代码更新补足六个；不含 Fork、归档及主页仓库。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/section-mobile-light.svg?v=5af3c909bf">
+  <source media="(max-width: 640px)" srcset="assets/section-mobile-dark.svg?v=1b2ead3178">
+  <source media="(prefers-color-scheme: light)" srcset="assets/section-light.svg?v=5634e71579">
+  <img src="assets/section-dark.svg?v=c1dca5cb93" width="100%" alt="精选项目：包含自有开发工具和已核验上游贡献的协作项目。">
 </picture>
+
+<a href="https://github.com/Escap1ng/VisualLaTeX">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-light.svg?v=6b522c0c5f">
+  <source media="(max-width: 640px)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-dark.svg?v=50d733a700">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-light.svg?v=b064384c7a">
+  <img src="assets/cards/upstream/Escap1ng/VisualLaTeX-dark.svg?v=4f8d20fe47" width="100%" alt="VisualLaTeX（Escap1ng/VisualLaTeX）：多文件 LaTeX 可视化编辑与本机 PDF 编译。 · 贡献者 · 已核验 2 个合并 PR · 5 Stars · 2 Forks">
+</picture>
+</a>
+
+<p align="right">已核验的合并贡献：<a href="https://github.com/Escap1ng/VisualLaTeX/pull/1" title="修复 LaTeX 导入数据丢失与 HTML 注入，补充回归测试">#1</a> · <a href="https://github.com/Escap1ng/VisualLaTeX/pull/2" title="扩展可视化编辑、多文件工作区及 LaTeX / PostScript PDF 编译">#2</a></p>
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=ce0db4790b">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=f3b13d395e">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=e4fa23197b">
-  <img src="assets/cards/npm-safe-dark.svg?v=d17ab7277e" width="100%" alt="npm-safe：npm 供应链风险检查与证据追踪。 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=5d894f6da2">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=294c275b05">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=5425bb6566">
+  <img src="assets/cards/npm-safe-dark.svg?v=26fdf8deab" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
 </picture>
 </a>
+
+<a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away">
+<picture>
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-light.svg?v=70674fb601">
+  <source media="(max-width: 640px)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-dark.svg?v=374eca4433">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-light.svg?v=a0b6a5f918">
+  <img src="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-dark.svg?v=161232c986" width="100%" alt="Keep-Vibe-Brot-Away（InfiniteScope/Keep-Vibe-Brot-Away）：将 Agent 回合聚合为工作单元与证据洞察。 · 贡献者 · 已核验 4 个合并 PR · 2 Stars · 0 Forks">
+</picture>
+</a>
+
+<p align="right">已核验的合并贡献：<a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away/pull/2" title="修复事件链路与发布一致性">#2</a> · <a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away/pull/5" title="实现 WorkUnit 聚合与证据化 Insight 纵向切片">#5</a> · <a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away/pull/6" title="修复认知快照持久化与 Insight 展示一致性">#6</a> · <a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away/pull/7" title="重构项目文档并明确当前能力边界">#7</a></p>
 
 <a href="https://github.com/nisconder/portdoc">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=8cd6713f4b">
-  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=621e258b6a">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=a4e1f596d3">
-  <img src="assets/cards/portdoc-dark.svg?v=86095502b8" width="100%" alt="portdoc：对比 IPv4 / IPv6，定位本机监听项目。 · 4 Stars · 0 Forks">
-</picture>
-</a>
-
-<a href="https://github.com/nisconder/nisconder.github.io">
-<picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-mobile-light.svg?v=55148416a9">
-  <source media="(max-width: 640px)" srcset="assets/cards/nisconder.github.io-mobile-dark.svg?v=1777fd0fcb">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-light.svg?v=8214948955">
-  <img src="assets/cards/nisconder.github.io-dark.svg?v=f7f40e3070" width="100%" alt="技术笔记（nisconder.github.io）：计算机系统与 8086 章节笔记和配套实验。 · 3 Stars · 0 Forks">
-</picture>
-</a>
-
-<a href="https://github.com/nisconder/8086-step-lab">
-<picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=0a98bc1569">
-  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=c48fef4899">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=e21cf151e8">
-  <img src="assets/cards/8086-lab-dark.svg?v=28a59fabfe" width="100%" alt="8086 Step Lab（8086-step-lab）：单步观察 8086 寄存器、标志和内存。 · 2 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=cb4289dee7">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=946e2450c6">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=4519728ee8">
+  <img src="assets/cards/portdoc-dark.svg?v=7ff6ac60e1" width="100%" alt="portdoc（nisconder/portdoc）：对比 IPv4 / IPv6，定位本机监听项目。 · 自有项目 · 4 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/pack-receipt">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=e26e5cda08">
-  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=f3403039bb">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=9c3aeaef3e">
-  <img src="assets/cards/pack-receipt-dark.svg?v=70df71ec0f" width="100%" alt="Pack Receipt（pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 3 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=45dbf5e0a8">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=02c10838f5">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=7237d32e4a">
+  <img src="assets/cards/pack-receipt-dark.svg?v=fdba11edf1" width="100%" alt="Pack Receipt（nisconder/pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 自有项目 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
-<a href="https://github.com/nisconder/ai-draw-guess">
+<a href="https://github.com/nisconder/paste-xray">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-mobile-light.svg?v=50115bd057">
-  <source media="(max-width: 640px)" srcset="assets/cards/ai-draw-guess-mobile-dark.svg?v=6a8028c905">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/ai-draw-guess-light.svg?v=dcfc53bdef">
-  <img src="assets/cards/ai-draw-guess-dark.svg?v=2bd0b0a33d" width="100%" alt="生存竞速（ai-draw-guess）：AI 文字线索猜词，含生命值与连击机制。 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg?v=d734b018bf">
+  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg?v=aabb6c26e7">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg?v=b0e6465170">
+  <img src="assets/cards/paste-xray-dark.svg?v=0b54181e82" width="100%" alt="Paste X-Ray（nisconder/paste-xray）：显影粘贴文本中的隐形字符与隐藏 HTML。 · 自有项目 · 4 Stars · 0 Forks">
 </picture>
 </a>
 <!-- END:projects -->

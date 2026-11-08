@@ -11,6 +11,7 @@ import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
+from urllib.parse import parse_qs, urlparse
 
 SPEC = importlib.util.spec_from_file_location("fetch_github_data", Path(__file__).resolve().parents[1] / "scripts/fetch_github_data.py")
 fetch = importlib.util.module_from_spec(SPEC)
@@ -38,12 +39,43 @@ def calendar():
     return {"totalContributions": 7, "weeks": [{"contributionDays": days}]}
 
 
+def external_repository(owner="upstream", name="tool", **overrides):
+    value = repository(name, owner={"login": owner}, full_name=f"{owner}/{name}", html_url=f"https://github.com/{owner}/{name}", stargazers_count=1000, forks_count=100)
+    value.update(overrides)
+    return value
+
+
+def search_item(full_name="upstream/tool", number=1):
+    return {"number": number, "pull_request": {"url": f"https://api.github.com/repos/{full_name}/pulls/{number}"}}
+
+
+def pull_request(full_name="upstream/tool", number=1, **overrides):
+    owner, name = full_name.split("/")
+    value = {
+        "number": number, "merged": True, "merged_at": "2026-11-07T22:00:00Z",
+        "user": {"login": "nisconder"}, "title": "A verified contribution",
+        "html_url": f"https://github.com/{full_name}/pull/{number}",
+        "base": {"repo": {"full_name": full_name, "name": name, "owner": {"login": owner}, "private": False, "visibility": "public"}},
+    }
+    value.update(overrides)
+    return value
+
+
+def search_results(items=None, **overrides):
+    items = items if items is not None else []
+    result = {"total_count": len(items), "incomplete_results": False, "items": items}
+    result.update(overrides)
+    return result
+
+
 class FixtureAPI:
-    def __init__(self, pages=None, contributions=None, fail=False):
+    def __init__(self, pages=None, contributions=None, fail=False, search_pages=None, external=None):
         self.calls = []
         self.pages = pages if pages is not None else [[repository()]]
         self.calendar = contributions if contributions is not None else calendar()
         self.fail = fail
+        self.search_pages = search_pages if search_pages is not None else [search_results()]
+        self.external = external or {}
 
     def request(self, endpoint, payload=None):
         self.calls.append((endpoint, payload))
@@ -64,6 +96,14 @@ class FixtureAPI:
                 ]},
                 "contributionsCollection": {"contributionCalendar": self.calendar},
             }}}
+        if endpoint.startswith("search/issues?"):
+            page = int(parse_qs(urlparse(endpoint).query)["page"][0])
+            return self.search_pages[page - 1]
+        if endpoint in self.external:
+            value = self.external[endpoint]
+            if isinstance(value, Exception):
+                raise value
+            return value
         raise AssertionError(endpoint)
 
 
@@ -103,7 +143,7 @@ class FetchTests(unittest.TestCase):
         profile, _ = fetch.fetch_snapshots("nisconder", SNAPSHOT, api)
         self.assertEqual(len(profile["repositories"]), 101)
         self.assertEqual(len([endpoint for endpoint, _ in api.calls if "/repos?" in endpoint]), 2)
-        _, payload = api.calls[-1]
+        _, payload = next(call for call in api.calls if call[0] == "graphql")
         self.assertEqual(payload["variables"], {"login": "nisconder", "from": "2025-11-09T00:00:00Z", "to": "2026-11-08T23:59:59Z"})
 
     def test_invalid_calendar_counts_and_dates_are_rejected(self):
@@ -164,6 +204,108 @@ class FetchTests(unittest.TestCase):
         for rows in [[repository(stargazers_count=-1)], [repository(stargazers_count=True)], [repository(), repository()]]:
             with self.subTest(rows=rows), self.assertRaises(fetch.DataError):
                 fetch.normalize_repositories(rows, "nisconder")
+
+    def test_external_project_requires_verified_merged_pr_and_does_not_inflate_owned_stars(self):
+        api = FixtureAPI(
+            search_pages=[search_results([search_item()])],
+            external={"repos/upstream/tool": external_repository(), "repos/upstream/tool/pulls/1": pull_request()},
+        )
+        profile, _ = fetch.fetch_snapshots("nisconder", SNAPSHOT, api)
+        self.assertEqual(profile["stats"]["originalStars"], 3)
+        self.assertEqual(profile["stats"]["originalForks"], 1)
+        self.assertEqual(profile["stats"]["publicRepositories"], 1)
+        project, = profile["contributedRepositories"]
+        self.assertEqual(project["fullName"], "upstream/tool")
+        self.assertEqual(project["owner"], "upstream")
+        self.assertEqual(project["relationship"], "contributor")
+        self.assertFalse(project["isProfile"])
+        self.assertEqual(project["stars"], 1000)
+        self.assertEqual(project["contribution"]["mergedPullRequests"], 1)
+        self.assertEqual(project["contribution"]["countScope"], "verified search sample")
+        self.assertEqual(project["contribution"]["pullRequests"][0]["url"], "https://github.com/upstream/tool/pull/1")
+        self.assertEqual(profile["contributionSearch"]["checkedPullRequests"], 1)
+        self.assertFalse(profile["contributionSearch"]["truncated"])
+        self.assertIn("is:public", profile["contributionSearch"]["query"])
+
+    def test_search_candidates_with_wrong_author_unmerged_or_private_target_are_not_contributions(self):
+        bad_pulls = [
+            pull_request(merged=False, merged_at=None),
+            pull_request(user={"login": "app/copilot-swe-agent"}),
+            pull_request(user=None),
+            pull_request(base={"repo": {"full_name": "elsewhere/tool", "name": "tool", "owner": {"login": "elsewhere"}, "private": False}}),
+            pull_request(base={"repo": {"full_name": "upstream/tool", "name": "tool", "owner": {"login": "upstream"}, "private": True}}),
+        ]
+        for value in bad_pulls:
+            with self.subTest(value=value):
+                api = FixtureAPI(search_pages=[search_results([search_item()])], external={"repos/upstream/tool": external_repository(), "repos/upstream/tool/pulls/1": value})
+                repositories, _ = fetch.fetch_contributed_repositories("nisconder", api)
+                self.assertEqual(repositories, [])
+        api = FixtureAPI(search_pages=[search_results([search_item()])], external={"repos/upstream/tool": external_repository(private=True, visibility="private")})
+        self.assertEqual(fetch.fetch_contributed_repositories("nisconder", api)[0], [])
+        self.assertNotIn("repos/upstream/tool/pulls/1", [endpoint for endpoint, _ in api.calls])
+
+    def test_full_names_and_pull_numbers_are_case_insensitively_deduplicated(self):
+        api = FixtureAPI(
+            search_pages=[search_results([search_item(), search_item("Upstream/Tool", 1), search_item(number=2), search_item("nisconder/alpha", 7)])],
+            external={"repos/upstream/tool": external_repository(), "repos/upstream/tool/pulls/1": pull_request(), "repos/upstream/tool/pulls/2": pull_request(number=2)},
+        )
+        repositories, _ = fetch.fetch_contributed_repositories("nisconder", api)
+        self.assertEqual(len(repositories), 1)
+        self.assertEqual(repositories[0]["contribution"]["mergedPullRequests"], 2)
+        self.assertEqual([item["number"] for item in repositories[0]["contribution"]["pullRequests"]], [1, 2])
+        self.assertEqual([endpoint for endpoint, _ in api.calls].count("repos/upstream/tool"), 1)
+        self.assertNotIn("repos/nisconder/alpha", [endpoint for endpoint, _ in api.calls])
+
+    def test_not_found_candidates_are_dropped_but_other_api_failures_preserve_snapshot(self):
+        unavailable = FixtureAPI(search_pages=[search_results([search_item()])], external={"repos/upstream/tool": fetch.NotFound("Deleted")})
+        self.assertEqual(fetch.fetch_contributed_repositories("nisconder", unavailable)[0], [])
+        missing_pull = FixtureAPI(search_pages=[search_results([search_item()])], external={"repos/upstream/tool": external_repository(), "repos/upstream/tool/pulls/1": fetch.NotFound("Deleted")})
+        self.assertEqual(fetch.fetch_contributed_repositories("nisconder", missing_pull)[0], [])
+        failed = FixtureAPI(search_pages=[search_results([search_item()])], external={"repos/upstream/tool": external_repository(), "repos/upstream/tool/pulls/1": fetch.DataError("Simulated API failure")})
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as directory:
+            root = Path(directory)
+            for filename in ["github-profile.json", "contributions.json"]:
+                (root / filename).write_text("unchanged " + filename, encoding="utf-8")
+            original = {item.name: item.read_bytes() for item in root.iterdir()}
+            with patch.object(fetch, "GitHubCLI", return_value=failed), redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                fetch.main(["--date", SNAPSHOT.isoformat(), "--output-dir", directory])
+            self.assertEqual({item.name: item.read_bytes() for item in root.iterdir()}, original)
+
+    def test_external_repository_cap_marks_verified_counts_as_a_truncated_sample(self):
+        candidates = [search_item(f"upstream/tool-{number}") for number in range(21)]
+        external = {}
+        for number in range(21):
+            full_name = f"upstream/tool-{number}"
+            external[f"repos/{full_name}"] = external_repository(name=f"tool-{number}")
+            external[f"repos/{full_name}/pulls/1"] = pull_request(full_name)
+        api = FixtureAPI(search_pages=[search_results(candidates)], external=external)
+        repositories, scope = fetch.fetch_contributed_repositories("nisconder", api)
+        self.assertEqual(len(repositories), 20)
+        self.assertTrue(scope["truncated"])
+        self.assertEqual(scope["repositoryLimit"], 20)
+        self.assertEqual(scope["checkedPullRequests"], 20)
+        self.assertNotIn("repos/upstream/tool-20", [endpoint for endpoint, _ in api.calls])
+
+    def test_incomplete_search_fails_and_cli_404_is_distinguishable(self):
+        api = FixtureAPI(search_pages=[search_results(incomplete_results=True)])
+        with self.assertRaises(fetch.DataError):
+            fetch.fetch_contributed_repositories("nisconder", api)
+        not_found = subprocess.CompletedProcess([], 1, stdout=json.dumps({"message": "Not Found", "status": "404"}), stderr="")
+        with patch.object(fetch.subprocess, "run", return_value=not_found), self.assertRaises(fetch.NotFound):
+            fetch.GitHubCLI().request("repos/missing/project")
+
+    def test_external_search_stops_after_three_pages_and_does_not_claim_total_count(self):
+        pages = [search_results([search_item(number=number) for number in range(start, start + 100)], total_count=301) for start in [1, 101, 201]]
+        external = {"repos/upstream/tool": external_repository()}
+        external.update({f"repos/upstream/tool/pulls/{number}": pull_request(number=number) for number in range(1, 301)})
+        api = FixtureAPI(search_pages=pages, external=external)
+        repositories, scope = fetch.fetch_contributed_repositories("nisconder", api)
+        self.assertEqual(repositories[0]["contribution"]["mergedPullRequests"], 300)
+        self.assertEqual(scope["totalMatches"], 301)
+        self.assertEqual(scope["pullRequestLimit"], 300)
+        self.assertEqual(scope["checkedPullRequests"], 300)
+        self.assertTrue(scope["truncated"])
+        self.assertEqual(len([endpoint for endpoint, _ in api.calls if endpoint.startswith("search/issues?")]), 3)
 
 
 if __name__ == "__main__":

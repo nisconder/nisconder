@@ -9,20 +9,31 @@ and runs when its scripts or tests change.
   languages, Stars, Forks, push dates, pinned repositories and follower counts.
   The profile repository's own push date is omitted from comparisons so generated
   commits do not cause a new update by themselves.
+- `contributedRepositories` contains public upstream repositories with verified
+  merged PRs authored by this user. Search only discovers candidates: every PR is
+  checked again through the PR API for its author, merged state and target repo.
+  Bot-authored PRs, private targets, unmerged PRs and duplicate PRs are excluded.
+  The scan checks at most 300 recent search candidates and 20 valid upstream
+  repositories; `contributionSearch` records these limits and any truncation.
+  Card counts say "已核验 N 个合并 PR", describing verified records rather than an
+  uncapped lifetime total. Stars and Forks alone are not contribution evidence.
 - `contributions.json`: GitHub's daily contribution counts and levels for a
   rolling year, with the API's actual `periodStart` and `periodEnd`. Calendar days
   follow GitHub's API; the refresh date uses Asia/Shanghai. No repository names
   or private contribution details are stored in this calendar.
-- `projects[]` is derived from the public repository list: take the user's own
-  pinned repositories first, then fill up to six by latest code push. Forks,
-  archived repositories and the profile repository are excluded from these cards.
-  New projects enter this list automatically; changing GitHub pins changes their
-  priority. A renamed or removed repository is replaced on the next refresh.
+- `projects[]` follows `featured-projects.json`: a curated mix of useful owned
+  tools and verified upstream work, not a ranking by repository size or recency.
+  Every selection must still pass eligibility checks on each refresh. If an
+  entry is removed or archived, or no longer has public contribution evidence,
+  it is replaced using eligible pinned/recent repositories. Owned Forks and the
+  profile repository are not selected. Upstreams use their actual owner URL,
+  contributor labels and links to the verified merged PRs.
 
 The public repository count includes Forks. Stars and Forks in the statistics
 strip count the user's own **non-Fork public repositories**, including archived
 repositories and this profile repository. Project cards show each repository's
-individual values. Counts are fetched, never inferred from animation.
+individual values. Upstream Stars/Forks are not added to personal totals. Counts
+are fetched, never inferred from animation.
 
 The workflow uses its built-in, short-lived `GITHUB_TOKEN`, without a personal
 access token or external rendering service. Invalid or failed API responses
@@ -47,3 +58,7 @@ projects. A summary is used only while its `descriptionSha256` matches the
 current normalized GitHub description. A changed description automatically
 falls back to that new text; new repositories require no configuration. Editing
 this presentation file also triggers a regeneration.
+
+`featured-projects.json` uses canonical `owner/repository` identities. Editing
+the featured list triggers regeneration too. A contributed repository never
+becomes eligible merely because its name was added to that list.

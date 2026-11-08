@@ -11,6 +11,7 @@ on:
       - 'scripts/**'
       - 'test/**'
       - 'data/project-display.json'
+      - 'data/featured-projects.json'
       - '.github/workflows/update-profile.yml'
 
 permissions:

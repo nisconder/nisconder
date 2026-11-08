@@ -113,7 +113,7 @@ def activity(p, data, mobile=False):
 
 def section(p, mobile=False):
     w,h=(480,55) if mobile else (1100,64)
-    return wrap(w,h,'项目','以下项目卡片可点击进入各自仓库。', text(0,36,'项目',24 if mobile else 28,p=p,weight=600))
+    return wrap(w,h,'精选项目','自有开发工具与实际参与贡献的协作项目，卡片标明仓库归属。', text(0,36,'精选项目',24 if mobile else 28,p=p,weight=600))
 
 
 def notes(p, mobile=False):

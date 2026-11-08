@@ -3,9 +3,10 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from update_profile import cache_asset_urls, replace_region, select_projects
+from update_profile import cache_asset_urls, replace_region, select_projects, update_readme
 
 
 def repo(name, pushed='2026-11-01T00:00:00Z', **flags):
@@ -27,6 +28,45 @@ class UpdateProfileTests(unittest.TestCase):
         profile = dict(pinnedRepositories=['gone'], repositories=[repo('b'), repo('a')])
         self.assertEqual([p['name'] for p in select_projects(profile)], ['a', 'b'])
         self.assertEqual(select_projects(dict(pinnedRepositories=[], repositories=[])), [])
+
+    def test_featured_upstream_contributions_are_not_replaced_by_recent_own_projects(self):
+        contribution = dict(repo('same'), fullName='Other/same', owner='Other', relationship='contributor',
+                            contribution=dict(mergedPullRequests=2, pullRequests=[]))
+        unverified = dict(contribution, fullName='NoProof/same', contribution=dict(mergedPullRequests=0))
+        profile = dict(user=dict(login='nisconder'), pinnedRepositories=['recent'],
+                       repositories=[repo('same'), repo('recent', '2099-01-01T00:00:00Z')],
+                       contributedRepositories=[contribution, unverified])
+        selected = select_projects(profile, 3, featured=['Other/same', 'nisconder/same', 'NoProof/same'])
+        self.assertEqual([r['fullName'] for r in selected], ['Other/same', 'nisconder/same', 'nisconder/recent'])
+        self.assertEqual(selected[0]['relationship'], 'contributor')
+        self.assertEqual(selected[1]['relationship'], 'owner')
+
+    def test_archived_upstreams_are_replaced_instead_of_displaying_stale_claims(self):
+        archived = dict(repo('old'), isArchived=True, fullName='Other/old', owner='Other',
+                        relationship='contributor', contribution=dict(mergedPullRequests=1))
+        profile = dict(pinnedRepositories=[], repositories=[repo('active')], contributedRepositories=[archived])
+        self.assertEqual([r['name'] for r in select_projects(profile, featured=['Other/old'])], ['active'])
+
+    def test_contribution_evidence_links_to_upstream_and_keeps_personal_totals_separate(self):
+        upstream = dict(repo('same'), fullName='Other/same', owner='Other', relationship='contributor',
+                        url='https://github.com/Other/same', description='An upstream tool', stars=500, forks=30,
+                        language='Rust', contribution=dict(mergedPullRequests=1, pullRequests=[
+                            dict(number=9, title='Fix durable snapshots', url='https://github.com/Other/same/pull/9')]))
+        profile = dict(snapshotDate='2026-11-08', user=dict(login='nisconder', followers=5),
+                       stats=dict(publicRepositories=15, originalStars=43, originalForks=1), projects=[upstream])
+        calendar = dict(snapshotDate='2026-11-08', totalContributions=10)
+        source = 'manual intro\n' + '\n'.join('<!-- BEGIN:'+name+' --><!-- END:'+name+' -->' for name in ['stats','activity','projects']) + '\nmanual notes'
+        with patch('update_profile.cache_asset_urls', side_effect=lambda value: value):
+            rendered = update_readme(source, profile, calendar)
+        self.assertIn('href="https://github.com/Other/same"', rendered)
+        self.assertIn('href="https://github.com/Other/same/pull/9"', rendered)
+        self.assertNotIn('github.com/nisconder/same', rendered)
+        self.assertIn('upstream/Other/same-dark.svg', rendered)
+        self.assertIn('贡献者 · 已核验 1 个合并 PR', rendered)
+        self.assertIn('自有非 Fork 仓库共 43 Stars', rendered)
+        self.assertIn('500 Stars', rendered)
+        self.assertTrue(rendered.startswith('manual intro'))
+        self.assertTrue(rendered.endswith('manual notes'))
 
     def test_generated_sections_preserve_manual_content(self):
         source = 'manual badges\n<!-- BEGIN:stats -->\nold\n<!-- END:stats -->\nmanual notes'

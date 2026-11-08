@@ -2,7 +2,9 @@
 
 The workflow authenticates gh with its short-lived GITHUB_TOKEN. A local run can
 use an existing `gh auth login`; credentials never enter generated JSON or logs.
-Only public owner repositories and contribution calendar counts are persisted.
+Public owner repositories, verified merged pull requests in external public
+repositories, and contribution calendar counts are persisted. External project
+counts cover at most 300 searched PRs and 20 repositories, not an all-time total.
 """
 from __future__ import annotations
 
@@ -15,13 +17,15 @@ import re
 import subprocess
 import tempfile
 from typing import Any
-from urllib.parse import quote, urlparse
+from urllib.parse import quote, urlencode, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 # Shanghai has used UTC+8 without daylight-saving changes since 1991. A fixed
 # offset keeps this standard-library-only script portable on Windows too.
 SHANGHAI = timezone(timedelta(hours=8), "Asia/Shanghai")
 LEVELS = {"NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"}
+EXTERNAL_PULL_REQUEST_LIMIT = 300
+EXTERNAL_REPOSITORY_LIMIT = 20
 CALENDAR_QUERY = """
 query ProfileCalendar($login: String!, $from: DateTime!, $to: DateTime!) {
   user(login: $login) {
@@ -42,6 +46,10 @@ query ProfileCalendar($login: String!, $from: DateTime!, $to: DateTime!) {
 
 class DataError(RuntimeError):
     """The new snapshot is incomplete or invalid; keep the prior snapshot."""
+
+
+class NotFound(DataError):
+    """A previously public search candidate is deleted or no longer visible."""
 
 
 class GitHubCLI:
@@ -66,6 +74,12 @@ class GitHubCLI:
             raise DataError("GitHub CLI could not complete the API request; existing data was kept.") from exc
         if result.returncode:
             # Never echo subprocess output: a user's GH_DEBUG can include headers.
+            try:
+                error = json.loads(result.stdout)
+            except json.JSONDecodeError:
+                error = {}
+            if (isinstance(error, dict) and str(error.get("status")) == "404") or re.search(r"\bHTTP 404\b", result.stderr):
+                raise NotFound("A public GitHub resource is no longer available.")
             raise DataError(f"GitHub API request failed (exit {result.returncode}); existing data was kept.")
         try:
             response = json.loads(result.stdout)
@@ -151,6 +165,149 @@ def normalize_repositories(rows: list[dict[str, Any]], login: str) -> list[dict[
             "isProfile": name.casefold() == login.casefold(),
         })
     return sorted(repositories, key=lambda repository: repository["name"].casefold())
+
+
+def search_pull_request(item: Any) -> tuple[str, int] | None:
+    """Take only a well-formed GitHub pull endpoint; search is not proof of work."""
+    if not isinstance(item, dict) or not isinstance(item.get("pull_request"), dict):
+        return None
+    address = item["pull_request"].get("url")
+    if not isinstance(address, str):
+        raise DataError("Missing pull request endpoint in search results.")
+    parsed = urlparse(address)
+    match = re.fullmatch(r"/repos/([^/]+)/([A-Za-z0-9_.-]{1,100})/pulls/([1-9][0-9]*)", parsed.path)
+    if parsed.scheme != "https" or parsed.netloc != "api.github.com" or parsed.params or parsed.query or parsed.fragment or not match:
+        raise DataError("Unexpected pull request endpoint in search results.")
+    owner, name, number = match.groups()
+    checked_login(owner)
+    if type(item.get("number")) is not int or item["number"] != int(number):
+        raise DataError("Mismatched pull request number in search results.")
+    return f"{owner}/{name}", int(number)
+
+
+def normalize_external_repository(raw: Any, expected_full_name: str, login: str) -> dict[str, Any] | None:
+    if not isinstance(raw, dict):
+        raise DataError("Invalid external repository response.")
+    if raw.get("private") is not False or raw.get("visibility", "public") != "public":
+        return None
+    owner = checked_login(raw.get("owner", {}).get("login"))
+    if owner.casefold() == login.casefold():
+        return None
+    full_name = plain_text(raw.get("full_name"), "external full repository name")
+    if full_name.casefold() != expected_full_name.casefold() or full_name.casefold() != f"{owner}/{raw.get('name', '')}".casefold():
+        return None
+    normalized = normalize_repositories([raw], owner)
+    if len(normalized) != 1:
+        return None
+    repository = normalized[0]
+    repository.update({"fullName": full_name, "owner": owner, "relationship": "contributor", "isProfile": False, "pushedAt": raw.get("pushed_at")})
+    return repository
+
+
+def verified_pull_request(raw: Any, full_name: str, number: int, login: str) -> dict[str, Any] | None:
+    if not isinstance(raw, dict) or type(raw.get("merged")) is not bool:
+        raise DataError("Incomplete pull request verification response.")
+    author = raw.get("user")
+    if raw["merged"] is not True or not isinstance(author, dict) or str(author.get("login", "")).casefold() != login.casefold():
+        return None
+    base = raw.get("base", {}).get("repo")
+    if not isinstance(base, dict):
+        raise DataError("Missing pull request target repository.")
+    if base.get("private") is not False or base.get("visibility", "public") != "public":
+        return None
+    owner, name = full_name.split("/", 1)
+    if (str(base.get("full_name", "")).casefold() != full_name.casefold()
+            or str(base.get("owner", {}).get("login", "")).casefold() != owner.casefold()
+            or str(base.get("name", "")).casefold() != name.casefold()
+            or type(raw.get("number")) is not int or raw["number"] != number):
+        return None
+    merged_at = raw.get("merged_at")
+    try:
+        merged = datetime.fromisoformat(merged_at.replace("Z", "+00:00"))
+    except (ValueError, AttributeError, TypeError) as exc:
+        raise DataError("Missing or invalid merged pull request timestamp.") from exc
+    if merged.tzinfo is None:
+        raise DataError("Merged pull request timestamp needs a timezone.")
+    return {
+        "number": number,
+        "title": plain_text(raw.get("title"), "pull request title"),
+        "url": public_url(raw.get("html_url"), f"/{full_name}/pull/{number}"),
+        "mergedAt": merged_at,
+    }
+
+
+def fetch_contributed_repositories(login: str, api: GitHubCLI) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Find at most 300 candidates and verify at most 20 external repositories.
+
+    Search candidates are newest-updated first. Counts only describe verified
+    PRs from this capped sample. A timeout/incomplete search or non-404 API
+    failure rejects the entire refresh, preserving the previous snapshot.
+    """
+    query = f"author:{login} type:pr is:merged is:public -user:{login}"
+    candidates, total_matches = [], 0
+    for page in range(1, EXTERNAL_PULL_REQUEST_LIMIT // 100 + 1):
+        response = api.request("search/issues?" + urlencode({"q": query, "per_page": 100, "page": page, "sort": "updated", "order": "desc"}))
+        if not isinstance(response, dict) or not isinstance(response.get("items"), list) or type(response.get("incomplete_results")) is not bool:
+            raise DataError("Incomplete external pull request search response.")
+        if response["incomplete_results"]:
+            raise DataError("GitHub search returned incomplete results; existing data was kept.")
+        total_matches = max(total_matches, natural(response.get("total_count"), "matching external pull requests"))
+        items = response["items"]
+        if len(items) > 100:
+            raise DataError("Unexpected external pull request page length.")
+        candidates.extend(items)
+        if len(items) < 100 or len(candidates) >= total_matches:
+            break
+    repositories, metadata, seen_pulls = {}, {}, set()
+    checked_pulls, repository_cap_hit = 0, False
+    for item in candidates:
+        candidate = search_pull_request(item)
+        if candidate is None:
+            continue
+        full_name, number = candidate
+        key = full_name.casefold()
+        if full_name.split("/", 1)[0].casefold() == login.casefold() or (key, number) in seen_pulls:
+            continue
+        seen_pulls.add((key, number))
+        if key not in repositories and len(repositories) >= EXTERNAL_REPOSITORY_LIMIT:
+            repository_cap_hit = True
+            continue
+        if key not in metadata:
+            try:
+                raw_repository = api.request("repos/" + full_name)
+            except NotFound:
+                metadata[key] = None
+            else:
+                metadata[key] = normalize_external_repository(raw_repository, full_name, login)
+        if metadata[key] is None:
+            continue
+        checked_pulls += 1
+        try:
+            raw_pull = api.request(f"repos/{full_name}/pulls/{number}")
+        except NotFound:
+            continue
+        pull = verified_pull_request(raw_pull, metadata[key]["fullName"], number, login)
+        if pull is None:
+            continue
+        if key not in repositories:
+            repositories[key] = {
+                **metadata[key],
+                "contribution": {"mergedPullRequests": 0, "countScope": "verified search sample", "pullRequests": []},
+            }
+        repositories[key]["contribution"]["pullRequests"].append(pull)
+    normalized = sorted(repositories.values(), key=lambda repository: repository["fullName"].casefold())
+    for repository in normalized:
+        pulls = repository["contribution"]["pullRequests"]
+        pulls.sort(key=lambda pull: pull["number"])
+        repository["contribution"]["mergedPullRequests"] = len(pulls)
+    return normalized, {
+        "query": query,
+        "totalMatches": total_matches,
+        "pullRequestLimit": EXTERNAL_PULL_REQUEST_LIMIT,
+        "repositoryLimit": EXTERNAL_REPOSITORY_LIMIT,
+        "checkedPullRequests": checked_pulls,
+        "truncated": total_matches > len(candidates) or repository_cap_hit,
+    }
 
 
 def normalize_calendar(calendar: Any, snapshot: date) -> dict[str, Any]:
@@ -241,6 +398,7 @@ def fetch_snapshots(login: str, snapshot: date, api: GitHubCLI) -> tuple[dict[st
         name = str(repository.get("name", "")).casefold()
         if name in owned and owned[name] not in pinned_names:
             pinned_names.append(owned[name])
+    contributed_repositories, contribution_search = fetch_contributed_repositories(canonical, api)
     profile = {
         "schemaVersion": 1,
         "snapshotDate": snapshot.isoformat(),
@@ -256,6 +414,8 @@ def fetch_snapshots(login: str, snapshot: date, api: GitHubCLI) -> tuple[dict[st
         },
         "repositories": repositories,
         "pinnedRepositories": pinned_names,
+        "contributedRepositories": contributed_repositories,
+        "contributionSearch": contribution_search,
         "stats": {
             "publicRepositories": len(repositories),
             "originalRepositories": len(originals),

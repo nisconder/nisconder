@@ -38,5 +38,15 @@
     "title": "portdoc",
     "summary": "对比 IPv4 / IPv6，定位本机监听项目。",
     "descriptionSha256": "f6f3339fb11d59c6ca9c8c3df1429d320cdff736d62865d4939ae9ab87a75931"
+  },
+  "Escap1ng/VisualLaTeX": {
+    "title": "VisualLaTeX",
+    "summary": "多文件 LaTeX 可视化编辑与本机 PDF 编译。",
+    "descriptionSha256": "dbbffd00d214f0c69711311948be56d548ecc9cc3340b82fe6c9ed911d486967"
+  },
+  "InfiniteScope/Keep-Vibe-Brot-Away": {
+    "title": "Keep-Vibe-Brot-Away",
+    "summary": "将 Agent 回合聚合为工作单元与证据洞察。",
+    "descriptionSha256": "3b08f96685a2783fd76732f9ac6fd6b5fc71cc7d9ff3d7750b72c5177408683f"
   }
 }

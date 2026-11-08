@@ -17,19 +17,31 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT_LIMIT = 6
 
 
-def select_projects(profile, limit=PROJECT_LIMIT):
-    eligible = {
-        repo['name']: repo for repo in profile['repositories']
-        if not repo['isFork'] and not repo['isArchived'] and not repo['isProfile']
-    }
+def select_projects(profile, limit=PROJECT_LIMIT, featured=()):
+    login = profile.get('user', {}).get('login', 'nisconder')
+    eligible = {}
+    for repo in profile['repositories']:
+        if repo['isFork'] or repo['isArchived'] or repo['isProfile']:
+            continue
+        full_name = f'{login}/{repo["name"]}'
+        eligible[full_name.casefold()] = dict(repo, fullName=full_name, owner=login, relationship='owner')
+    for repo in profile.get('contributedRepositories', []):
+        if repo['isArchived'] or repo.get('contribution', {}).get('mergedPullRequests', 0) < 1:
+            continue
+        eligible[repo['fullName'].casefold()] = repo.copy()
     selected = []
+    for full_name in featured:
+        key = full_name.casefold()
+        if key in eligible and key not in selected:
+            selected.append(key)
     for name in profile['pinnedRepositories']:
-        if name in eligible and name not in selected:
-            selected.append(name)
-    recent = sorted(eligible, key=lambda name: name.casefold())
-    recent.sort(key=lambda name: eligible[name]['pushedAt'] or '', reverse=True)
-    selected.extend(name for name in recent if name not in selected)
-    return [eligible[name].copy() for name in selected[:limit]]
+        key = f'{login}/{name}'.casefold()
+        if key in eligible and key not in selected:
+            selected.append(key)
+    recent = sorted(eligible)
+    recent.sort(key=lambda key: eligible[key]['pushedAt'] or '', reverse=True)
+    selected.extend(key for key in recent if key not in selected)
+    return [eligible[key].copy() for key in selected[:limit]]
 
 
 def picture(asset, alt):
@@ -72,13 +84,22 @@ def update_readme(readme, profile, contributions):
                 + picture('activity', f'GitHub 贡献日历：近一年 {contributions["totalContributions"]} 次贡献；'
                           f'手机显示近半年。每六小时自动更新，数据日期 {contributions["snapshotDate"]}。') + '\n</a>')
     readme = replace_region(readme, 'activity', calendar)
-    projects = [picture('section', '项目：优先 GitHub 置顶，再按最近代码更新补足六个；不含 Fork、归档及主页仓库。')]
+    projects = [picture('section', '精选项目：包含自有开发工具和已核验上游贡献的协作项目。')]
     for project in profile['projects']:
         title, description = generate_cards.display_copy(project)
-        label = title if title == project['name'] else f'{title}（{project["name"]}）'
-        alt = f'{label}：{description} · {project["stars"]} Stars · {project["forks"]} Forks'
+        full_name = project.get('fullName', project['name'])
+        label = title if title == full_name else f'{title}（{full_name}）'
+        role = '贡献者' if project.get('relationship') == 'contributor' else '自有项目'
+        if project.get('relationship') == 'contributor':
+            role += f' · 已核验 {project["contribution"]["mergedPullRequests"]} 个合并 PR'
+        alt = f'{label}：{description} · {role} · {project["stars"]} Stars · {project["forks"]} Forks'
         projects.append('<a href="' + html.escape(project['url'], quote=True) + '">\n'
                         + picture('cards/' + generate_cards.asset_key(project), alt) + '\n</a>')
+        if project.get('relationship') == 'contributor':
+            links = ['<a href="' + html.escape(pull['url'], quote=True) + '" title="'
+                     + html.escape(pull['title'], quote=True) + '">#' + str(pull['number']) + '</a>'
+                     for pull in project['contribution']['pullRequests']]
+            projects.append('<p align="right">已核验的合并贡献：' + ' · '.join(links) + '</p>')
     readme = replace_region(readme, 'projects', '\n\n'.join(projects))
     return cache_asset_urls(readme)
 
@@ -89,7 +110,8 @@ def main():
     contributions = json.loads((ROOT / 'data/contributions.json').read_text(encoding='utf-8-sig'))
     if profile['snapshotDate'] != contributions['snapshotDate']:
         raise ValueError('Profile and contributions must have the same data date')
-    profile['projects'] = select_projects(profile)
+    featured = json.loads((ROOT / 'data/featured-projects.json').read_text(encoding='utf-8'))['projects']
+    profile['projects'] = select_projects(profile, featured=featured)
     profile_path.write_text(json.dumps(profile, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     generate_identity.main()
     generate_cards.main()
