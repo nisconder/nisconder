@@ -10,6 +10,7 @@ on:
     paths:
       - 'scripts/**'
       - 'test/**'
+      - 'data/project-display.json'
       - '.github/workflows/update-profile.yml'
 
 permissions:

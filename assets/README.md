@@ -13,16 +13,28 @@ The custom artwork shares graphite / silver, ice blue and pale gold palettes.
   Icons brand logos. These images are loaded from img.shields.io and are not
   redrawn initials. The former custom technology strip has been removed.
 - All body copy uses a shared system sans-serif stack. Project cards use
-  title/body/meta sizes of 32/22/18 on desktop and 26/20/18 on mobile. Only code
+  title/body/meta sizes of 34/24/20 on desktop and 28/22/20 on a 400px mobile
+  canvas. Only code
   and numeric illustrations use monospace. Repeated English headings and
   invented slogans are omitted.
 - Essential words and values are present in the static image. CSS and SMIL add
   contour motion, scans, connection pulses, Unicode reveal and a calendar wash.
   Reduced-motion styling stops CSS animations and hides moving SMIL marks.
-- Project descriptions, names, language, Stars, Forks and code update dates come
-  from GitHub. Descriptions wrap without reducing their font size. New projects
-  receive a repository illustration; known tools retain their original artwork.
-  These animations illustrate capabilities, not live execution results.
+- Project language, Stars, Forks and code update dates come from GitHub. The
+  footer uses official MIT-licensed GitHub Octicons for Stars and Forks; see
+  [their license](OCTICONS-LICENSE.txt) and [upstream](https://github.com/primer/octicons).
+- Known projects have reviewed short Chinese summaries in
+  `data/project-display.json`. Each summary is bound to the SHA-256 of the
+  repository description reviewed with it. If that description changes, the
+  card immediately uses the new GitHub description instead; it is never hidden
+  behind stale curated text. Full source metadata remains in the accessible SVG
+  description. Unknown projects use the current GitHub name and description.
+- Each known project has its own functional diagram: package evidence, Harness
+  installation hook, archive diff, IPv4/IPv6 probes, article outline and 8086
+  instruction example. `scripts/project_art.py` supplies a shared coordinate
+  system and one primary motion per diagram. The effect illustrates a feature,
+  not a live result, security verdict or connection status. Reduced motion keeps
+  every essential label visible.
 - Contribution values are derived from fetched GitHub data, with a visible
   update date. Desktop shows the full saved year; mobile shows the last 26
   calendar weeks and calculates its own total. The effect never changes values.

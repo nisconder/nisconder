@@ -1,0 +1,37 @@
+{
+  "8086-step-lab": {
+    "title": "8086 Step Lab",
+    "summary": "单步观察 8086 寄存器、标志和内存。",
+    "descriptionSha256": "9aa1cd70ad32f32779ccb8c9dc24a365fc7c3e0b6e6d3ff896c75af91047f61f"
+  },
+  "nisconder.github.io": {
+    "title": "技术笔记",
+    "summary": "计算机系统与 8086 章节笔记和配套实验。",
+    "descriptionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "npm-safe": {
+    "title": "npm-safe",
+    "summary": "npm 供应链风险检查与证据追踪。",
+    "descriptionSha256": "3c35ab9581b86c68b5edf2d2d4f6febbeed841e564e3b75e11d9ceb887d53325"
+  },
+  "npm-safe-forDSH": {
+    "title": "npm-safe / Harness",
+    "summary": "npm 包安装前检查，接入 DeepSeek Harness。",
+    "descriptionSha256": "db67ecf7cbc4daf236041607e4e90579379b66315695bf9607a3806677f1002f"
+  },
+  "pack-receipt": {
+    "title": "Pack Receipt",
+    "summary": "在本地比较 npm 归档与版本文件差异。",
+    "descriptionSha256": "8656c9355ea138f554f3ae8c8bd26d69519c809484145ed9a466245ff7916597"
+  },
+  "paste-xray": {
+    "title": "Paste X-Ray",
+    "summary": "显影粘贴文本中的隐形字符与隐藏 HTML。",
+    "descriptionSha256": "a2a6cf3114c1134de87a9c883be0483f19c96bd64573897ca5c0bdc49faffa27"
+  },
+  "portdoc": {
+    "title": "portdoc",
+    "summary": "对比 IPv4 / IPv6，定位本机监听项目。",
+    "descriptionSha256": "f6f3339fb11d59c6ca9c8c3df1429d320cdff736d62865d4939ae9ab87a75931"
+  }
+}

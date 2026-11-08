@@ -52,55 +52,55 @@
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=0d9de170d0">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=07132b5862">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=7c49f58036">
-  <img src="assets/cards/npm-safe-dark.svg?v=668af78133" width="100%" alt="npm-safe：Local-first npm supply-chain security scanner: static + optional LLM analysis, CLI/CI gates, desktop app, and AI-agent skills. · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=48f9bb1cc1">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=5669598e93">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=7c8707208c">
+  <img src="assets/cards/npm-safe-dark.svg?v=3fd17843ee" width="100%" alt="npm-safe：npm 供应链风险检查与证据追踪。 · 9 Stars · 1 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/npm-safe-forDSH">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-mobile-light.svg?v=2bf5ae503d">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-forDSH-mobile-dark.svg?v=09243f79a7">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-light.svg?v=f44e028d2d">
-  <img src="assets/cards/npm-safe-forDSH-dark.svg?v=1f54e95c1e" width="100%" alt="npm-safe-forDSH：DeepSeek Harness plugin that checks npm packages before install — 22 supply-chain rules, deep tarball scans, CI gates, local-first. · 5 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-mobile-light.svg?v=5d00da16c9">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-forDSH-mobile-dark.svg?v=92fe2d58ae">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-forDSH-light.svg?v=b0af1f3e76">
+  <img src="assets/cards/npm-safe-forDSH-dark.svg?v=0390d50273" width="100%" alt="npm-safe / Harness（npm-safe-forDSH）：npm 包安装前检查，接入 DeepSeek Harness。 · 5 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/pack-receipt">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=0991bddc1f">
-  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=8691d32f59">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=aac06b45f8">
-  <img src="assets/cards/pack-receipt-dark.svg?v=6a3b2957f9" width="100%" alt="pack-receipt：Inspect and compare npm tarballs locally. A browser-only release receipt with file diffs and a thermal-printer UI. · 3 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=6a8d815121">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=790f9899a3">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=6ce2d879e4">
+  <img src="assets/cards/pack-receipt-dark.svg?v=43049b8a76" width="100%" alt="Pack Receipt（pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/portdoc">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=f7c6661059">
-  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=58ca536d2d">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=cdbc125d64">
-  <img src="assets/cards/portdoc-dark.svg?v=8afe5d01da" width="100%" alt="portdoc：Compare localhost, IPv4 and IPv6 across Windows and WSL. Identify listening projects and Docker Compose services. · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=0d89f99a66">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=cb203f8634">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=4f5ddde16f">
+  <img src="assets/cards/portdoc-dark.svg?v=fb26891311" width="100%" alt="portdoc：对比 IPv4 / IPv6，定位本机监听项目。 · 4 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/nisconder.github.io">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-mobile-light.svg?v=29b81fd5f5">
-  <source media="(max-width: 640px)" srcset="assets/cards/nisconder.github.io-mobile-dark.svg?v=387536b502">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-light.svg?v=4780f8c63b">
-  <img src="assets/cards/nisconder.github.io-dark.svg?v=5123e35265" width="100%" alt="nisconder.github.io：尚未设置仓库简介 · 3 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-mobile-light.svg?v=05be2e9914">
+  <source media="(max-width: 640px)" srcset="assets/cards/nisconder.github.io-mobile-dark.svg?v=86bf2906f4">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/nisconder.github.io-light.svg?v=6f7624ac6a">
+  <img src="assets/cards/nisconder.github.io-dark.svg?v=3120757d5e" width="100%" alt="技术笔记（nisconder.github.io）：计算机系统与 8086 章节笔记和配套实验。 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/8086-step-lab">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=0c6914ecbc">
-  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=508a5445b5">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=0a390689b2">
-  <img src="assets/cards/8086-lab-dark.svg?v=44b87577cb" width="100%" alt="8086-step-lab：Offline 16-bit assembly teaching lab: step, undo, registers, flags, memory and stack. · 2 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/8086-lab-mobile-light.svg?v=7f4abc9858">
+  <source media="(max-width: 640px)" srcset="assets/cards/8086-lab-mobile-dark.svg?v=a66a43acd5">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/8086-lab-light.svg?v=a607d22901">
+  <img src="assets/cards/8086-lab-dark.svg?v=208b96e102" width="100%" alt="8086 Step Lab（8086-step-lab）：单步观察 8086 寄存器、标志和内存。 · 2 Stars · 0 Forks">
 </picture>
 </a>
 <!-- END:projects -->

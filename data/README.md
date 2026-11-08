@@ -41,3 +41,9 @@ python -m unittest discover -s test
 Only edit README prose outside `BEGIN` / `END` markers. Marked sections and local
 SVG image versions are generated. The version is a content hash so changed
 images get a new URL without changing URLs for unchanged assets.
+
+`project-display.json` holds reviewed Chinese titles and summaries for known
+projects. A summary is used only while its `descriptionSha256` matches the
+current normalized GitHub description. A changed description automatically
+falls back to that new text; new repositories require no configuration. Editing
+this presentation file also triggers a regeneration.

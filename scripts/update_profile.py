@@ -74,8 +74,9 @@ def update_readme(readme, profile, contributions):
     readme = replace_region(readme, 'activity', calendar)
     projects = [picture('section', '项目：优先 GitHub 置顶，再按最近代码更新补足六个；不含 Fork、归档及主页仓库。')]
     for project in profile['projects']:
-        description = project['description'] or '尚未设置仓库简介'
-        alt = f'{project["name"]}：{description} · {project["stars"]} Stars · {project["forks"]} Forks'
+        title, description = generate_cards.display_copy(project)
+        label = title if title == project['name'] else f'{title}（{project["name"]}）'
+        alt = f'{label}：{description} · {project["stars"]} Stars · {project["forks"]} Forks'
         projects.append('<a href="' + html.escape(project['url'], quote=True) + '">\n'
                         + picture('cards/' + generate_cards.asset_key(project), alt) + '\n</a>')
     readme = replace_region(readme, 'projects', '\n\n'.join(projects))

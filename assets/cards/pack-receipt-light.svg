@@ -1,31 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="224" viewBox="0 0 1100 224" role="img" aria-labelledby="title description">
-      <title id="title">pack-receipt</title>
-      <desc id="description">pack-receipt：Inspect and compare npm tarballs locally. A browser-only release receipt with file diffs and a thermal-printer UI.。JavaScript · Star 3 · Fork 0。代码更新 2026-11-07。动画为功能示意，统计来自 GitHub 数据；动画关闭后内容仍可读。</desc>
-      <style>
-      :root{--canvas:#f7f9fc;--surface:#ffffff;--line:#d6e0eb;--ink:#1b2d46;--muted:#526985;--ice:#2674bc;--copper:#a26f25}
-      text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
-      .mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
-      .wire{fill:none;stroke:var(--line);stroke-width:1.8}
-      .flow{fill:none;stroke:var(--ice);stroke-width:1.5;stroke-dasharray:4 8;opacity:.65;animation:flow 4.8s linear infinite}
-      .scanner{animation:package-scan 4.8s ease-in-out infinite}
-      .text-scanner{animation:text-scan 4.8s ease-in-out infinite}
-      .evidence-dot{animation:glow 4.8s ease-in-out infinite}
-      .delayed{animation-delay:1.2s}.late{animation-delay:2.4s}
-      .diff-before{animation:before 4.8s ease-in-out infinite}.diff-after{animation:after 4.8s ease-in-out infinite}
-      .bit-glow{animation:glow 4.8s ease-in-out infinite}
-      @keyframes flow{to{stroke-dashoffset:-48}}
-      @keyframes package-scan{0%,100%{transform:translateY(-12px)}50%{transform:translateY(12px)}}
-      @keyframes text-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(100px)}}
-      @keyframes glow{0%,100%{opacity:.65}45%,65%{opacity:1}}
-      @keyframes before{0%,100%{opacity:1}40%,70%{opacity:.5}}
-      @keyframes after{0%,100%{opacity:.6}40%,70%{opacity:1}}
-      @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow{stroke-dasharray:none}.bit-glow,.evidence-dot,.diff-before,.diff-after{opacity:1}}
-    </style>
-      <rect x=".5" y=".5" width="1099" height="223" rx="18" fill="var(--surface)" stroke="var(--line)"/>
-      <text x="34" y="50" font-size="32" font-weight="650" fill="var(--ink)">pack-receipt</text><text x="34" y="92" font-size="22" font-weight="400" fill="var(--ink)">Inspect and compare npm tarballs locally. A</text><text x="34" y="124" font-size="22" font-weight="400" fill="var(--ink)">browser-only release receipt with file diffs…</text><text x="34" y="163" font-size="18" font-weight="400" fill="var(--muted)">JavaScript · Star 3 · Fork 0</text><text x="34" y="196" font-size="18" font-weight="400" fill="var(--muted)">代码更新 2026-11-07</text><path d="M1050 27h17v17m-17 0 17-17" fill="none" stroke="var(--muted)" stroke-width="1.6"/><g transform="translate(736 48.0)"><rect x="3" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
-      <rect x="200" y="10" width="119" height="105" rx="6" fill="var(--canvas)" stroke="var(--line)"/>
-      <path class="flow" d="M135 64h52"/>
-      <path d="m180 59 7 5-7 5" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
-      <path class="diff-before" d="M19 67h70M19 82h49M19 97h64" stroke="var(--copper)" stroke-width="2" stroke-linecap="round"/>
-      <path class="diff-after" d="M216 67h70M216 82h70M216 97h40" stroke="var(--ice)" stroke-width="2" stroke-linecap="round"/><text x="19" y="44" font-size="22" font-weight="400" fill="var(--muted)" class="mono">A.tgz</text><text x="216" y="44" font-size="22" font-weight="400" fill="var(--ice)" class="mono">B.tgz</text></g>
-    </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="248" viewBox="0 0 1100 248" role="img" aria-labelledby="title description">
+<title id="title">Pack Receipt</title>
+<desc id="description">pack-receipt：Inspect and compare npm tarballs locally. A browser-only release receipt with file diffs and a thermal-printer UI.。JavaScript · Star 3 · Fork 0。代码更新 2026-11-07。图形为功能示意，不是实时执行结果。</desc>
+<style>:root{--canvas:#f7f9fc;--surface:#ffffff;--line:#d6e0eb;--ink:#1b2d46;--muted:#526985;--ice:#2674bc;--copper:#a26f25}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.mono{font-family:Consolas,'Cascadia Code','SFMono-Regular',monospace}
+
+.pa-package-scan{animation:pa-package-scan 6.4s ease-in-out infinite}
+.pa-harness-return{animation:pa-harness-return 6.8s linear infinite}
+.pa-diff-cursor{animation:pa-diff-cursor 7.2s steps(1,end) infinite}
+.pa-port-probe{animation:pa-port-probe 8s linear infinite}
+.pa-notes-cursor{animation:pa-notes-cursor 7.8s steps(1,end) infinite}
+.pa-bits-emphasis{animation:pa-bits-emphasis 5.6s ease-in-out infinite}
+.pa-unicode-cursor{animation:pa-unicode-cursor 6s ease-in-out infinite}
+.pa-repo-cursor{animation:pa-repo-cursor 7s steps(1,end) infinite}
+@keyframes pa-package-scan{0%,100%{transform:translateY(-18px)}50%{transform:translateY(18px)}}
+@keyframes pa-harness-return{0%,8%{transform:translate(0,0);opacity:0}12%{opacity:1}35%{transform:translate(0,24px);opacity:1}76%{transform:translate(-81px,24px);opacity:1}94%{transform:translate(-81px,-15px);opacity:1}100%{transform:translate(-81px,-15px);opacity:0}}
+@keyframes pa-diff-cursor{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(26px)}66%,94%{transform:translateY(52px)}100%{transform:translateY(0)}}
+@keyframes pa-port-probe{0%,5%{transform:translate(0,0);opacity:0}10%{opacity:1}22%{transform:translate(27px,0);opacity:1}36%{transform:translate(56px,-33px);opacity:1}47%{transform:translate(90px,-33px);opacity:1}50%{transform:translate(90px,-33px);opacity:0}51%,55%{transform:translate(27px,0);opacity:0}58%{opacity:1}77%{transform:translate(56px,37px);opacity:1}94%{transform:translate(90px,37px);opacity:1}100%{transform:translate(90px,37px);opacity:0}}
+@keyframes pa-notes-cursor{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(26px)}66%,94%{transform:translateY(52px)}100%{transform:translateY(0)}}
+@keyframes pa-bits-emphasis{0%,100%{stroke-opacity:.35}40%,64%{stroke-opacity:1}}
+@keyframes pa-unicode-cursor{0%,100%{transform:translateX(0)}50%{transform:translateX(116px)}}
+@keyframes pa-repo-cursor{0%,45%{transform:translateY(0)}50%,95%{transform:translateY(26px)}100%{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.project-art *{animation:none!important;transition:none!important}}
+</style>
+<rect x=".5" y=".5" width="1099" height="247" rx="12" fill="var(--surface)" stroke="var(--line)"/>
+<text x="32" y="52" font-size="34" font-weight="650" fill="var(--ink)">Pack Receipt</text><text x="32" y="102" font-size="24" font-weight="400" fill="var(--ink)">在本地比较 npm 归档与版本文件差异。</text><path d="M1053 27h15v15m-15 0 15-15" fill="none" stroke="var(--muted)" stroke-width="1.6"/><path d="M708 28v132" stroke="var(--line)"/><g transform="translate(750 26.0)"><g class="project-art pa-diff" data-art="diff"><title>两个归档的文件清单及增加、删除行的对照</title><g fill="#f7f9fc" stroke="#d6e0eb">
+      <rect x="8" y="5" width="94" height="29" rx="5"/>
+      <rect x="198" y="5" width="94" height="29" rx="5"/>
+    </g>
+    <path d="M102 20h20v14m-4-4 4 4 4-4m72-10h-20v14m-4-4 4 4 4-4" fill="none" stroke="#d6e0eb" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M54 38h192v87 L238 119 L230 125 L222 119 L214 125 L206 119 L198 125 L190 119 L182 125 L174 119 L166 125 L158 119 L150 125 L142 119 L134 125 L126 119 L118 125 L110 119 L102 125 L94 119 L86 125 L78 119 L70 125 L62 119 L54 125 Z" fill="#f7f9fc" stroke="#d6e0eb" stroke-width="1.5" stroke-linejoin="round"/>
+    <g class="pa-diff-cursor">
+      <rect x="60" y="44" width="180" height="20" rx="2" fill="#2674bc" opacity=".08"/>
+      <path d="M60 44h-5v20h5m180-20h5v20h-5" fill="none" stroke="#2674bc" stroke-width="1.3"/>
+    </g>
+    <path d="M96 54h126" stroke="#526985" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M96 80h98m9 0h19" stroke="#a26f25" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M96 106h126" stroke="#2674bc" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="20" y="27" fill="#526985" font-size="18" class="mono">A.tgz</text><text x="210" y="27" fill="#1b2d46" font-size="18" class="mono">B.tgz</text><text x="70" y="60" fill="#526985" font-size="18" class="mono">=</text><text x="70" y="86" fill="#a26f25" font-size="18" class="mono">−</text><text x="70" y="112" fill="#2674bc" font-size="18" class="mono">+</text></g></g><text x="32" y="221" font-size="20" font-weight="400" fill="var(--muted)">JavaScript</text><g role="img" aria-label="Star 3"><title>Star 3</title><g transform="translate(250 204) scale(1.25)" fill="var(--muted)"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"/></g><text x="280" y="221" font-size="20" font-weight="400" fill="var(--muted)">3</text></g><g role="img" aria-label="Fork 0"><title>Fork 0</title><g transform="translate(337.0 204) scale(1.25)" fill="var(--muted)"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></g><text x="367.0" y="221" font-size="20" font-weight="400" fill="var(--muted)">0</text></g><text x="1068" y="221" font-size="20" font-weight="400" fill="var(--muted)" text-anchor="end">更新 2026-11-07</text><path d="M1 184h1098" stroke="var(--line)"/></svg>

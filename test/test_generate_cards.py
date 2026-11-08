@@ -32,10 +32,12 @@ class ProjectCardTests(unittest.TestCase):
                     words = " ".join(text_nodes(svg))
                     self.assertIn("new-project", words)
                     self.assertIn("Python", words)
-                    self.assertIn("Star 1,234", words)
-                    self.assertIn("Fork 56", words)
-                    self.assertIn("代码更新 2026-11-08", words)
-                    self.assertIn('viewBox="0 0 480 ' if mobile else 'viewBox="0 0 1100 ', svg)
+                    self.assertIn("1,234", words)
+                    self.assertIn("56", words)
+                    self.assertIn('aria-label="Star 1,234"', svg)
+                    self.assertIn('aria-label="Fork 56"', svg)
+                    self.assertIn("更新 2026-11-08", words)
+                    self.assertIn('viewBox="0 0 400 ' if mobile else 'viewBox="0 0 1100 ', svg)
 
     def test_new_repositories_get_generic_art_and_original_art_is_preserved(self):
         for name, kind in {**cards.PROJECT_ART, "brand-new-tool": "repo"}.items():
@@ -43,8 +45,8 @@ class ProjectCardTests(unittest.TestCase):
                 with self.subTest(name=name, mobile=mobile):
                     svg = cards.render(project(name=name), "light", mobile)
                     cards.validate(svg)
-                    self.assertIn("animation:flow", svg)
-                    self.assertIn(cards.ART[kind](mobile), svg)
+                    self.assertIn("prefers-reduced-motion:reduce", svg)
+                    self.assertIn('data-art="' + kind + '"', svg)
         self.assertEqual(cards.asset_key(project(name="8086-step-lab")), "8086-lab")
         self.assertEqual(cards.asset_key(project(name="brand-new-tool")), "brand-new-tool")
         for name in ("../escape", ".", "..", "a/b"):
@@ -78,10 +80,10 @@ class ProjectCardTests(unittest.TestCase):
                     cards.validate(svg)
                     root = ET.fromstring(svg)
                     text = [node for node in root.iter() if node.tag.endswith("}text")]
-                    self.assertEqual(text[0].attrib["font-size"], "26" if mobile else "32")
+                    self.assertEqual(text[0].attrib["font-size"], "28" if mobile else "34")
                     self.assertTrue(text[0].text.endswith("…"))
                     self.assertTrue(all(float(node.attrib["font-size"]) >= 18 for node in text))
-                    self.assertIn("…", " ".join(node.text or "" for node in text[1:3]))
+                    self.assertIn("…", " ".join(node.text or "" for node in text[1:4]))
 
     def test_empty_metadata_and_empty_repository_have_honest_fallbacks(self):
         value = project(description=None, language=None, pushedAt=None, stars=0, forks=0)
@@ -91,8 +93,8 @@ class ProjectCardTests(unittest.TestCase):
             words = " ".join(text_nodes(svg))
             self.assertIn("仓库暂无描述", words)
             self.assertIn("未标注语言", words)
-            self.assertIn("Star 0", words)
-            self.assertIn("Fork 0", words)
+            self.assertIn('aria-label="Star 0"', svg)
+            self.assertIn('aria-label="Fork 0"', svg)
             self.assertIn("暂无代码更新", words)
 
     def test_large_exact_statistics_and_long_language_stay_visible(self):
@@ -107,13 +109,27 @@ class ProjectCardTests(unittest.TestCase):
     def test_changing_api_numbers_changes_visible_card(self):
         first = " ".join(text_nodes(cards.render(project(stars=9, forks=1), "light", False)))
         second = " ".join(text_nodes(cards.render(project(stars=10, forks=2), "light", False)))
-        self.assertIn("Star 9 · Fork 1", first)
-        self.assertIn("Star 10 · Fork 2", second)
+        self.assertIn("9", first)
+        self.assertIn("10", second)
         self.assertNotEqual(first, second)
         with self.assertRaises(ValueError):
             cards.render(project(stars=-1), "dark", False)
         with self.assertRaises(ValueError):
             cards.render(project(forks=True), "dark", True)
+
+    def test_reviewed_summaries_yield_to_new_repository_descriptions(self):
+        snapshot = __import__('json').loads((cards.ROOT / 'data/github-profile.json').read_text(encoding='utf-8'))
+        for value in snapshot['projects']:
+            with self.subTest(name=value['name']):
+                name, summary = cards.display_copy(value)
+                if value['name'] in cards.PROJECT_DISPLAY:
+                    self.assertEqual(name, cards.PROJECT_DISPLAY[value['name']]['title'])
+                    self.assertEqual(summary, cards.PROJECT_DISPLAY[value['name']]['summary'])
+                changed = dict(value, description='New capability published after this card was designed.')
+                self.assertEqual(cards.display_copy(changed)[1], changed['description'])
+                svg = cards.render(changed, 'light', False)
+                cards.validate(svg)
+                self.assertIn('New capability', ' '.join(text_nodes(svg)))
 
 
 if __name__ == "__main__":
