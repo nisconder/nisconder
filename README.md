@@ -34,10 +34,10 @@
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=15c477f0ba">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=f7d9cf306d">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=9951e3ba02">
-  <img src="assets/activity-dark.svg?v=0505b8cd39" width="100%" alt="GitHub 贡献日历：近一年 708 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-08。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=fc8b22f4be">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=3208271cce">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=6a79c5e87b">
+  <img src="assets/activity-dark.svg?v=359bf4073d" width="100%" alt="GitHub 贡献日历：近一年 710 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-08。">
 </picture>
 </a>
 <!-- END:activity -->
