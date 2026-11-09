@@ -24,20 +24,20 @@
 
 <!-- BEGIN:stats -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=e874bf9f0e">
-  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=453d5f87f0">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=d7c76991f2">
-  <img src="assets/stats-dark.svg?v=ab2d90fdd4" width="100%" alt="GitHub 公开数据：15 个公开仓库；自有非 Fork 仓库共 41 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-09。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=32b0a728ed">
+  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=d31e3e22b5">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=28a19d3ebb">
+  <img src="assets/stats-dark.svg?v=ccdb488da8" width="100%" alt="GitHub 公开数据：15 个公开仓库；自有非 Fork 仓库共 41 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-10。">
 </picture>
 <!-- END:stats -->
 
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=933ac2b09b">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=7cad90ad6b">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=991c472e49">
-  <img src="assets/activity-dark.svg?v=0c50af0e50" width="100%" alt="GitHub 贡献日历：近一年 712 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-09。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=89e2376ae0">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=2c10ca0fad">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=21323e003c">
+  <img src="assets/activity-dark.svg?v=9bec65b2f0" width="100%" alt="GitHub 贡献日历：近一年 720 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-10。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -72,10 +72,10 @@
 
 <a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-light.svg?v=70674fb601">
-  <source media="(max-width: 640px)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-dark.svg?v=374eca4433">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-light.svg?v=a0b6a5f918">
-  <img src="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-dark.svg?v=161232c986" width="100%" alt="Keep-Vibe-Brot-Away（InfiniteScope/Keep-Vibe-Brot-Away）：将 Agent 回合聚合为工作单元与证据洞察。 · 贡献者 · 已核验 4 个合并 PR · 2 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-light.svg?v=b3307d1d0d">
+  <source media="(max-width: 640px)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-dark.svg?v=ca4d683d22">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-light.svg?v=705f562cc8">
+  <img src="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-dark.svg?v=82c453d7b1" width="100%" alt="Keep-Vibe-Brot-Away（InfiniteScope/Keep-Vibe-Brot-Away）：将 Agent 回合聚合为工作单元与证据洞察。 · 贡献者 · 已核验 4 个合并 PR · 2 Stars · 1 Forks">
 </picture>
 </a>
 
