@@ -34,10 +34,10 @@
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=89e2376ae0">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=2c10ca0fad">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=21323e003c">
-  <img src="assets/activity-dark.svg?v=9bec65b2f0" width="100%" alt="GitHub 贡献日历：近一年 720 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-10。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=74c0aa4d24">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=5026327d08">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=a9d4afdcc2">
+  <img src="assets/activity-dark.svg?v=24b2dadeb6" width="100%" alt="GitHub 贡献日历：近一年 726 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-10。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -63,10 +63,10 @@
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=5d894f6da2">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=294c275b05">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=5425bb6566">
-  <img src="assets/cards/npm-safe-dark.svg?v=26fdf8deab" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=397d9e5a31">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=779c0bceaf">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=89c8eeddd5">
+  <img src="assets/cards/npm-safe-dark.svg?v=d9496127c4" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
 </picture>
 </a>
 
@@ -83,28 +83,28 @@
 
 <a href="https://github.com/nisconder/portdoc">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=cb4289dee7">
-  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=946e2450c6">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=4519728ee8">
-  <img src="assets/cards/portdoc-dark.svg?v=7ff6ac60e1" width="100%" alt="portdoc（nisconder/portdoc）：对比 IPv4 / IPv6，定位本机监听项目。 · 自有项目 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=2d1e02d6ee">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=676dca5a67">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=7173fe0fb1">
+  <img src="assets/cards/portdoc-dark.svg?v=1c68518ccc" width="100%" alt="portdoc（nisconder/portdoc）：对比 IPv4 / IPv6，定位本机监听项目。 · 自有项目 · 4 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/pack-receipt">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=45dbf5e0a8">
-  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=02c10838f5">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=7237d32e4a">
-  <img src="assets/cards/pack-receipt-dark.svg?v=fdba11edf1" width="100%" alt="Pack Receipt（nisconder/pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 自有项目 · 3 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-mobile-light.svg?v=35d309fd71">
+  <source media="(max-width: 640px)" srcset="assets/cards/pack-receipt-mobile-dark.svg?v=a0c9e18b93">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/pack-receipt-light.svg?v=2362234966">
+  <img src="assets/cards/pack-receipt-dark.svg?v=84170184f2" width="100%" alt="Pack Receipt（nisconder/pack-receipt）：在本地比较 npm 归档与版本文件差异。 · 自有项目 · 3 Stars · 0 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/nisconder/paste-xray">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg?v=d734b018bf">
-  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg?v=aabb6c26e7">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg?v=b0e6465170">
-  <img src="assets/cards/paste-xray-dark.svg?v=0b54181e82" width="100%" alt="Paste X-Ray（nisconder/paste-xray）：显影粘贴文本中的隐形字符与隐藏 HTML。 · 自有项目 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg?v=9632ca0647">
+  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg?v=9d67371156">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg?v=ae54a584b0">
+  <img src="assets/cards/paste-xray-dark.svg?v=4e6b35d615" width="100%" alt="Paste X-Ray（nisconder/paste-xray）：显影粘贴文本中的隐形字符与隐藏 HTML。 · 自有项目 · 4 Stars · 0 Forks">
 </picture>
 </a>
 <!-- END:projects -->
