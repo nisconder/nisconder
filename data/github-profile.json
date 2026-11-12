@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotDate": "2026-11-12",
+  "snapshotDate": "2026-11-13",
   "timezone": "Asia/Shanghai",
   "source": "GitHub REST and GraphQL APIs",
   "user": {
@@ -93,7 +93,7 @@
       "language": "JavaScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-10T17:56:39Z",
+      "pushedAt": "2026-11-12T17:07:59Z",
       "isProfile": false
     },
     {
@@ -105,7 +105,7 @@
       "language": "TypeScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-10T14:04:53Z",
+      "pushedAt": "2026-11-12T15:32:21Z",
       "isProfile": false
     },
     {
@@ -336,7 +336,7 @@
       "language": "TypeScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-10T14:04:53Z",
+      "pushedAt": "2026-11-12T15:32:21Z",
       "isProfile": false,
       "fullName": "nisconder/npm-safe",
       "owner": "nisconder",

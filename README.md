@@ -24,20 +24,20 @@
 
 <!-- BEGIN:stats -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=e2dbf4f6be">
-  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=f70a7394c4">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=3b51df9be2">
-  <img src="assets/stats-dark.svg?v=443fd3c48a" width="100%" alt="GitHub 公开数据：15 个公开仓库；自有非 Fork 仓库共 41 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-12。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=d6477e6c2a">
+  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=db0637b7b3">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=77ce346974">
+  <img src="assets/stats-dark.svg?v=e11f10967c" width="100%" alt="GitHub 公开数据：15 个公开仓库；自有非 Fork 仓库共 41 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-13。">
 </picture>
 <!-- END:stats -->
 
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=da2e94e3c6">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=c703a011f5">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=6ab6731105">
-  <img src="assets/activity-dark.svg?v=157035624c" width="100%" alt="GitHub 贡献日历：近一年 733 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-12。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=72b166a963">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=70f39ebc4a">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=d0e98cf747">
+  <img src="assets/activity-dark.svg?v=858dce04de" width="100%" alt="GitHub 贡献日历：近一年 736 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-13。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -63,10 +63,10 @@
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=397d9e5a31">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=779c0bceaf">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=89c8eeddd5">
-  <img src="assets/cards/npm-safe-dark.svg?v=d9496127c4" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=f1bbff93b3">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=9ebf2ceb2a">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=0f8a8c9572">
+  <img src="assets/cards/npm-safe-dark.svg?v=1073200be8" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
 </picture>
 </a>
 
