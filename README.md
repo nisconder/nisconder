@@ -24,20 +24,20 @@
 
 <!-- BEGIN:stats -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=d6477e6c2a">
-  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=db0637b7b3">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=77ce346974">
-  <img src="assets/stats-dark.svg?v=e11f10967c" width="100%" alt="GitHub 公开数据：15 个公开仓库；自有非 Fork 仓库共 41 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-13。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=d91620589c">
+  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=50fc269896">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=9a8cb43101">
+  <img src="assets/stats-dark.svg?v=5549ae232e" width="100%" alt="GitHub 公开数据：16 个公开仓库；自有非 Fork 仓库共 42 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-14。">
 </picture>
 <!-- END:stats -->
 
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=1857adbde3">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=4fa94141b3">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=cbe2b5cbad">
-  <img src="assets/activity-dark.svg?v=91c1c3f9d9" width="100%" alt="GitHub 贡献日历：近一年 742 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-13。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=64e369fe9c">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=ad89c197fe">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=d0b9473e9c">
+  <img src="assets/activity-dark.svg?v=e3da83e00f" width="100%" alt="GitHub 贡献日历：近一年 768 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-14。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -52,30 +52,30 @@
 
 <a href="https://github.com/Escap1ng/VisualLaTeX">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-light.svg?v=6b522c0c5f">
-  <source media="(max-width: 640px)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-dark.svg?v=50d733a700">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-light.svg?v=b064384c7a">
-  <img src="assets/cards/upstream/Escap1ng/VisualLaTeX-dark.svg?v=4f8d20fe47" width="100%" alt="VisualLaTeX（Escap1ng/VisualLaTeX）：多文件 LaTeX 可视化编辑与本机 PDF 编译。 · 贡献者 · 已核验 2 个合并 PR · 5 Stars · 2 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-light.svg?v=3d20502796">
+  <source media="(max-width: 640px)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-dark.svg?v=8e6206a476">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-light.svg?v=9bc10badfc">
+  <img src="assets/cards/upstream/Escap1ng/VisualLaTeX-dark.svg?v=d85bb25fd7" width="100%" alt="VisualLaTeX（Escap1ng/VisualLaTeX）：多文件 LaTeX 可视化编辑与本机 PDF 编译。 · 贡献者 · 已核验 3 个合并 PR · 5 Stars · 2 Forks">
 </picture>
 </a>
 
-<p align="right">已核验的合并贡献：<a href="https://github.com/Escap1ng/VisualLaTeX/pull/1" title="修复 LaTeX 导入数据丢失与 HTML 注入，补充回归测试">#1</a> · <a href="https://github.com/Escap1ng/VisualLaTeX/pull/2" title="扩展可视化编辑、多文件工作区及 LaTeX / PostScript PDF 编译">#2</a></p>
+<p align="right">已核验的合并贡献：<a href="https://github.com/Escap1ng/VisualLaTeX/pull/1" title="修复 LaTeX 导入数据丢失与 HTML 注入，补充回归测试">#1</a> · <a href="https://github.com/Escap1ng/VisualLaTeX/pull/2" title="扩展可视化编辑、多文件工作区及 LaTeX / PostScript PDF 编译">#2</a> · <a href="https://github.com/Escap1ng/VisualLaTeX/pull/3" title="Fix Studio editing, project import, and compilation regressions">#3</a></p>
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=456c81f56a">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=afd4055c4c">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=458915dbb2">
-  <img src="assets/cards/npm-safe-dark.svg?v=3dea38909a" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=3e12a31196">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=273dba0ff7">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=5ecc9e1ca1">
+  <img src="assets/cards/npm-safe-dark.svg?v=46945ec206" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
 </picture>
 </a>
 
 <a href="https://github.com/InfiniteScope/Keep-Vibe-Brot-Away">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-light.svg?v=b3307d1d0d">
-  <source media="(max-width: 640px)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-dark.svg?v=ca4d683d22">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-light.svg?v=705f562cc8">
-  <img src="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-dark.svg?v=82c453d7b1" width="100%" alt="Keep-Vibe-Brot-Away（InfiniteScope/Keep-Vibe-Brot-Away）：将 Agent 回合聚合为工作单元与证据洞察。 · 贡献者 · 已核验 4 个合并 PR · 2 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-light.svg?v=2a2ea56ae3">
+  <source media="(max-width: 640px)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-mobile-dark.svg?v=a5debb9d43">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-light.svg?v=5c42d7c393">
+  <img src="assets/cards/upstream/InfiniteScope/Keep-Vibe-Brot-Away-dark.svg?v=ab37dddb0b" width="100%" alt="Keep-Vibe-Brot-Away（InfiniteScope/Keep-Vibe-Brot-Away）：将 Agent 回合聚合为工作单元与证据洞察。 · 贡献者 · 已核验 4 个合并 PR · 3 Stars · 1 Forks">
 </picture>
 </a>
 
