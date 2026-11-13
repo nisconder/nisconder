@@ -34,10 +34,10 @@
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=72b166a963">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=70f39ebc4a">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=d0e98cf747">
-  <img src="assets/activity-dark.svg?v=858dce04de" width="100%" alt="GitHub 贡献日历：近一年 736 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-13。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=1857adbde3">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=4fa94141b3">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=cbe2b5cbad">
+  <img src="assets/activity-dark.svg?v=91c1c3f9d9" width="100%" alt="GitHub 贡献日历：近一年 742 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-13。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -63,10 +63,10 @@
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=f1bbff93b3">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=9ebf2ceb2a">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=0f8a8c9572">
-  <img src="assets/cards/npm-safe-dark.svg?v=1073200be8" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=456c81f56a">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=afd4055c4c">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=458915dbb2">
+  <img src="assets/cards/npm-safe-dark.svg?v=3dea38909a" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
 </picture>
 </a>
 
@@ -83,10 +83,10 @@
 
 <a href="https://github.com/nisconder/portdoc">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=2d1e02d6ee">
-  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=676dca5a67">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=7173fe0fb1">
-  <img src="assets/cards/portdoc-dark.svg?v=1c68518ccc" width="100%" alt="portdoc（nisconder/portdoc）：对比 IPv4 / IPv6，定位本机监听项目。 · 自有项目 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/portdoc-mobile-light.svg?v=7789eea19e">
+  <source media="(max-width: 640px)" srcset="assets/cards/portdoc-mobile-dark.svg?v=808e3c5325">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/portdoc-light.svg?v=4b1fbfa4f7">
+  <img src="assets/cards/portdoc-dark.svg?v=f7ac3c7153" width="100%" alt="portdoc（nisconder/portdoc）：对比 IPv4 / IPv6，定位本机监听项目。 · 自有项目 · 4 Stars · 0 Forks">
 </picture>
 </a>
 
@@ -101,10 +101,10 @@
 
 <a href="https://github.com/nisconder/paste-xray">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg?v=9632ca0647">
-  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg?v=9d67371156">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg?v=ae54a584b0">
-  <img src="assets/cards/paste-xray-dark.svg?v=4e6b35d615" width="100%" alt="Paste X-Ray（nisconder/paste-xray）：显影粘贴文本中的隐形字符与隐藏 HTML。 · 自有项目 · 4 Stars · 0 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/paste-xray-mobile-light.svg?v=184745605c">
+  <source media="(max-width: 640px)" srcset="assets/cards/paste-xray-mobile-dark.svg?v=052f302050">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/paste-xray-light.svg?v=4e510b3471">
+  <img src="assets/cards/paste-xray-dark.svg?v=909ebc40c3" width="100%" alt="Paste X-Ray（nisconder/paste-xray）：显影粘贴文本中的隐形字符与隐藏 HTML。 · 自有项目 · 4 Stars · 0 Forks">
 </picture>
 </a>
 <!-- END:projects -->
