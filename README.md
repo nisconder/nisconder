@@ -24,20 +24,20 @@
 
 <!-- BEGIN:stats -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=d91620589c">
-  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=50fc269896">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=9a8cb43101">
-  <img src="assets/stats-dark.svg?v=5549ae232e" width="100%" alt="GitHub 公开数据：16 个公开仓库；自有非 Fork 仓库共 42 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-14。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=1bceb111de">
+  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=67cfb2ebc6">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=423342356d">
+  <img src="assets/stats-dark.svg?v=13d700e2cb" width="100%" alt="GitHub 公开数据：17 个公开仓库；自有非 Fork 仓库共 42 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-15。">
 </picture>
 <!-- END:stats -->
 
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=64e369fe9c">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=ad89c197fe">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=d0b9473e9c">
-  <img src="assets/activity-dark.svg?v=e3da83e00f" width="100%" alt="GitHub 贡献日历：近一年 768 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-14。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=ac0a6d6ee9">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=e5da2c6fed">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=51dcc30601">
+  <img src="assets/activity-dark.svg?v=9680b5e02f" width="100%" alt="GitHub 贡献日历：近一年 758 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-15。">
 </picture>
 </a>
 <!-- END:activity -->

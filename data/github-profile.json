@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotDate": "2026-11-14",
+  "snapshotDate": "2026-11-15",
   "timezone": "Asia/Shanghai",
   "source": "GitHub REST and GraphQL APIs",
   "user": {
@@ -46,6 +46,18 @@
       "isFork": false,
       "isArchived": false,
       "pushedAt": "2026-10-23T13:48:03Z",
+      "isProfile": false
+    },
+    {
+      "name": "GKD_THS_List",
+      "description": "GKD第三方订阅收录名单",
+      "url": "https://github.com/nisconder/GKD_THS_List",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "isFork": true,
+      "isArchived": false,
+      "pushedAt": "2026-11-14T12:02:40Z",
       "isProfile": false
     },
     {
@@ -105,7 +117,7 @@
       "language": "JavaScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-13T18:35:31Z",
+      "pushedAt": "2026-11-14T13:50:05Z",
       "isProfile": false
     },
     {
@@ -117,7 +129,7 @@
       "language": "TypeScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-14T05:02:06Z",
+      "pushedAt": "2026-11-14T08:08:25Z",
       "isProfile": false
     },
     {
@@ -129,7 +141,7 @@
       "language": "TypeScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-13T17:10:52Z",
+      "pushedAt": "2026-11-14T11:48:25Z",
       "isProfile": false
     },
     {
@@ -304,7 +316,7 @@
     "truncated": false
   },
   "stats": {
-    "publicRepositories": 16,
+    "publicRepositories": 17,
     "originalRepositories": 13,
     "totalStars": 46,
     "originalStars": 42,
@@ -360,7 +372,7 @@
       "language": "TypeScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-14T05:02:06Z",
+      "pushedAt": "2026-11-14T08:08:25Z",
       "isProfile": false,
       "fullName": "nisconder/npm-safe",
       "owner": "nisconder",
