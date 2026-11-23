@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotDate": "2026-11-23",
+  "snapshotDate": "2026-11-24",
   "timezone": "Asia/Shanghai",
   "source": "GitHub REST and GraphQL APIs",
   "user": {
@@ -117,14 +117,14 @@
       "language": "JavaScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-23T07:13:22Z",
+      "pushedAt": "2026-11-23T12:19:15Z",
       "isProfile": false
     },
     {
       "name": "npm-safe",
       "description": "Local-first npm supply-chain security scanner: static + optional LLM analysis, CLI/CI gates, desktop app, and AI-agent skills.",
       "url": "https://github.com/nisconder/npm-safe",
-      "stars": 9,
+      "stars": 10,
       "forks": 1,
       "language": "TypeScript",
       "isFork": false,
@@ -231,7 +231,7 @@
       "language": "JavaScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-13T12:59:14Z",
+      "pushedAt": "2026-11-23T08:38:49Z",
       "isProfile": false,
       "fullName": "Escap1ng/VisualLaTeX",
       "owner": "Escap1ng",
@@ -318,8 +318,8 @@
   "stats": {
     "publicRepositories": 17,
     "originalRepositories": 13,
-    "totalStars": 46,
-    "originalStars": 42,
+    "totalStars": 47,
+    "originalStars": 43,
     "totalForks": 1,
     "originalForks": 1
   },
@@ -333,7 +333,7 @@
       "language": "JavaScript",
       "isFork": false,
       "isArchived": false,
-      "pushedAt": "2026-11-13T12:59:14Z",
+      "pushedAt": "2026-11-23T08:38:49Z",
       "isProfile": false,
       "fullName": "Escap1ng/VisualLaTeX",
       "owner": "Escap1ng",
@@ -367,7 +367,7 @@
       "name": "npm-safe",
       "description": "Local-first npm supply-chain security scanner: static + optional LLM analysis, CLI/CI gates, desktop app, and AI-agent skills.",
       "url": "https://github.com/nisconder/npm-safe",
-      "stars": 9,
+      "stars": 10,
       "forks": 1,
       "language": "TypeScript",
       "isFork": false,

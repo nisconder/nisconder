@@ -24,20 +24,20 @@
 
 <!-- BEGIN:stats -->
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=74fef5a75d">
-  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=b7503df5f5">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=6ffb30b66b">
-  <img src="assets/stats-dark.svg?v=43926f5bdc" width="100%" alt="GitHub 公开数据：17 个公开仓库；自有非 Fork 仓库共 42 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-23。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg?v=e8c60754e8">
+  <source media="(max-width: 640px)" srcset="assets/stats-mobile-dark.svg?v=4032451c10">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg?v=99041cba0a">
+  <img src="assets/stats-dark.svg?v=033e94d2d3" width="100%" alt="GitHub 公开数据：17 个公开仓库；自有非 Fork 仓库共 43 Stars、1 Forks；5 位关注者。每六小时自动更新，数据日期 2026-11-24。">
 </picture>
 <!-- END:stats -->
 
 <!-- BEGIN:activity -->
 <a href="https://github.com/nisconder?tab=overview">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=6f12e1c249">
-  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=cd0da546b9">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=19ca41f8a0">
-  <img src="assets/activity-dark.svg?v=d1fb902982" width="100%" alt="GitHub 贡献日历：近一年 767 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-23。">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg?v=8fa4199424">
+  <source media="(max-width: 640px)" srcset="assets/activity-mobile-dark.svg?v=d69ce59c9d">
+  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg?v=62a3c2c64f">
+  <img src="assets/activity-dark.svg?v=10a1cfd9a9" width="100%" alt="GitHub 贡献日历：近一年 775 次贡献；手机显示近半年。每六小时自动更新，数据日期 2026-11-24。">
 </picture>
 </a>
 <!-- END:activity -->
@@ -52,10 +52,10 @@
 
 <a href="https://github.com/Escap1ng/VisualLaTeX">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-light.svg?v=3d20502796">
-  <source media="(max-width: 640px)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-dark.svg?v=8e6206a476">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-light.svg?v=9bc10badfc">
-  <img src="assets/cards/upstream/Escap1ng/VisualLaTeX-dark.svg?v=d85bb25fd7" width="100%" alt="VisualLaTeX（Escap1ng/VisualLaTeX）：多文件 LaTeX 可视化编辑与本机 PDF 编译。 · 贡献者 · 已核验 3 个合并 PR · 5 Stars · 2 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-light.svg?v=fb10093dc8">
+  <source media="(max-width: 640px)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-mobile-dark.svg?v=f16c9cf62d">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/upstream/Escap1ng/VisualLaTeX-light.svg?v=5c95ee47fb">
+  <img src="assets/cards/upstream/Escap1ng/VisualLaTeX-dark.svg?v=efb1d85c6d" width="100%" alt="VisualLaTeX（Escap1ng/VisualLaTeX）：多文件 LaTeX 可视化编辑与本机 PDF 编译。 · 贡献者 · 已核验 3 个合并 PR · 5 Stars · 2 Forks">
 </picture>
 </a>
 
@@ -63,10 +63,10 @@
 
 <a href="https://github.com/nisconder/npm-safe">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=dbd730b0d3">
-  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=7ca98f2e4d">
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=437cced3ac">
-  <img src="assets/cards/npm-safe-dark.svg?v=24348fd284" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 9 Stars · 1 Forks">
+  <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="assets/cards/npm-safe-mobile-light.svg?v=2a52b708c1">
+  <source media="(max-width: 640px)" srcset="assets/cards/npm-safe-mobile-dark.svg?v=808a45dc3c">
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards/npm-safe-light.svg?v=ae40bf2fa6">
+  <img src="assets/cards/npm-safe-dark.svg?v=7dd9c8aa5c" width="100%" alt="npm-safe（nisconder/npm-safe）：npm 供应链风险检查与证据追踪。 · 自有项目 · 10 Stars · 1 Forks">
 </picture>
 </a>
 
