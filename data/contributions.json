@@ -1,18 +1,13 @@
 {
-  "snapshotDate": "2026-11-25",
+  "snapshotDate": "2026-11-26",
   "timezone": "Asia/Shanghai",
   "source": "GitHub GraphQL contributionCalendar",
-  "periodStart": "2025-11-26",
-  "periodEnd": "2026-11-25",
+  "periodStart": "2025-11-27",
+  "periodEnd": "2026-11-26",
   "totalContributions": 775,
   "weeks": [
     {
       "contributionDays": [
-        {
-          "date": "2025-11-26",
-          "contributionCount": 0,
-          "contributionLevel": "NONE"
-        },
         {
           "date": "2025-11-27",
           "contributionCount": 0,
@@ -2038,6 +2033,11 @@
         },
         {
           "date": "2026-11-25",
+          "contributionCount": 0,
+          "contributionLevel": "NONE"
+        },
+        {
+          "date": "2026-11-26",
           "contributionCount": 0,
           "contributionLevel": "NONE"
         }
